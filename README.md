@@ -1,25 +1,30 @@
-## Panduan Pengerjaan
-Berikut adalah hal yang harus diperhatikan untuk pengumpulan tugas ini:
-1. Buatlah grup pada Gitlab dengan format "IF3110-2023-01-XX", dengan XX adalah nomor kelompok (untuk K1 dan K2) atau kode kelompok (untuk K3).
-2. Tambahkan anggota tim pada grup anda.
-3. **Fork** pada repository ini dengan organisasi yang telah dibuat.
-4. Ubah hak akses repository hasil Fork anda menjadi **private**.
-5. Hal-hal yang harus diperhatikan.
-    * Silakan commit pada repository anda (hasil fork)
-    * Lakukan beberapa commit dengan pesan yang bermakna, contoh: “add register form”, “fix logout bug”, jangan seperti “final”, “benerin dikit”, “fix bug”.
-    * Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan).
-    * Commit dari setiap anggota tim akan mempengaruhi penilaian.
-    * Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
-    * Sebagai panduan bisa mengikuti [semantic commit](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
-6. Buatlah file README yang berisi:
-    * Deskripsi aplikasi web
-    * Daftar requirement
-    * Cara instalasi
-    * Cara menjalankan server
-    * Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan 
-    * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+# IF3110_Pengembangan Aplikasi Berbasis Web
 
+## *Tubes1_Kelompok 8*
 
-///
-git rm .env --cached
-git commit -m "Stopped tracking .env File"
+## **Table of Contents**
+* [Program Description](#program-description)
+* [Required Program](#required-program)
+* [Installation Guide](#installation-guide)
+* [Execution Guide](#execution-guide)
+* [Implementation Screenshots](#implementation-screenshots)
+* [Progress Report](#progress-report)
+* [Workload Distribution](#workload-distribution)
+
+## **Program Description**
+This program uses python programming language and is a **command line interface (CLI)** based program. The main program is to find the closest pair of dots in N-Dimension plane. This program is being made with Divide and Conquer algorithm with the Brute Force algorithm as its comparison. This program also uses the python **matplotlib.pyplot** library to visualize the closest pair of dots found in 3 dimension plane.
+
+## **Required Program**
+
+## **Installation Guide**
+
+## **Execution Guide**
+
+## **Implementation Screenshots**
+
+## **Workload Distribution**
+| Name                     | Student ID | Client-side | Server-side |
+|--------------------------|------------|-------------|-------------|
+| Irfan                    | 10023176   |             |             |
+| Bagas Aryo Seto          | 13521081   |             |             |
+| Juan Christopher Santoso | 13521116   |             |             |
