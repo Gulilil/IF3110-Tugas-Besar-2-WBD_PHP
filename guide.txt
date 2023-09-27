@@ -1,2 +1,5 @@
 > docker build -t tubes-1
-> docker compose up -d
+> docker-compose up
+
+> open new terminal
+>
