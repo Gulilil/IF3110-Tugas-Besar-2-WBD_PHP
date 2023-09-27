@@ -1,5 +1,17 @@
-> docker build -t tubes-1
-> docker-compose up
+Make .env file:
+{Duplicate the `.env-example`, rename it to be `.env`}
+{change the DB_USER, DB_PASSWORD to local postgresql settings}
 
-> open new terminal
->
+To start docker:
+> docker-compose up
+  or -> docker-compose up -d
+
+To open database:
+{start the docker first, then open a new terminal}
+> docker exec -it postgres_wbd bash
+> psql -h localhost -U postgres
+
+To restart docker:
+> docker-compose down
+  or {only if needed} -> docker-compose down --volumes
+
