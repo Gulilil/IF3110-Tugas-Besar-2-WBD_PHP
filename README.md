@@ -18,3 +18,8 @@ Berikut adalah hal yang harus diperhatikan untuk pengumpulan tugas ini:
     * Cara menjalankan server
     * Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan 
     * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+
+
+///
+git rm .env --cached
+git commit -m "Stopped tracking .env File"
