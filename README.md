@@ -12,7 +12,6 @@
 * [Workload Distribution](#workload-distribution)
 
 ## **Program Description**
-This program uses python programming language and is a **command line interface (CLI)** based program. The main program is to find the closest pair of dots in N-Dimension plane. This program is being made with Divide and Conquer algorithm with the Brute Force algorithm as its comparison. This program also uses the python **matplotlib.pyplot** library to visualize the closest pair of dots found in 3 dimension plane.
 
 ## **Required Program**
 

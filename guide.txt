@@ -10,6 +10,8 @@ To open database:
 {start the docker first, then open a new terminal}
 > docker exec -it postgres_wbd bash
 > psql -h localhost -U postgres
+Inside Postgres:
+> \c wbd_db  #to change user
 
 To restart docker:
 > docker-compose down
