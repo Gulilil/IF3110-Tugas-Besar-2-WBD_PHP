@@ -30,15 +30,35 @@ class Database {
     $this->statement->execute();
   }
 
+  public function fetchData(){
+    $this->execute();
+    return $this->statement->fetchAll(PDO:FETCH_ASSOC);
+  }
+
+  public function fetchAllData(){
+    $this->execute();
+    return $this->statement->fetch(PDO:FETCH_ASSOC);
+  }
+
+  public function countRow(){
+    $this->statement->rowCount();
+  }
+
   public function migrate(){
     try {
-      $files = glob(dirname(__DIR__,1).'/database/tables/*.sql');
-      foreach($files as $file){
+      $table_files = glob(dirname(__DIR__,1).'/database/tables/*.sql');
+      foreach($table_files as $file){
         $file_content = file_get_contents($file);
         $this->query($file_content);
         $this->execute();
       }
-      // echo "Migration Success";
+      $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
+      foreach($constraint_files as $file){
+        $file_content = file_get_contents($file);
+        $this->query($file_content);
+        $this->execute();
+      }
+      echo "Migration Success";
     } catch (Exception $e){
       echo "Migration Failed";
     }
