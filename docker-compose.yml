@@ -13,7 +13,7 @@ services:
   php-apache-environment:
     container_name: php-apache
     volumes:
-      - ./src:/var/www/html/
+      - ./app:/var/www/html/
     ports:
       - "8000:80"
     depends_on:

@@ -1,5 +1,10 @@
+============= COMMANDS =============
 Make .env file:
-{Duplicate the `.env-example`, rename it to be `.env`}
+{Duplicate the `.env-example`, rename it to be `.env`
+Place it inside:
+1. The same directory as .env.example (the root directory)
+2. The `app/setup` directory (the same directory as env_loader.php)
+}
 {change the DB_USER, DB_PASSWORD to local postgresql settings}
 
 To start docker:
@@ -16,4 +21,6 @@ Inside Postgres:
 To restart docker:
 > docker-compose down
   or {only if needed} -> docker-compose down --volumes
+
+
 
