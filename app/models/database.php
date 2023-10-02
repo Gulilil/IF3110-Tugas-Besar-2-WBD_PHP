@@ -2,6 +2,10 @@
 
 require_once(dirname(__DIR__,1).'/setup/setup.php');
 
+function makeDBString($string){
+  return "'".$string."'";
+}
+
 class Database {
   private $db;
   private $statement;
@@ -32,16 +36,30 @@ class Database {
 
   public function fetchData(){
     $this->execute();
-    return $this->statement->fetchAll(PDO:FETCH_ASSOC);
+    return $this->statement->fetch();
   }
 
   public function fetchAllData(){
     $this->execute();
-    return $this->statement->fetch(PDO:FETCH_ASSOC);
+    return $this->statement->fetchAll();
   }
 
   public function countRow(){
-    $this->statement->rowCount();
+    return $this->statement->rowCount();
+  }
+
+  public function processDataType($input){
+    if (is_null($input)){
+      return 'NULL';
+    }
+    if (is_bool($input)){
+      if ($input) return 'true';
+      else return 'false';
+    }
+    if (is_string($input)){
+      return makeDBString($input);
+    } 
+    return $input;
   }
 
   public function migrate(){
@@ -52,13 +70,15 @@ class Database {
         $this->query($file_content);
         $this->execute();
       }
-      $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
-      foreach($constraint_files as $file){
-        $file_content = file_get_contents($file);
-        $this->query($file_content);
-        $this->execute();
-      }
-      echo "Migration Success";
+      // // Ga jadi dipake karena checknya langsung pas create table
+      // $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
+      // foreach($constraint_files as $file){
+      //   $file_content = file_get_contents($file);
+      //   $this->query($file_content);
+      //   $this->execute();
+      // }
+      // echo "Migration Success";
+      
     } catch (Exception $e){
       echo "Migration Failed";
     }
