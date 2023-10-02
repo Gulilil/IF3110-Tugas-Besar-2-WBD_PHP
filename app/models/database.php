@@ -2,6 +2,10 @@
 
 require_once(dirname(__DIR__,1).'/setup/setup.php');
 
+function makeDBString($string){
+  return "'".$string."'";
+}
+
 class Database {
   private $db;
   private $statement;
@@ -42,6 +46,20 @@ class Database {
 
   public function countRow(){
     $this->statement->rowCount();
+  }
+
+  public function processDataType($input){
+    if (is_null($input)){
+      return 'NULL';
+    }
+    if (is_bool($input)){
+      if ($input) return 'true';
+      else return 'false';
+    }
+    if (is_string($input)){
+      return makeDBString($input);
+    } 
+    return $input;
   }
 
   public function migrate(){

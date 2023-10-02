@@ -22,5 +22,8 @@ To restart docker:
 > docker-compose down
   or {only if needed} -> docker-compose down --volumes
 
+To restart all database (when messed up only):
+> DROP SCHEMA public CASCADE
+> CREATE SCHEMA public
 
 
