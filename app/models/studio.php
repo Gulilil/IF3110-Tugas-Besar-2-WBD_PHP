@@ -23,14 +23,14 @@ class Studio {
   }
 
   public function insertStudio($data){
-    $this->db->query('INSERT INTO '.$this->table.'(name, description, established_date) VALUES ('.$data['name'].','.$data['description'].','.$data['established_date'].')');
+    $this->db->query('INSERT INTO '.$this->table.'(name, description, established_date, image) VALUES ('.$data['name'].','.$data['description'].','.$data['established_date'].','.$data['image'].')');
     $this->db->execute();
     return ($this->db->countRow() == 1);
     // if countRow != 1, query fails
   }
 
   public function updateStudio($data){
-    $this->db->query('UPDATE ' . $this->table . 'SET name = '.$data['name'].', description = '.$data['description'].', established_date = '.$data['established_date'].' WHERE studio_id = '. $data['studio_id']);
+    $this->db->query('UPDATE ' . $this->table . 'SET name = '.$data['name'].', description = '.$data['description'].', established_date = '.$data['established_date'].', image = '.$data['image'].' WHERE studio_id = '. $data['studio_id']);
     $this->db->execute();
     return ($this->db->countRow() == 1);
     // if countRow != 1, query fails

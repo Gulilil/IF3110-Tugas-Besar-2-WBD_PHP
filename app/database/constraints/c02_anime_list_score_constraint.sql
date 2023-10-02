@@ -9,7 +9,7 @@ DO $$
         THEN
             ALTER TABLE anime_list
             ADD CONSTRAINT anime_list_score_constraint
-            CHECK (user_score BETWEEN 0 and 10);
+            CHECK (user_score BETWEEN 1 and 10);
         END IF;
     END;
 $$;

@@ -70,12 +70,13 @@ class Database {
         $this->query($file_content);
         $this->execute();
       }
-      $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
-      foreach($constraint_files as $file){
-        $file_content = file_get_contents($file);
-        $this->query($file_content);
-        $this->execute();
-      }
+      // // Ga jadi dipake karena checknya langsung pas create table
+      // $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
+      // foreach($constraint_files as $file){
+      //   $file_content = file_get_contents($file);
+      //   $this->query($file_content);
+      //   $this->execute();
+      // }
       echo "Migration Success";
     } catch (Exception $e){
       echo "Migration Failed";
