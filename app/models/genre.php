@@ -28,24 +28,28 @@ class Genre {
   }
 
   public function insertGenre($name){
+    $name = $this->db->processDataType($name);
     $this->db->query('INSERT INTO ' . $this->table . ' (name) VALUES ('.$name.')');
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
   public function updateGenre($data){
+    foreach($data as $key => $value){
+      $data[$key] = $this->db->processDataType($value);
+    }
     $this->db->query('UPDATE ' . $this->table . 'SET name = '. $data['name']. ' WHERE genre_id = '. $data['genre_id']);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
   public function deleteGenre($id){
     $this->db->query('DELETE FROM ' . $this->table . ' WHERE genre_id = '. $id);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
 }

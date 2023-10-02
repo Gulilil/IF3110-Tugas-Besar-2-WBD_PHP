@@ -28,24 +28,30 @@ class Anime_List{
   }
 
   public function insertAnimeList($data){
+    foreach($data as $key => $value){
+      $data[$key] = $this->db->processDataType($value);
+    }
     $this->db->query('INSERT INTO ' . $this->table . ' (client_id, anime_id, user_score, progress, watch_status, review) VALUES ('.$data['client_id'].','.$data['anime_id'].','.$data['user_score'].','.$data['progress'].','.$data['watch_status'].','.$data['review'].')');
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
-  public function updateClient($data){
+  public function updateAnimeList($data){
+    foreach($data as $key => $value){
+      $data[$key] = $this->db->processDataType($value);
+    }
     $this->db->query('UPDATE ' . $this->table . 'SET client_id = '.$data['client_id'].', anime_id = '.$data['anime_id'].', user_score = '.$data['user_score'].', progress = '.$data['progress'].', watch_status = '.$data['watch_status'].', review = '.$data['review'].' WHERE list_id = '. $data['list_id']);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
-  public function deleteClient($id){
+  public function deleteAnimeList($id){
     $this->db->query('DELETE FROM ' . $this->table . ' WHERE list_id = '. $id);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
 }
 
 }

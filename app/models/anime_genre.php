@@ -23,23 +23,29 @@ class Anime_Genre {
   }
 
   public function insertAnimeGenre($data){
+    foreach($data as $key => $value){
+      $data[$key] = $this->db->processDataType($value);
+    }
     $this->db->query('INSERT INTO '.$this->table. ' (anime_id, genre_id) VALUES ('. $data['anime_id'].','.$data['genre_id'].')');
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
   public function updateAnimeGenre($data){
+    foreach($data as $key => $value){
+      $data[$key] = $this->db->processDataType($value);
+    }
     $this->db->query('UPDATE ' . $this->table . 'SET anime_id = '.$data['anime_id'].', genre_id = '.$data['genre_id'].' WHERE anime_genre_id = '. $data['anime_genre_id']);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 
   public function deleteAnimeGenre($id){
     $this->db->query('DELETE FROM ' . $this->table . ' WHERE anime_genre_id = '. $id);
     $this->db->execute();
-    return ($this->db->countRow() == 1);
-    // if countRow != 1, query fails
+    return ($this->db->countRow() != 0);
+    // if countRow == 0, query fails
   }
 }

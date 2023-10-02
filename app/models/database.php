@@ -36,16 +36,16 @@ class Database {
 
   public function fetchData(){
     $this->execute();
-    return $this->statement->fetchAll(PDO:FETCH_ASSOC);
+    return $this->statement->fetch();
   }
 
   public function fetchAllData(){
     $this->execute();
-    return $this->statement->fetch(PDO:FETCH_ASSOC);
+    return $this->statement->fetchAll();
   }
 
   public function countRow(){
-    $this->statement->rowCount();
+    return $this->statement->rowCount();
   }
 
   public function processDataType($input){
