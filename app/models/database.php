@@ -77,7 +77,8 @@ class Database {
       //   $this->query($file_content);
       //   $this->execute();
       // }
-      echo "Migration Success";
+      // echo "Migration Success";
+      
     } catch (Exception $e){
       echo "Migration Failed";
     }

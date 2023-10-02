@@ -200,7 +200,3 @@ function seedAllData(){
 }
 
 
-// Ini fungsinya cukup dinyalain sekali ajaa
-// Abis itu buka /setup/seed.php di browser, kalo udah ada tulisan 'Seeding success', comment lagi
-
-// seedAllData();
