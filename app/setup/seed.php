@@ -1,13 +1,13 @@
 <?php
 
 require_once(dirname(__DIR__, 1).'/define.php');
-require_once(BASE_DIR.'/models/client.php');
-require_once(BASE_DIR.'/models/studio.php');
-require_once(BASE_DIR.'/models/genre.php');
-require_once(BASE_DIR.'/models/anime.php');
-require_once(BASE_DIR.'/models/anime_list.php');
-require_once(BASE_DIR.'/models/anime_genre.php');
-require_once(BASE_DIR.'/models/relationship.php');
+require_once(BASE_DIR.'/models/Client.php');
+require_once(BASE_DIR.'/models/Studio.php');
+require_once(BASE_DIR.'/models/Genre.php');
+require_once(BASE_DIR.'/models/Anime.php');
+require_once(BASE_DIR.'/models/Anime_List.php');
+require_once(BASE_DIR.'/models/Anime_Genre.php');
+require_once(BASE_DIR.'/models/Relationship.php');
 
 function getRandomWord($len = 10)
 {
@@ -29,7 +29,7 @@ function seedClientData(){
       $admin_status = false;
     }
     $birthdate = null;
-    $bio = 'Account number '.$i;
+    $bio = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
     $image = null;
 
     $clientTuple = array(
@@ -46,23 +46,24 @@ function seedClientData(){
 
 function seedStudioData() {
   $studio = new Studio();
+  $desc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
   $studio1 = array (
     'name' => 'B-1 Pictures',
-    'description' => 'Ini studio 1',
+    'description' => $desc,
     'established_date' => '2020-01-01',
     'image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/A-1_Pictures_Logo.svg/1200px-A-1_Pictures_Logo.svg.png'
   );
   $studio->insertStudio($studio1);
   $studio2 = array (
     'name' => 'NAPPA Studio',
-    'description' => 'Ini studio 2',
+    'description' => $desc,
     'established_date' => '2019-04-03',
     'image' => 'https://cdn.myanimelist.net/s/common/company_logos/e3a5163d-3b09-4e98-922b-79180a75539f_600x600_i?s=3289c478fd611569ebccd7ff076151df'
   );
   $studio->insertStudio($studio2);
   $studio3 = array (
     'name' => 'Hyoto Animation',
-    'description' => 'Ini studio 3',
+    'description' => $desc,
     'established_date' => '2018-05-10',
     'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNl6a2_UXtDfM1YwueHQt_UeGrw9fBI4ImtK0mCBCbvnRcSuq4WqxPNDU5Zh-mZS0CAi0&usqp=CAU'
   );
@@ -91,7 +92,7 @@ function seedAnimeData(){
     $episodes = 24;
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
-    $image = null;
+    $image = 'https://m.media-amazon.com/images/I/71mqttVzH-L._AC_UF1000,1000_QL80_.jpg';
     $trailer = null;
     $studio_id = rand(1,3);
 
@@ -128,7 +129,7 @@ function seedAnimeListData(){
     } else {
       $progress = rand(1,24);
     }
-    $review = getRandomWord(50);
+    $review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
 
     $anime_listTuple = array (
       'client_id' => $client_id,
@@ -168,15 +169,15 @@ function seedAnimeGenreData(){
 
 function seedRelationshipData(){
   $relationship = new Relationship();
-  $typeArr = array('FRIEND', 'PENDING 1_2', 'PENDING 2_1', 'BLOCKED');
+  $typeArr = array('FRIEND', 'PENDING', 'BLOCKED');
   for ($i = 0; $i < 10; $i++){
     $id1 = rand(1,10);
     $id2 = rand(1,10);
-    $type = $typeArr[rand(0,3)];
+    $type = $typeArr[rand(0,2)];
     while ($relationship->getMutualRelationship($id1, $id2)){
       $id1 = rand(1,10);
       $id2 = rand(1,10);
-      $type = $typeArr[rand(0,3)];
+      $type = $typeArr[rand(0,2)];
     }
 
     $relationshipTuple = array (

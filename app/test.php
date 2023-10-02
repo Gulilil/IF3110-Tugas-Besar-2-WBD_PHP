@@ -1,5 +1,7 @@
 <?php
 
+require_once('define.php');
+
 // require_once('models/relationship.php');
 // require_once('models/client.php');
 
@@ -18,3 +20,11 @@
 // } else {
 //   echo 'ga bisa';
 // }
+session_start();
+
+session_unset();
+// echo $_SESSION['username'];
+// echo 'hehe';
+
+header('location : ');
+exit();

@@ -1,35 +1,36 @@
 <?php
 
 require_once(dirname(__DIR__,1).'/define.php');
-require_once(BASE_DIR.'/models/controller.php');
+require_once(BASE_DIR.'/models/Controller.php');
 
 class App {
-  protected $controller = 'home';
+  protected $controller = 'HomeController';
   protected $method = 'index';
   protected $params = [];
 
   public function __construct()
   {
     $url = $this->parse_url();
-    if ((!isset($_SESSION['username']) && !isset($_COOKIE['GUEST']) && $url[0] != 'signup'))
+    if (!isset($_SESSION['username']) && $url[0] != 'Signup')
     {
-      $this->controller = 'login';
+      $this->controller = 'LoginController';
     } 
     else {
       $path = explode("&", $url[0])[0];
-      if (file_exists('controller/'.$path.'.php')) {
+      if (file_exists('Controller/'.$path.'.php')) {
         $this->controller = $path;
         unset($url[0]);
       } else if ($url[0] == ''){
-        $this->controller = 'home';
+        $this->controller = 'HomeController';
       } else {
-        $this->ontroller = 'error';
+        $this->controller = 'ErrorController';
       }
     }
+
     require_once (BASE_DIR.'/controller/'.$this->controller.'.php');
     $this->controller = new ($this->controller)();
     if (isset($url[1])){
-      if (method_existst($this->controller, $url[1])){
+      if (method_exists($this->controller, $url[1])){
         $this->method = $url[1];
         unset($url[1]);
       }

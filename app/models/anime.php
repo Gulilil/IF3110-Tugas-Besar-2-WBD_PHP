@@ -2,7 +2,7 @@
 
 require_once(dirname(__DIR__,1).'/define.php');
 require_once(BASE_DIR.'/setup/setup.php');
-require_once('database.php');
+require_once('Database.php');
 
 class Anime {
   private $table = 'anime';
@@ -30,6 +30,10 @@ class Anime {
   public function getTop5AnimeScore(){
     $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY score DESC LIMIT 5');
     return $this->db->fetchAllData();
+  }
+
+  public function getAllAnimeBySearch($string){
+    $this->db->query('SELECT * FROM ' . $this->table . "WHERE title LIKE '%".$string."%'");
   }
 
   public function getAllAnimeIDByGenreID($id){

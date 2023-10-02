@@ -2,7 +2,7 @@
 
 require_once(dirname(__DIR__,1).'/define.php');
 require_once(BASE_DIR.'/setup/setup.php');
-require_once('database.php');
+require_once('Database.php');
 
 class Client {
     private $table = 'client';
