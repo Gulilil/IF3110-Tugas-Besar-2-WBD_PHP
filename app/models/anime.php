@@ -17,6 +17,11 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
+  public function getAllAnimeWithTrailer(){
+    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NOT trailer IS NULL ORDER BY release_date DESC');
+    return $this->db->fetchAllData();
+  }
+
   public function getAllAnimeByStudioID($id){
     $this->db->query('SELECT * FROM '.$this->table.' WHERE studio_id = '.$id);
     return $this->db->fetchAllData();

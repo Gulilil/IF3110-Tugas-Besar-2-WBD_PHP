@@ -96,6 +96,14 @@ function seedAnimeData(){
     'https://cimg.zettecdn.com/img/spyxfamily_cover.jpg',
     null
   );
+  $trailerArr = array (
+    'https://youtu.be/30Dy3GERCqQ',
+    'https://youtu.be/O6qVieflwqs',
+    'https://youtu.be/0CJeDetA45Q',
+    'https://youtu.be/rq1tllAUS1I',
+    'https://youtu.be/72av7VTBE_8',
+    null
+  );
 
   for($i = 0; $i < 30; $i++){
     $title = getRandomWord(15);
@@ -106,7 +114,7 @@ function seedAnimeData(){
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
     $image = $imageArr[rand(0,10)];
-    $trailer = null;
+    $trailer = $trailerArr[rand(0,5)];
     $studio_id = rand(1,3);
 
     $animeTuple = array(

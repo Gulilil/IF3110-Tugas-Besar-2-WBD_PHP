@@ -20,10 +20,12 @@ $a = new Anime();
 <body>
   <div class="flex-wrap">
     <?php
-      $animes = $a->getAllAnime();
+      $animes = $a->getAllAnimeWithTrailer();
       foreach($animes as $anime){
         $year = date('Y', strtotime($anime['release_date'])) ?? '';
         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
+        $arr = explode('/', $anime['trailer']);
+        $trailer = $arr[0].'/'.$arr[1].'/www.youtube.com/embed/'.$arr[3];
         echo "
         <div class='container'>
           <div class='box-preview'>
@@ -45,3 +47,7 @@ $a = new Anime();
 <?php
 require_once(BASE_DIR.'/views/includes/footer.php');
 ?>
+
+          <!-- <div>
+            <iframe width='320' height='180' src='$trailer' frameborder='0' allowfullscreen/>
+          </div> -->
