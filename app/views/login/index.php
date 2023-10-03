@@ -11,7 +11,7 @@ require_once(dirname(__DIR__,2).'/define.php');
 </head>
 <body>
   <h1> Ini Login </h1>
-  <form action="api/auth/login.php" method="post">
+  <form action="/api/auth/login.php" method="post">
     <div class="username-form">
       <label for="username">Username</label>
       <input
