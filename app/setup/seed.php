@@ -83,8 +83,20 @@ function seedAnimeData(){
   $typeArr = array ('TV','MOVIE', 'OVA');
   $statusArr = array ('ON-GOING', 'COMPLETED', 'HIATUS', 'UPCOMING');
   $ratingArr = array ('G', 'PG-13', 'R(17+)', 'Rx');
+  $imageArr = array (
+    'https://m.media-amazon.com/images/I/71mqttVzH-L._AC_UF1000,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71OO2PMqFsL._AC_UF894,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71ZYI4SonCL._AC_UF894,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71f9zr0P2IL._AC_UF1000,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71DOGFSR6bL._AC_UF894,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71Nau-0ZheL._AC_UF894,1000_QL80_.jpg',
+    'https://ih1.redbubble.net/image.2172026377.4014/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
+    'https://m.media-amazon.com/images/I/81C0UXD+YCL._AC_UF1000,1000_QL80_.jpg',
+    'https://m.media-amazon.com/images/I/71YUeiyVTGL._AC_UF894,1000_QL80_.jpg',
+    'https://cimg.zettecdn.com/img/spyxfamily_cover.jpg'
+  );
 
-  for($i = 0; $i < 10; $i++){
+  for($i = 0; $i < 30; $i++){
     $title = getRandomWord(15);
     $type = $typeArr[rand(0,2)];
     $status = $statusArr[rand(0,3)];
@@ -92,7 +104,7 @@ function seedAnimeData(){
     $episodes = 24;
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
-    $image = 'https://m.media-amazon.com/images/I/71mqttVzH-L._AC_UF1000,1000_QL80_.jpg';
+    $image = $imageArr[rand(0,9)];
     $trailer = null;
     $studio_id = rand(1,3);
 

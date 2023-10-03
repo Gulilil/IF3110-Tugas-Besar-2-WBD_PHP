@@ -1,7 +1,19 @@
-<?php include '../includes/header.php'; ?>
+<?php 
+require_once(dirname(__DIR__,2).'/define.php');
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../../public/style/global.css">
+</head>
+
+<?php
+require_once(BASE_DIR.'/views/includes/header.php');
+?>
 
 <body>
-
     <div class="content">
         <div class="left-content">
             <!-- Recommendation Anime Section -->
@@ -241,4 +253,6 @@
 
 </body>
 
-<?php include '../includes/footer.php'; ?>
+<?php
+require_once(BASE_DIR.'/views/includes/footer.php');
+?>
