@@ -93,7 +93,8 @@ function seedAnimeData(){
     'https://ih1.redbubble.net/image.2172026377.4014/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
     'https://m.media-amazon.com/images/I/81C0UXD+YCL._AC_UF1000,1000_QL80_.jpg',
     'https://m.media-amazon.com/images/I/71YUeiyVTGL._AC_UF894,1000_QL80_.jpg',
-    'https://cimg.zettecdn.com/img/spyxfamily_cover.jpg'
+    'https://cimg.zettecdn.com/img/spyxfamily_cover.jpg',
+    null
   );
 
   for($i = 0; $i < 30; $i++){
@@ -104,7 +105,7 @@ function seedAnimeData(){
     $episodes = 24;
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
-    $image = $imageArr[rand(0,9)];
+    $image = $imageArr[rand(0,10)];
     $trailer = null;
     $studio_id = rand(1,3);
 
