@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfoAnimeMasse</title>
-    <link rel="stylesheet" href="../../public/global.css">
-</head>
-<header>
-    <div class="navbar">
-        <div class="logo">InfoAnimeMasse</div>
-        
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Genre</a></li>
-            <li><a href="#">Studio</a></li>
-            <li><a href="#">Trailer</a></li>
-        </ul>
-        
-        <div class="search-bar">
-            <input type="text" placeholder="Search Anime/Genre/Studi/Trailer">
-        </div>
-        
-        <ul class="auth-links">
-            <li><a href="#" class="login-btn">Login</a></li>
-            <li><a href="#" class="sign-up-btn">Sign Up</a></li>
-        </ul>
-    </div>
-</header>
+<?php include '../includes/header.php'; ?>
 
 <body>
 
@@ -113,23 +84,48 @@
                     <!-- This is a placeholder; repeat this for each anime-review item -->
                     <div class="anime-review-item">
                         <h3>Anime Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate. Proin sed nulla velit. Duis euismod tristique leo, eget luctus nibh. Donec elementum lectus nibh, ac vulputate nisl interdum a. Sed lacinia nulla nibh, vel pulvinar risus convallis at....</p>
+                        <div class="user-info">
+                            <span class="username">Username123</span>
+                            <small>Date: 2023-10-04</small>
+                            <div class="rating">Rating: 10/10★</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
                     </div>
                     <div class="anime-review-item">
                         <h3>Anime Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate. Proin sed nulla velit. Duis euismod tristique leo, eget luctus nibh. Donec elementum lectus nibh, ac vulputate nisl interdum a. Sed lacinia nulla nibh, vel pulvinar risus convallis at....</p>
+                        <div class="user-info">
+                            <span class="username">Username123</span>
+                            <small>Date: 2023-10-04</small>
+                            <div class="rating">Rating: 10/10★</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
                     </div>
                     <div class="anime-review-item">
                         <h3>Anime Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate. Proin sed nulla velit. Duis euismod tristique leo, eget luctus nibh. Donec elementum lectus nibh, ac vulputate nisl interdum a. Sed lacinia nulla nibh, vel pulvinar risus convallis at....</p>
+                        <div class="user-info">
+                            <span class="username">Username123</span>
+                            <small>Date: 2023-10-04</small>
+                            <div class="rating">Rating: 10/10★</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
                     </div>
                     <div class="anime-review-item">
                         <h3>Anime Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate. Proin sed nulla velit. Duis euismod tristique leo, eget luctus nibh. Donec elementum lectus nibh, ac vulputate nisl interdum a. Sed lacinia nulla nibh, vel pulvinar risus convallis at....</p>
+                        <div class="user-info">
+                            <span class="username">Username123</span>
+                            <small>Date: 2023-10-04</small>
+                            <div class="rating">Rating: 10/10★</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
                     </div>
                     <div class="anime-review-item">
                         <h3>Anime Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate. Proin sed nulla velit. Duis euismod tristique leo, eget luctus nibh. Donec elementum lectus nibh, ac vulputate nisl interdum a. Sed lacinia nulla nibh, vel pulvinar risus convallis at....</p>
+                        <div class="user-info">
+                            <span class="username">Username123</span>
+                            <small>Date: 2023-10-04</small>
+                            <div class="rating">Rating: 10/10★</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
                     </div>
                 </div>
             </section>
@@ -245,18 +241,4 @@
 
 </body>
 
-<!-- Footer -->
-<footer>
-    <div class="footer-nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact Us</a>
-    </div>
-    <div class="footer-info">
-        <p>InfoAnimeMasse site by K08</p>
-        <p>&copy; 2023</p>
-    </div>
-</footer>
-
-
-</html>
+<?php include '../includes/footer.php'; ?>
