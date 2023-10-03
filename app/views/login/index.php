@@ -7,10 +7,10 @@ require_once(dirname(__DIR__,2).'/define.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Login</title>
 </head>
 <body>
-  <h1> Ini Login </h1>
+  <h2> Log into your account </h2>
   <form action="/api/auth/login.php" method="post">
     <div class="username-form">
       <label for="username">Username</label>
@@ -46,7 +46,7 @@ require_once(dirname(__DIR__,2).'/define.php');
   ?>
 
   <p class="signup">Don't have an account?
-    <span onclick="window.location.href='/signup'"
+    <span onclick="window.location.href='/?signup'"
       class="signup-text"
     >
       Sign Up

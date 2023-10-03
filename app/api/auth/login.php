@@ -12,17 +12,16 @@ if (isset($_POST['username'])){
   $res = $c->getClientByUsername($username);
   if (!$res){
     $_SESSION['error'] = 'Username Not Found';
-    header('Location: /login');
+    header('Location: /?login');
   } else {
     if ($password == $res['password']){
       $_SESSION['username'] = $username;
       $_SESSION['admin_status'] = $res['admin_status'];
       $_SESSION['client_id'] = $res['client_id'];
-      echo 'test';
-      header('Location: /home');
+      header('Location: /?home');
     } else {
       $_SESSION['error'] = 'Incorrect Password';
-      header('Location: /login');
+      header('Location: /?login');
     }
   }
 }
