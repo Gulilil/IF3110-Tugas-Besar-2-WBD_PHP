@@ -287,3 +287,242 @@ footer {
 }
 
 
+h1{
+	text-align: left;
+	font-weight: 25;
+    font-size: 25px;
+}
+ 
+.Log{
+    position: relative;
+    right: 20px;
+    bottom: 77px;
+    background: #2D2D2D;
+	width: 100%;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 15px;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+}
+
+.logo{
+    position: relative;
+    bottom: 35px;
+    padding: 0 514px;
+    flex-shrink: 0; 
+    color: #FF5C01;
+    text-align: center;
+    font-family: Revue;
+    font-size: 55px;
+    font-style: normal;
+}
+
+.navbar {
+    position: relative;
+    right: 10px;
+    bottom: 60px;
+    width: 100%;
+    margin: 0;
+    padding: 0px 10px;
+    background: #FF5C01; 
+    height: 50px;
+  }
+  .navbar a {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: sans-serif;
+    padding: 14px 10px;
+  }
+  
+  .navbar ul {
+    padding: 14px;
+  }
+  
+  .navbar li {
+    list-style: none;
+    display: inline;
+  }
+  
+  .navbar li a {
+    background: #FF5C01; 
+    color: #FFF;
+  }
+  
+  .navbar li a:hover {
+    background: #585858F5;
+    color: #FFA978;
+  }
+ 
+.L{
+    position: relative;
+    left: 400px;
+    border: 0 none;
+    color:#222;
+}
+
+.search{
+    width: 397;
+    position: relative;
+    bottom: 100px;
+    margin: 4px;
+}
+
+#search_anime{
+    position: relative;
+    bottom: 8px;
+    width: 297px;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    font-family: Poppins;
+    border: 0 none;
+    height: 40px;
+    margin-right: 0;
+    color: black;
+    outline: none;
+    background: #FFF;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+
+#search_anime:focus{
+    background: #FFA978;
+}
+
+#tombol{
+    position: relative;
+    bottom: 8px;
+    border:  0 none;
+    background: #FFF url(search.png) center no-repeat;
+    width: 60px;
+    float: left;
+    padding:  0;
+    text-align: center;
+    height: 40px;
+    cursor: pointer;
+}
+
+.menuLogin{
+	width: 350px;
+	background: white;
+	margin: 80px auto;
+	padding: 30px 20px;
+}
+ 
+label{
+	font-size: 11pt;
+}
+ 
+.form_login{
+	box-sizing : border-box;
+	width: 100%;
+	padding: 10px;
+	font-size: 11pt;
+	margin-bottom: 20px;
+}
+
+.form_logen{
+	box-sizing : border-box;
+	width: 100%;
+	padding: 10px;
+	font-size: 11pt;
+}
+
+.stay{
+    margin-bottom: 50px;
+}
+.google{
+    background: red;
+	border: none;
+	border-radius: 8px; 
+    display: inline-flex;
+    padding: 4px 41.5px 4px 48.5px; 
+    color: #222;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+}
+
+.fb {
+    position: relative;
+    left: 17px;
+    background: blue;
+	color: black;
+	text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+	border: none;
+	border-radius: 8px; 
+	display: inline-flex;
+    padding: 4px 38.5px 4px 29.5px; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.X {
+    background: blue;
+	color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+	border: none;
+	border-radius: 8px; 
+	display: inline-flex;
+    padding: 4px 48.5px;  
+    justify-content: center;
+    align-items: center; 
+}
+
+.Apple{
+    position: relative;
+    left: 17px;
+    background: black;
+    color: #FFF;
+	text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+	border: none;
+	border-radius: 8px; 
+	display: inline-flex;
+    padding: 4px 53.5px; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.tombol_login{
+	background: #4676de;
+	color: white;
+	font-size: 11pt;
+	width: 100%;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+.tombol_login:hover{
+    background: #46b3de;
+}
+ 
+.link{
+	color: #232323;
+	text-decoration: none;
+	font-size: 10pt;
+}
+
