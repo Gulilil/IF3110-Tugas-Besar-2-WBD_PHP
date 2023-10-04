@@ -1,5 +1,5 @@
 .genre-flex {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
 }
 
 .flex-wrap {
@@ -29,13 +28,12 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap:20px 20px;
+  gap: 20px 20px;
 }
 
-.box-preview{
+.box-preview {
   width: 320px;
-  height: 400px;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/4;
   margin-top: 10px;
   overflow: hidden;
   border-radius: 3px;
@@ -44,28 +42,28 @@
   cursor: pointer;
 }
 
-.box-preview:hover{
+.box-preview:hover {
   scale: 110%;
   transition: ease-in-out;
   transition-duration: 0.2s;
 }
 
-.image-preview{
+.image-preview {
   width: 100%;
   max-width: 320px;
   object-fit: cover;
   object-position: center;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
 }
 
-.description{
-  display:flex;
+.description {
+  display: flex;
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -73,3 +71,116 @@
   font-weight: bold;
   gap: 5px;
 }
+
+.anime-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 50px;
+  background-color: #fff;
+  color: #000;
+}
+
+.anime-header{
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.anime-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.anime-image-box{
+  width: 400px;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.anime-image{
+  width: 100%;
+  max-width: 400px;
+  object-fit: contain;
+  object-position: cover;
+}
+
+.anime-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+}
+
+.anime-details div {
+  margin-bottom: 10px;
+}
+
+.anime-trailer {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.anime-trailer iframe {
+  padding: 0;
+  margin: 0;
+  width: 360px;
+  aspect-ratio: 16/9;
+}
+
+.synopsis,
+.background {
+  margin-top: 20px;
+}
+
+.add-list-btn {
+  padding: 8px 12px;
+  font-weight: bold;
+  background-color: whitesmoke;
+  border: #333 3px solid;
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 40%;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.add-list-btn:hover {
+  background-color: #333;
+  color: whitesmoke;
+  width: 45%;
+  border-radius: 5px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.remove-list-btn {
+  padding: 8px 12px;
+  font-weight: bold;
+  background-color: whitesmoke;
+  border: #ff4500 3px solid;
+  color: #ff4500;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 40%;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.remove-list-btn:hover {
+  background-color: #ff4500;
+  color: whitesmoke;
+  width: 45%;
+  border-radius: 5px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+

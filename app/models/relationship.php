@@ -22,12 +22,6 @@ class Relationship {
     return $this->db->fetchData();
   }
 
-  public function getMutualRelationship($id1, $id2){
-    $this->db->query('SELECT * FROM '.$this->table.' WHERE client_id_1 = '.$id1.' AND client_id_2 = '.$id2.' OR client_id_1 = '.$id2.' AND client_id_2 = '.$id1);
-    return ($this->db->fetchData());
-    // return true if there is a mutual relationship, otherwise false
-  }
-
   public function insertRelationship($data){
     foreach($data as $key => $value){
       $data[$key] = $this->db->processDataType($value);
@@ -54,5 +48,14 @@ class Relationship {
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
   }
+
+  // SPECIFIC QUERY
+
+  public function getMutualRelationship($id1, $id2){
+    $this->db->query('SELECT * FROM '.$this->table.' WHERE client_id_1 = '.$id1.' AND client_id_2 = '.$id2.' OR client_id_1 = '.$id2.' AND client_id_2 = '.$id1);
+    return ($this->db->fetchData());
+    // return true if there is a mutual relationship, otherwise false
+  }
+
 
 }

@@ -7,4 +7,7 @@ class StudioController extends Controller {
   public function index(){
     $this->view('Studio/index');
   }
+  public function detail($id) {
+    $this->view('Studio/detail', array('id' => $id));
+  }
 }

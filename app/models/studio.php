@@ -48,4 +48,11 @@ class Studio {
       return ($this->db->countRow() != 0);
       // if countRow == 0, query fails
   }
+
+  // ========== SPECIFIC QUERY ==========
+  
+  public function getStudioByAnimeID($id){
+    $this->db->query('SELECT '.$this->table.'.name FROM '.$this->table.' JOIN anime ON anime.studio_id = '.$this->table.'.studio_id WHERE anime.anime_id= '.$id);
+    return $this->db->fetchData();
+  }
 }

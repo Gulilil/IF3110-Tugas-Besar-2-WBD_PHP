@@ -13,8 +13,7 @@ body {
 
 .box-preview{
   width: 320px;
-  height: 400px;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/4;
   margin-top: 10px;
   overflow: hidden;
   border-radius: 3px;

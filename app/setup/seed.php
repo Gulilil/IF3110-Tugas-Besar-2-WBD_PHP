@@ -51,23 +51,37 @@ function seedStudioData() {
     'name' => 'B-1 Pictures',
     'description' => $desc,
     'established_date' => '2020-01-01',
-    'image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/A-1_Pictures_Logo.svg/1200px-A-1_Pictures_Logo.svg.png'
+    'image' => '/public/img/studio/studio1.png'
   );
   $studio->insertStudio($studio1);
   $studio2 = array (
     'name' => 'NAPPA Studio',
     'description' => $desc,
     'established_date' => '2019-04-03',
-    'image' => 'https://cdn.myanimelist.net/s/common/company_logos/e3a5163d-3b09-4e98-922b-79180a75539f_600x600_i?s=3289c478fd611569ebccd7ff076151df'
+    'image' => '/public/img/studio/studio2.png'
   );
   $studio->insertStudio($studio2);
   $studio3 = array (
     'name' => 'Hyoto Animation',
     'description' => $desc,
     'established_date' => '2018-05-10',
-    'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNl6a2_UXtDfM1YwueHQt_UeGrw9fBI4ImtK0mCBCbvnRcSuq4WqxPNDU5Zh-mZS0CAi0&usqp=CAU'
+    'image' => '/public/img/studio/studio3.png'
   );
   $studio->insertStudio($studio3);
+  $studio4 = array (
+    'name' => 'Bad House Studio',
+    'description' => $desc,
+    'established_date' => '2019-06-19',
+    'image' => '/public/img/studio/studio4.png'
+  );
+  $studio->insertStudio($studio4);
+  $studio5 = array (
+    'name' => 'Khibli Animation',
+    'description' => $desc,
+    'established_date' => '2020-04-23',
+    'image' => '/public/img/studio/studio5.png'
+  );
+  $studio->insertStudio($studio5);
 }
 
 function seedGenreData(){
@@ -88,11 +102,7 @@ function seedAnimeData(){
     array_push($imageArr, '/public/img/anime/anime'.$i.'.jpg');
   }
   $trailerArr = array (
-    'https://youtu.be/30Dy3GERCqQ',
-    'https://youtu.be/O6qVieflwqs',
-    'https://youtu.be/0CJeDetA45Q',
-    'https://youtu.be/rq1tllAUS1I',
-    'https://youtu.be/72av7VTBE_8',
+    '/public/vid/trailer1.mp4',
     null
   );
 
@@ -105,8 +115,8 @@ function seedAnimeData(){
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
     $image = $imageArr[rand(0,30)];
-    $trailer = $trailerArr[rand(0,5)];
-    $studio_id = rand(1,3);
+    $trailer = $trailerArr[rand(0,1)];
+    $studio_id = rand(1,5);
 
     $animeTuple = array(
       'title' => $title,

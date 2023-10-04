@@ -23,12 +23,12 @@ class Anime {
   }
 
   public function getAnimeByID($id){
-    $this->db->query('SELECT * FROM ' . $this->table . 'WHERE anime_id = ' . $id);
+    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE anime_id = ' . $id);
     return $this->db->fetchData();
   }
 
   public function getAllAnimeBySearch($string){
-    $this->db->query('SELECT * FROM ' . $this->table . "WHERE title LIKE '%".$string."%'");
+    $this->db->query('SELECT * FROM ' . $this->table . " WHERE title LIKE '%".$string."%'");
   }
 
   public function getAllAnimeIDByGenreID($id){
@@ -103,5 +103,10 @@ class Anime {
     return $result;
   }
 
-
+  public function getReviewsByAnimeID($id){
+    $this->db->query('SELECT a.anime_id, a.title, c.client_id, c.username, l.watch_status, l.user_score, l.review 
+    FROM anime_list l JOIN '.$this->table.' a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
+    WHERE NOT review IS NULL AND a.anime_id = '.$id);
+    return $this->db->fetchAllData();
+  }
 }

@@ -7,4 +7,7 @@ class AnimeController extends Controller {
   public function index(){
     $this->view('Anime/index');
   }
+  public function detail($id) {
+    $this->view('Anime/detail', array('id' => $id));
+  }
 }

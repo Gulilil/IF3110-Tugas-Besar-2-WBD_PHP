@@ -52,6 +52,16 @@ class Anime_List{
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
-}
+  }
+
+  // ================ SPECIFIC QUERY ================
+  public function getAnimeListByAnimeClientID($aid, $cid){
+    $this->db->query('SELECT * FROM '.$this->table.' l 
+    JOIN anime a ON l.anime_id = a.anime_id 
+    JOIN client c ON c.client_id = l.client_id 
+    WHERE a.anime_id = '.$aid.' AND c.client_id = '.$cid);
+    return ($this->db->fetchData());
+    // return true if there is a mutual relationship, otherwise false
+  }
 
 }

@@ -39,7 +39,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <?php
                     foreach ($recommended as $anime) {
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
-                        echo "<a href='#' class='anime-card'>";
+                        echo "<a href='/?anime/detail/$anime[anime_id]' class='anime-card'>";
                         echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
@@ -56,7 +56,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <?php
                     foreach ($latest as $anime) {
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
-                        echo "<a href='#' class='anime-card'>";
+                        echo "<a href='/?anime/detail/$anime[anime_id]' class='anime-card'>";
                         echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
@@ -73,7 +73,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <?php
                     foreach ($upcoming as $anime) {
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
-                        echo "<a href='#' class='anime-card'>";
+                        echo "<a href='/?anime/detail/$anime[anime_id]' class='anime-card'>";
                         echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
@@ -113,7 +113,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <?php
                     foreach($top_score as $anime){
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
-                        echo "<a href='#' class='popular-link'>";
+                        echo "<a href='/?anime/detail/$anime[anime_id]' class='popular-link'>";
                         echo "<div class='popular-item'>";
                         echo "<img src='" . htmlspecialchars($image) . "' alt='Top Anime Image'>";
                         echo "<div class='popular-details'>";
@@ -136,7 +136,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <?php
                     foreach ($studios as $studio) {
                         $image = $studio['image'] ?? '../../public/img/placeholder.jpg';
-                        echo "<a href='#' class='popular-link'>";
+                        echo "<a href='/?studio/detail/$studio[studio_id]' class='popular-link'>";
                         echo "<div class='popular-item'>";
                         echo "<img src='" . htmlspecialchars($image) . "' alt='Studio Image'>";
                         echo "<div class='popular-details'>";
@@ -148,40 +148,6 @@ require_once(dirname(__DIR__,2).'/define.php');
                         echo "</a>";
                     }
                     ?>
-                </div>
-            </section>
-            <section>
-                <h2>Top Popular Genre</h2>
-                <!-- Popular Studio List Loop -->
-                <div class="popular-list">
-                    <!-- This is a placeholder; repeat this for each top anime -->
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Genre Image">
-                            <div class="popular-details">
-                                <h3>Genre Name</h3>
-                                <p>Details about the genre...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Genre Image">
-                            <div class="popular-details">
-                                <h3>Genre Name</h3>
-                                <p>Details about the genre...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Genre Image">
-                            <div class="popular-details">
-                                <h3>Genre Name</h3>
-                                <p>Details about the genre...</p>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </section>
         </div>

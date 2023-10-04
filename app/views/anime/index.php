@@ -13,7 +13,7 @@ $g = new Genre();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Page</title>
+    <title>Anime List Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel='stylesheet' href="../../public/style/anime.css">
     <script src='/public/handler/navbar.js'></script>
@@ -42,9 +42,11 @@ $g = new Genre();
         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
         echo "
         <div class='container'>
-          <div class='box-preview'>
-            <img src='$image' class='image-preview'/>
-          </div>
+          <a href='/?anime/detail/$anime[anime_id]'>
+            <div class='box-preview'>
+              <img src='$image' class='image-preview'/>
+            </div>
+          </a>
           <div class='description'>
             <div> $anime[title] </div>
             <div> ($year) </div>
