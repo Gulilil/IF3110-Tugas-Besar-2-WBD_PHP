@@ -9,20 +9,13 @@ require_once(BASE_DIR.'/models/Anime_List.php');
 
 $a = new Anime();
 $s = new Studio();
-$c = new Client();
-$al = new Anime_List();
 
 $id = $data['id'];
+$studio = $s->getStudioByID($id);
 $animes = $a->getAllAnimeByStudioID($id);
-$studio = $s->getStudioByAnimeID($id);
-$reviews = $a->getReviewsByAnimeID($id);
 $anime_count = count($a->getAllAnimeByStudioID($id));
 $avg_score = $a->getAverageAnimeScoresByStudioID($id);
 $rounded_avg_score = round($avg_score['avg'], 2);
-
-$studiooo = $s->getStudioByID($id);
-
-$client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
 
 ?>
 
@@ -41,7 +34,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
         <div class="studio-header">
           <?php   
               echo "
-              <div> $studiooo[name] </div> 
+              <div> $studio[name] </div> 
               ";
           ?>
         </div>
@@ -49,7 +42,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
         <div class="studio-content">
             <div class="studio-image-box">
               <?php
-                $image = $studiooo['image'] ?? "../../public/img/placeholder.jpg";
+                $image = $studio['image'] ?? "../../public/img/placeholder.jpg";
                 echo "
                 <img class='studio-image' src='$image' alt='Studio Image'>
                 ";
@@ -59,8 +52,8 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
             <div class="studio-details">
               <h2>Details</h2>
               <?php
-                $date = $studiooo['established_date'] ?? "No information";
-                $desc = $studiooo['description'] ?? "No information";
+                $date = $studio['established_date'] ?? "No information";
+                $desc = $studio['description'] ?? "No information";
                 echo " <div>Established: <span> $date </span></div> ";
                 echo " <div>Anime produced: <span> $anime_count </span></div> ";
                 echo " <div>Average score: <span> $rounded_avg_score </span></div> ";
@@ -73,7 +66,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
         <div class="studio-header">
           <?php   
               echo "
-              <div> Anime by $studiooo[name] </div> 
+              <div> Anime by $studio[name] </div> 
               ";
           ?>
         </div>
