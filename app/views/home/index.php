@@ -1,4 +1,43 @@
-<?php include '../includes/header.php'; ?>
+<?php 
+    include '../includes/header.php';
+    require '../../models/database.php'; // Replace 'path_to_your_database.php' with the actual path to your Database class file
+
+    // Create a new instance of the Database class
+    $db = new Database();
+
+    // Recommendation and Popular
+    $db->query("SELECT anime.image, title, score, release_date, studio.name
+                FROM anime JOIN studio ON anime.studio_id = studio.studio_id 
+                ORDER BY score DESC LIMIT 4");
+    $recommended = $db->fetchAllData();
+
+    // // On Going
+    // $db->query("SELECT anime.image, title, score, release_date, studio.name
+    //             FROM anime JOIN studio ON anime.studio_id = studio.studio_id 
+    //             WHERE anime.status = 
+    //             ORDER BY score DESC LIMIT 4");
+    // $ongoing = $db->fetchAllData();
+
+    // Latest
+    $db->query("SELECT image, title FROM anime ORDER BY release_date DESC LIMIT 4");
+    $latest = $db->fetchAllData();
+
+    // Upcoming
+    $db->query("SELECT image, title FROM anime WHERE status = 'UPCOMING' LIMIT 4");
+    $upcoming = $db->fetchAllData();
+
+    // Reviews
+    $db->query("SELECT a.anime_id, a.title, c.client_id, c.username, l.user_score, l.review 
+                FROM anime_list l JOIN anime a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
+                ORDER BY user_score DESC 
+                LIMIT 5");
+    $reviews = $db->fetchAllData();
+
+    // Studio
+    $db->query("SELECT image, name, description, established_date FROM studio ORDER BY established_date DESC LIMIT 3");
+    $studios = $db->fetchAllData();
+?>
+
 
 <body>
 
@@ -10,46 +49,30 @@
                 <!-- Anime Card Loop -->
                 <div class="anime-cards">
                     <!-- This is a placeholder; repeat this for each anime -->
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
+                    <?php
+                    foreach ($recommended as $anime) {
+                        echo "<a href='#' class='anime-card'>";
+                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
+                        echo "</a>";
+                    }
+                    ?>
                 </div>
             </section>
 
             <!-- Latest Updated Anime Trailer Section -->
             <section>
-                <h2>Latest Updated Anime Trailer</h2>
+                <h2>Latest Updated Anime</h2>
                 <div class="anime-cards">
-                    <!-- This is a placeholder; repeat this for each anime trailer -->
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Trailer Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Trailer Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Trailer Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Anime Trailer Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
+                    <!-- This is a placeholder; repeat this for each anime -->
+                    <?php
+                    foreach ($latest as $anime) {
+                        echo "<a href='#' class='anime-card'>";
+                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
+                        echo "</a>";
+                    }
+                    ?>
                 </div>
             </section>
 
@@ -57,76 +80,35 @@
             <section>
                 <h2>Upcoming Anime</h2>
                 <div class="anime-cards">
-                    <!-- This is a placeholder; repeat this for each upcoming anime -->
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Upcoming Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Upcoming Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Upcoming Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
-                    <a href="#" class="anime-card">
-                        <img src="../../public/img/placeholder.jpg" alt="Upcoming Anime Image">
-                        <span class="anime-title">Anime Title</span>
-                    </a>
+                    <!-- This is a placeholder; repeat this for each anime -->
+                    <?php
+                    foreach ($upcoming as $anime) {
+                        echo "<a href='#' class='anime-card'>";
+                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
+                        echo "</a>";
+                    }
+                    ?>
                 </div>
             </section>
 
             <section>
-                <h2>Latest Anime Info</h2>
+                <h2>Top Anime Review</h2>
                 <!-- anime-review Item Loop -->
                 <div class="anime-review-list">
-                    <!-- This is a placeholder; repeat this for each anime-review item -->
-                    <div class="anime-review-item">
-                        <h3>Anime Title</h3>
-                        <div class="user-info">
-                            <span class="username">Username123</span>
-                            <small>Date: 2023-10-04</small>
-                            <div class="rating">Rating: 10/10★</div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
-                    </div>
-                    <div class="anime-review-item">
-                        <h3>Anime Title</h3>
-                        <div class="user-info">
-                            <span class="username">Username123</span>
-                            <small>Date: 2023-10-04</small>
-                            <div class="rating">Rating: 10/10★</div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
-                    </div>
-                    <div class="anime-review-item">
-                        <h3>Anime Title</h3>
-                        <div class="user-info">
-                            <span class="username">Username123</span>
-                            <small>Date: 2023-10-04</small>
-                            <div class="rating">Rating: 10/10★</div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
-                    </div>
-                    <div class="anime-review-item">
-                        <h3>Anime Title</h3>
-                        <div class="user-info">
-                            <span class="username">Username123</span>
-                            <small>Date: 2023-10-04</small>
-                            <div class="rating">Rating: 10/10★</div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
-                    </div>
-                    <div class="anime-review-item">
-                        <h3>Anime Title</h3>
-                        <div class="user-info">
-                            <span class="username">Username123</span>
-                            <small>Date: 2023-10-04</small>
-                            <div class="rating">Rating: 10/10★</div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p>
-                    </div>
+                    <!-- This is a placeholder; repeat this for each anime -->
+                    <?php
+                    foreach ($reviews as $review) {
+                        echo "<div class='anime-review-item'>";
+                        echo "<h3>" . htmlspecialchars($review['title']) . "<h3>";
+                        echo "<div class='user-info'>";
+                        echo "<span class='username'>" . htmlspecialchars($review['username']) . "</span>";
+                        echo "<div class='rating'>Score: " . htmlspecialchars($review['user_score']) . "/10★</div>";
+                        echo "</div>";
+                        echo "<p>" . htmlspecialchars($review['review']) . "</p>";
+                        echo "</div>";
+                    }
+                    ?>
                 </div>
             </section>
         </div>
@@ -138,67 +120,45 @@
                 <!-- Anime List Loop -->
                 <div class="popular-list">
                     <!-- This is a placeholder; repeat this for each top anime -->
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Anime Image">
-                            <div class="popular-details">
-                                <h3>Anime Title</h3>
-                                <p>Details about the anime...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Anime Image">
-                            <div class="popular-details">
-                                <h3>Anime Title</h3>
-                                <p>Details about the anime...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Anime Image">
-                            <div class="popular-details">
-                                <h3>Anime Title</h3>
-                                <p>Details about the anime...</p>
-                            </div>
-                        </div>
-                    </a>
+                    <?php
+                    for ($i = 0; $i < 3; $i++) {
+                        // Access the $animeData array using $i as the index
+                        $anime = $recommended[$i];
+
+                        echo "<a href='#' class='popular-link'>";
+                        echo "<div class='popular-item'>";
+                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Top Anime Image'>";
+                        echo "<div class='popular-details'>";
+                        echo "<h3>" . htmlspecialchars($anime['title']) . "</h3>";
+                        echo "<p>Score: " . htmlspecialchars($anime['score']) . "/10★</p>";
+                        echo "<p>" . htmlspecialchars($anime['release_date']) . "</p>";
+                        echo "<p>" . htmlspecialchars($anime['name']) . "</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</a>";
+                    }
+                    ?>
                 </div>
             </section>
+            
             <section>
-                <h2>Top Popular Studio</h2>
-                <!-- Popular Studio List Loop -->
+                <h2>Top Studio</h2>
+                <!-- Top Studio List Loop -->
                 <div class="popular-list">
-                    <!-- This is a placeholder; repeat this for each top anime -->
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Studio Image">
-                            <div class="popular-details">
-                                <h3>Studio Name</h3>
-                                <p>Details about the studio...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Studio Image">
-                            <div class="popular-details">
-                                <h3>Studio Name</h3>
-                                <p>Details about the studio...</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="popular-link">
-                        <div class="popular-item">
-                            <img src="../../public/img/placeholder.jpg" alt="Top Studio Image">
-                            <div class="popular-details">
-                                <h3>Studio Name</h3>
-                                <p>Details about the studio...</p>
-                            </div>
-                        </div>
-                    </a>
+                    <?php
+                    foreach ($studios as $studio) {
+                        echo "<a href='#' class='popular-link'>";
+                        echo "<div class='popular-item'>";
+                        echo "<img src='" . htmlspecialchars($studio['image']) . "' alt='Studio Image'>";
+                        echo "<div class='popular-details'>";
+                        echo "<h3>" . htmlspecialchars($studio['name']) . "</h3>";
+                        echo "<p>Established: " . htmlspecialchars($studio['established_date']) . "</p>";
+                        echo "<p>" . htmlspecialchars(substr($studio['description'], 0, 80)) . "</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</a>";
+                    }
+                    ?>
                 </div>
             </section>
             <section>

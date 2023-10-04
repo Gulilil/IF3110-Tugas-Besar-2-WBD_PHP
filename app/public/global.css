@@ -159,25 +159,54 @@ h2 {
     border-radius: 10px;
 }
 
+/* Style for the popular anime list */
 .popular-list {
     list-style: none;
     padding: 0;
 }
 
+/* Style for each popular anime item */
 .popular-item {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
+/* Style for the link (image and title) */
+.popular-link {
+    text-decoration: none; /* Remove underlines from links */
+    color: #333; /* Change link color */
+    display: flex;
+    flex-direction: row; /* Arrange items horizontally */
+    align-items: center;
+    width: 100%; /* Ensure the link spans the entire width */
+}
+
+/* Style for the anime image */
 .popular-item img {
-    width: 100px;
+    max-width: 100px; /* Adjust the image size as needed */
     height: auto;
-    border-radius: 10px;
+    margin-right: 10px; /* Add space between the image and title/details */
 }
 
+/* Style for the anime title */
 .popular-details h3 {
-    margin-top: 0;
+    font-size: 18px;
+    margin: 0;
+    color: #007BFF; /* Change title color */
+}
+
+/* Style for the anime details */
+.popular-details {
+    display: flex;
+    flex-direction: column; /* Stack details vertically */
+    margin-top: 10px; /* Add space between the image/title and details */
+}
+
+/* Style for the details paragraphs */
+.popular-details p {
+    margin: 0;
+    color: #555; /* Change details text color */
 }
 
 .anime-card {
