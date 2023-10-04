@@ -52,7 +52,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
             </div>
 
             <div class="anime-details">
-              <h2>Details</h2>
+              <h2 style='margin-bottom:20px;'>Details</h2>
               <?php
                 $date = $anime['release_date'] ?? "No information";
                 $episodes = $anime['episodes'] ?? "No information";
@@ -78,22 +78,26 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
             </div>
             
             <div class="anime-trailer">
-                <h2>Trailer</h2>
+                <h2 style='margin-bottom:20px;'>Trailer</h2>
                 <?php
                   if ($anime['trailer']){
-                    echo "<iframe src='$anime[trailer]' allowfullscreen></iframe>";
+                    echo "<iframe class='anime-trailer-iframe' src='$anime[trailer]' autoplay='false' allowfullscreen></iframe>";
                   } else {
-                    echo ' <div> No trailer found </div> ';
+                    echo " <div class='anime-trailer-box'> No trailer yet </div> ";
                   }
                 ?>
             </div>
         </div>
         
-        <div class="synopsis">
+        <?php 
+          echo "
+          <div class='synopsis'>
             <h2>Sinopsis:</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nisl ex. Integer tempor turpis vitae massa euismod imperdiet. Nulla porta sagittis mauris, nec tempor magna semper nec. Fusce laoreet mattis eros, ut consectetur nisl condimentum aliquam. Integer at erat ut nibh vestibulum vulputate.</p> <!-- Add the synopsis content here -->
-        </div>
-        
+            <p> $anime[synopsis] </p> <!-- Add the synopsis content here -->
+          </div>
+          ";
+        ?>
+
         
         <h2>Anime Review</h2>
         <!-- anime-review Item Loop -->
@@ -105,7 +109,9 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
                   echo "
                     <div class='anime-review-item'>
                       <div class='user-info'>
-                          <span class='username'> $review[username] </span>
+                          <a href='/?client/detail/$review[client_id]'>
+                            <span class='username'> $review[username] </span>
+                          </a>
                           <small>Watch Status: $review[watch_status]</small>
                           <div class='rating'>Rating: $review[user_score]/10 ★</div>
                       </div>
@@ -124,8 +130,6 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
 
             ?>
         </div>
-            
-
     </div>
 </body>
 

@@ -26,7 +26,7 @@ $a = new Anime();
       $studios = $s->getAllStudio();
       foreach($studios as $studio){
         $anime_count = count($a->getAllAnimeByStudioID($studio['studio_id']));
-        $year = $studio['established_date'] ?? '';
+        $year = $studio['established_date'] ?? 'No information';
         $image = $studio['image'] ?? '../../public/img/placeholder.jpg';
         echo "
         <a href='/?studio/detail/$studio[studio_id]'>

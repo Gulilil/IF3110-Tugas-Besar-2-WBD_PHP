@@ -6,9 +6,9 @@ window.addEventListener(
     const scrollTopPosition =
       window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTopPosition > lastScrollTop) {
+    if (scrollTopPosition <= lastScrollTop) {
       this.document.getElementById('navbar').className = "both-navbar-appear";
-    } else if (scrollTopPosition < lastScrollTop) {
+    } else {
       this.document.getElementById('navbar').className = "both-navbar-disappear";
     }
     lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;

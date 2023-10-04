@@ -22,11 +22,6 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
-  public function getAverageAnimeScoresByStudioID($id){
-    $this->db->query('SELECT AVG(score) AS avg FROM '.$this->table.' WHERE studio_id = '.$id);
-    return $this->db->fetchData();
-  }
-
   public function getAnimeByID($id){
     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE anime_id = ' . $id);
     return $this->db->fetchData();
@@ -45,7 +40,7 @@ class Anime {
     foreach($data as $key => $value){
       $data[$key] = $this->db->processDataType($value);
     }
-    $this->db->query('INSERT INTO ' . $this->table . ' (title, type, status, release_date, episodes, rating, score, image, trailer, studio_id) VALUES ('.$data['title'].','.$data['type'].','.$data['status'].','.$data['release_date'].','.$data['episodes'].','.$data['rating'].','.$data['score'].','.$data['image'].','.$data['trailer'].','.$data['studio_id'].')');
+    $this->db->query('INSERT INTO ' . $this->table . ' (title, type, status, release_date, episodes, rating, score, image, trailer, synopsis, studio_id) VALUES ('.$data['title'].','.$data['type'].','.$data['status'].','.$data['release_date'].','.$data['episodes'].','.$data['rating'].','.$data['score'].','.$data['image'].','.$data['trailer'].','.$data['synopsis'].','.$data['studio_id'].')');
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
@@ -55,7 +50,7 @@ class Anime {
     foreach($data as $key => $value){
       $data[$key] = $this->db->processDataType($value);
     }
-    $this->db->query('UPDATE ' . $this->table . 'SET title = '.$data['title'].', type = '.$data['type'].', status = '.$data['status'].', release_date = '.$data['release_date'].', episodes = '.$data['episodes'].', rating = '.$data['rating'].', score = '.$data['score'].', image = '.$data['image'].', trailer = '.$data['trailer'].', studio_id = '.$data['studio_id'].' WHERE anime_id = '. $data['anime_id']);
+    $this->db->query('UPDATE ' . $this->table . 'SET title = '.$data['title'].', type = '.$data['type'].', status = '.$data['status'].', release_date = '.$data['release_date'].', episodes = '.$data['episodes'].', rating = '.$data['rating'].', score = '.$data['score'].', image = '.$data['image'].', trailer = '.$data['trailer'].', synopsis = '.$data['synopsis'].', studio_id = '.$data['studio_id'].' WHERE anime_id = '. $data['anime_id']);
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
@@ -81,7 +76,7 @@ class Anime {
   }
 
   public function getTop4AnimeUpcoming(){
-    $this->db->query('SELECT * FROM '.$this->table." WHERE status = 'upcoming' ORDER BY anime_id DESC LIMIT 4");
+    $this->db->query('SELECT * FROM '.$this->table." WHERE status = 'UPCOMING' ORDER BY score DESC LIMIT 4");
     return $this->db->fetchAllData();
   }
 
@@ -90,11 +85,11 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
-  public function get5AnimeReview(){
+  public function get5LatestAnimeReview(){
     $this->db->query('SELECT a.anime_id, a.title, c.client_id, c.username, l.user_score, l.review 
       FROM anime_list l JOIN '.$this->table.' a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
       WHERE NOT review IS NULL
-      ORDER BY user_score DESC 
+      ORDER BY l.list_id DESC 
       LIMIT 5');
     return $this->db->fetchAllData();
   }
@@ -114,4 +109,10 @@ class Anime {
     WHERE NOT review IS NULL AND a.anime_id = '.$id);
     return $this->db->fetchAllData();
   }
+
+  public function getAverageAnimeScoresByStudioID($id){
+    $this->db->query('SELECT AVG(score) AS avg FROM '.$this->table.' WHERE studio_id = '.$id);
+    return $this->db->fetchData();
+  }
+
 }

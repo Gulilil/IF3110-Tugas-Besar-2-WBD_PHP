@@ -55,4 +55,9 @@ class Studio {
     $this->db->query('SELECT '.$this->table.'.name FROM '.$this->table.' JOIN anime ON anime.studio_id = '.$this->table.'.studio_id WHERE anime.anime_id= '.$id);
     return $this->db->fetchData();
   }
+
+  public function getTop5Studio(){
+    $this->db->query('SELECT s.studio_id, s.name, s.description, s.established_date, s.image , AVG(score) AS avg FROM '.$this->table.' s JOIN anime a ON a.studio_id = s.studio_id GROUP BY s.studio_id ORDER BY AVG(score) DESC LIMIT 5');
+    return $this->db->fetchAllData();
+  }
 }

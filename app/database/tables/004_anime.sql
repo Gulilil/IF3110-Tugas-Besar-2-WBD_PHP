@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS anime
     score NUMERIC(4,2) CHECK (score BETWEEN 1 AND 10),
     image VARCHAR(255),
     trailer VARCHAR(255),
+    synopsis TEXT,
     studio_id INTEGER NOT NULL,
     FOREIGN KEY (studio_id) REFERENCES studio(studio_id)
 );

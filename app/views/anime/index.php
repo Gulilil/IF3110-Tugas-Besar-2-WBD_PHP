@@ -21,7 +21,7 @@ $g = new Genre();
 
 
 <body>
-  <div class="genre-flex"> 
+  <div class="filter-flex"> 
     <?php 
       $genres = $g->getAllGenre();
       foreach($genres as $genre){
@@ -39,6 +39,7 @@ $g = new Genre();
       $animes = $a->getAllAnime();
       foreach($animes as $anime){
         $year = date('Y', strtotime($anime['release_date'])) ?? '';
+        $month = date('M', strtotime($anime['release_date'])) ?? '';
         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
         echo "
         <div class='container'>
@@ -48,8 +49,11 @@ $g = new Genre();
             </div>
           </a>
           <div class='description'>
-            <div> $anime[title] </div>
-            <div> ($year) </div>
+            <a href='/?anime/detail/$anime[anime_id]'>
+              <div class='preview-title'> $anime[title] </div>
+            </a>
+            <div> ★ $anime[score] | $month $year </div>
+            <div> $anime[type] | $anime[status] </div>
           </div>
         </div>
 

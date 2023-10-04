@@ -9,7 +9,6 @@ a {
   text-decoration: none;
 }
 
-
 .both-navbar-appear {
   width: 100%;
   position: -webkit-sticky;
@@ -67,16 +66,14 @@ a {
   padding-bottom: 10px;
 }
 
-.nav-links,
-.auth-links {
+.nav-links {
   display: flex;
   gap: 8px;
   list-style: none;
   padding-left: 0;
 }
 
-.nav-links a,
-.auth-links a {
+.nav-links a {
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -115,36 +112,25 @@ a {
   gap: 10px;
 }
 
-.client-btn {
+.navbar-icon-btn {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
   justify-self: center;
   align-self: center;
-  padding: 8px;
+  padding: 12px;
   border-radius: 100%;
   display: flex;
   cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
 }
 
-.client-btn:hover {
+.navbar-icon-btn:hover {
   background-color: rgba(255, 255, 255, 0.5);
-}
-
-.logout-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  justify-self: center;
-  align-self: center;
   padding: 8px;
-  border-radius: 100%;
-  display: flex;
-  cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
 }
-
-.logout-btn:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
 .content {
   display: flex;
   justify-content: space-between;
@@ -152,15 +138,18 @@ a {
 }
 
 .left-content {
-  flex: 2;
-  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
   margin-left: 30px;
+  gap: 30px;
+  max-width: 65%;
 }
 
 .right-content {
-  flex: 1;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
   margin-right: 30px;
+  max-width: 30%;
 }
 
 h2 {
@@ -170,23 +159,32 @@ h2 {
 .anime-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
 .anime-card {
-  width: 20%;
-  aspect-ratio: 4/5;
-  border-radius: 10px;
+  width: 200px;
+  position: relative;
+  aspect-ratio: 3/4;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  transition: ease-in-out;
+  transition-duration: 0.15s;
+}
+
+.anime-card:hover {
+  border-radius: 10px;
+  scale: 110%;
+  transition: ease-in-out;
+  transition-duration: 0.15s;
 }
 
 .anime-card img {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   object-fit: cover;
   object-position: center;
 }
@@ -203,6 +201,21 @@ h2 {
   align-items: center;
 }
 
+/* Style for the anime image */
+.popular-item-anime {
+  max-width: 100px; /* Adjust the image size as needed */
+  height: auto;
+  margin-right: 10px; /* Add space between the image and title/details */
+}
+
+.popular-item-studio {
+  aspect-ratio: 1;
+  max-width: 100px; /* Adjust the image size as needed */
+  height: auto;
+  margin-right: 10px; /* Add space between the image and title/details */
+}
+
+
 /* Style for the link (image and title) */
 .popular-link {
   text-decoration: none; /* Remove underlines from links */
@@ -213,19 +226,20 @@ h2 {
   width: 100%; /* Ensure the link spans the entire width */
   margin-top: 15px;
   margin-bottom: 15px;
+  transition: ease-in-out;
+  transition-duration: 0.15s;
   padding: 10px;
+  gap: 5px;
 }
 
 .popular-link:hover {
   background-color: #dedede;
+  scale: 105%;
+  border-radius: 6px;
+  transition: ease-in-out;
+  transition-duration: 0.15s;
 }
 
-/* Style for the anime image */
-.popular-item img {
-  max-width: 100px; /* Adjust the image size as needed */
-  height: auto;
-  margin-right: 10px; /* Add space between the image and title/details */
-}
 
 /* Style for the anime title */
 .popular-details h3 {
@@ -247,33 +261,20 @@ h2 {
   color: #555; /* Change details text color */
 }
 
-.anime-card {
-  position: relative;
-  text-decoration: none;
-  color: #000;
-  transition: transform 0.3s;
-}
-
-.anime-card:hover {
-  transform: scale(1.1);
-}
-
 .anime-title {
   position: absolute;
   bottom: 10px;
-  left: 10px;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
   border-radius: 5px;
   color: #fff;
   font-weight: bold;
   transition: background-color 0.3s;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 80%;
 }
-
-.anime-card:hover .anime-title {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 .anime-review-list {
   list-style: none;
   padding: 0;
@@ -298,9 +299,14 @@ h2 {
   margin-top: 20px;
 }
 
+.username:hover {
+  color: #e9b037fd;
+}
+
+
 .rating {
   font-weight: bold;
-  color: #ffd700; /* gold color for the star rating */
+  color: #e9b037fd; /* gold color for the star rating */
   margin-bottom: 8px;
 }
 

@@ -19,11 +19,11 @@ require_once(dirname(__DIR__,2).'/define.php');
     $recommended = $a->get4RandomAnimeRecommendation();
     $latest = $a->getTop4AnimeLatest();
     $upcoming = $a->getTop4AnimeUpcoming();
-    $reviews = $a->get5AnimeReview();
+    $reviews = $a->get5LatestAnimeReview();
     $top_score = $a->getTop5AnimeScore();
 
     $s = new Studio();
-    $studios = $s->getAllStudio();
+    $top_studios = $s->getTop5Studio();
 ?>
 
 
@@ -83,7 +83,7 @@ require_once(dirname(__DIR__,2).'/define.php');
             </section>
 
             <section>
-                <h2>Top Anime Review</h2>
+                <h2>Latest Anime Review</h2>
                 <!-- anime-review Item Loop -->
                 <div class="anime-review-list">
                     <!-- This is a placeholder; repeat this for each anime -->
@@ -92,7 +92,9 @@ require_once(dirname(__DIR__,2).'/define.php');
                         echo "<div class='anime-review-item'>";
                         echo "<h3>" . htmlspecialchars($review['title']) . "<h3>";
                         echo "<div class='user-info'>";
+                        echo "<a href='/?client/detail/$review[client_id]'>";
                         echo "<span class='username'>" . htmlspecialchars($review['username']) . "</span>";
+                        echo "</a>";
                         echo "<div class='rating'>Score: " . htmlspecialchars($review['user_score']) . "/10★</div>";
                         echo "</div>";
                         echo "<p>" . htmlspecialchars($review['review']) . "</p>";
@@ -115,7 +117,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='/?anime/detail/$anime[anime_id]' class='popular-link'>";
                         echo "<div class='popular-item'>";
-                        echo "<img src='" . htmlspecialchars($image) . "' alt='Top Anime Image'>";
+                        echo "<img class='popular-item-anime' src='" . htmlspecialchars($image) . "' alt='Top Anime Image'>";
                         echo "<div class='popular-details'>";
                         echo "<h3>" . htmlspecialchars($anime['title']) . "</h3>";
                         echo "<p>Score: " . htmlspecialchars($anime['score']) . "/10★</p>";
@@ -134,15 +136,17 @@ require_once(dirname(__DIR__,2).'/define.php');
                 <!-- Top Studio List Loop -->
                 <div class="popular-list">
                     <?php
-                    foreach ($studios as $studio) {
+                    foreach ($top_studios as $studio) {
                         $image = $studio['image'] ?? '../../public/img/placeholder.jpg';
+                        $date = $studio['established_date'] ?? 'No information';
                         echo "<a href='/?studio/detail/$studio[studio_id]' class='popular-link'>";
                         echo "<div class='popular-item'>";
-                        echo "<img src='" . htmlspecialchars($image) . "' alt='Studio Image'>";
+                        echo "<img class='popular-item-studio' src='" . htmlspecialchars($image) . "' alt='Studio Image'>";
                         echo "<div class='popular-details'>";
                         echo "<h3>" . htmlspecialchars($studio['name']) . "</h3>";
-                        echo "<p>Established: " . htmlspecialchars($studio['established_date']) . "</p>";
-                        echo "<p>" . htmlspecialchars(substr($studio['description'], 0, 80)) . "</p>";
+                        echo "<p>Established: " . htmlspecialchars($date) . "</p>";
+                        echo "<p>Average anime score: " . htmlspecialchars(substr($studio['avg'], 0, 4)) . "</p>";
+                        echo "<p>" . htmlspecialchars(substr($studio['description'], 0, 40)) . "</p>";
                         echo "</div>";
                         echo "</div>";
                         echo "</a>";
