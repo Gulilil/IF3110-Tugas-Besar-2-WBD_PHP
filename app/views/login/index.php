@@ -11,6 +11,7 @@ require_once(BASE_DIR.'/views/includes/header.php');
   <title>Ini Login </title>
   <link rel="stylesheet" type="text/css"" href="../../public/style/global.css">
   <link rel="stylesheet" type="text/css"" href="../../public/style/login.css">
+  <script src='/public/handler/navbar.js'></script>
 </head>
 <body>
 

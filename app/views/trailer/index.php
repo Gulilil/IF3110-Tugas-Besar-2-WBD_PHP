@@ -15,6 +15,7 @@ $a = new Anime();
     <title>Trailer Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/trailer.css">
+    <script src='/public/handler/navbar.js'></script>
 </head>
 
 <body>

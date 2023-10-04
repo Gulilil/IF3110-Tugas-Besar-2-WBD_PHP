@@ -66,6 +66,26 @@ a {
   margin-top: 20px;
 }
 
+.both-navbar-appear {
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+}
+
+.both-navbar-disappear {
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -200px;
+  z-index: 1;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+}
+
 .upper-navbar {
   display: flex;
   background-color: #000;
@@ -78,7 +98,7 @@ a {
 
 .logo {
   font-size: 32px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
   color: #ff4500;
   margin-right: 20px;
@@ -87,10 +107,9 @@ a {
   /* letter-spacing: 1px; */
 }
 
-.logo:hover{
-  color:white;
+.logo:hover {
+  color: white;
 }
-
 
 .navbar {
   display: flex;
@@ -98,12 +117,11 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: #ff4500;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10vw;
+  padding-right: 10vw;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 
 .nav-links,
 .auth-links {
@@ -131,13 +149,17 @@ a {
 .search-bar {
   flex-grow: 2; /* Give more space to the search bar */
   padding: 0 20px;
+  max-width: 600px;
 }
 
 .search-bar input {
   width: 100%;
+  height: 100%;
   padding: 8px;
+  padding-right: 20px;
+  padding-left: 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   outline: none;
 }
 
@@ -188,6 +210,7 @@ a {
 .left-content {
   flex: 2;
   margin-right: 20px;
+  margin-left: 30px;
 }
 
 .right-content {
@@ -264,7 +287,7 @@ h2 {
 .popular-details h3 {
   font-size: 18px;
   margin: 0;
-  color: #007BFF; /* Change title color */
+  color: #007bff; /* Change title color */
 }
 
 /* Style for the anime details */
@@ -288,7 +311,7 @@ h2 {
 }
 
 .anime-card:hover {
-  transform: scale(1.10);
+  transform: scale(1.1);
 }
 
 .anime-title {
@@ -386,4 +409,3 @@ footer {
   margin: 5px 0;
   font-size: 14px;
 }
-

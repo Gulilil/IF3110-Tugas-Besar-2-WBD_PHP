@@ -2,7 +2,7 @@
 
 if (!isset($_SESSION['username'])){
   echo "
-  <div >
+  <div class='both-navbar-appear' id='navbar'>
     <div class='upper-navbar'>
       <a href='/'>
         <div class='logo'> InfoAnimeMasse </div>
@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])){
   if (isset($_SESSION['admin_status'])){
     if ($_SESSION['admin_status']){
       echo "
-      <div >
+      <div class='both-navbar-appear' id='navbar'>
         <div class='upper-navbar'>
           <a href='/'>
             <div class='logo'> InfoAnimeMasse </div>
@@ -23,8 +23,8 @@ if (!isset($_SESSION['username'])){
   
         <div class='navbar'>
           <ul class='nav-links'>
+            <li><a href='/'>Home</a></li>
             <li><a href='/?anime'>Anime</a></li>
-            <li><a href='/?genre'>Genre</a></li>
             <li><a href='/?studio'>Studio</a></li>
             <li><a href='/?trailer'>Trailer</a></li>
             <li><a href='/?admin'>Admin</a></li>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['username'])){
       ";
     } else {
       echo "
-      <div >
+      <div class='both-navbar-appear' id='navbar'>
         <div class='upper-navbar'>
           <a href='/'>
             <div class='logo'> InfoAnimeMasse </div>
@@ -60,8 +60,8 @@ if (!isset($_SESSION['username'])){
   
         <div class='navbar'>
           <ul class='nav-links'>
+            <li><a href='/'>Home</a></li>
             <li><a href='/?anime'>Anime</a></li>
-            <li><a href='/?genre'>Genre</a></li>
             <li><a href='/?studio'>Studio</a></li>
             <li><a href='/?trailer'>Trailer</a></li>
           </ul>

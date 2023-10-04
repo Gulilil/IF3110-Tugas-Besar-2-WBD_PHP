@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <script src="/public/handler/signup.js" ></script> 
+  <script src='/public/handler/navbar.js'></script>
 </head>
 <body>
 <div class="container">

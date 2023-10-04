@@ -7,6 +7,7 @@ require_once(dirname(__DIR__,2).'/define.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
+    <script src='/public/handler/navbar.js'></script>
 </head>
 
 <?php
