@@ -83,4 +83,11 @@ class Database {
       echo "Migration Failed";
     }
   }
+
+  public function resetSchema(){
+    $this->query('DROP SCHEMA public CASCADE');
+    $this->execute();
+    $this->query('CREATE SCHEMA public');
+    $this->execute();
+  }
 }

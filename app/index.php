@@ -8,11 +8,13 @@ require_once 'setup/setup.php';
 require_once 'setup/seed.php';
 
 if(!session_id()) session_start();
-(new Database())->migrate();
-$app = new App;
+$app = new App();
 
 // // Ini fungsinya cukup dinyalain sekali ajaa
 // // Abis itu buka /setup/seed.php di browser, kalo udah ada tulisan 'Seeding success', comment lagi
+// $db = new Database();
+// $db->resetSchema();
+// $db->migrate();
 // seedAllData();
 ?>
 

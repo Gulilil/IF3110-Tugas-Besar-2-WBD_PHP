@@ -99,6 +99,7 @@ $s = new Studio();
                                 <th>score</th>
                                 <th>image</th>
                                 <th>trailer</th>
+                                <th>synopsis</th>
                                 <th>studio_id</th>
                                 <th>actions</th>
                             </tr>
@@ -123,6 +124,7 @@ $s = new Studio();
                                     <td>$score</td>
                                     <td>$image</td>
                                     <td>$trailer</td>
+                                    <td>$anime[synopsis]</td>
                                     <td>$anime[studio_id]</td>
                                     <td class='actions'>
                                         <button class='edit-btn'>Edit</button>
