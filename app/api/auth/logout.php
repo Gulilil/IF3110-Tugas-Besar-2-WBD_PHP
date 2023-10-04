@@ -5,4 +5,4 @@ require_once(BASE_DIR.'/models/Client.php');
 session_start();
 
 session_unset();
-header('Location: /login');
+header('Location: /?login');

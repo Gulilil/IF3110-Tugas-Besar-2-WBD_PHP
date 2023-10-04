@@ -17,8 +17,7 @@ class App {
       $this->controller = 'LoginController';
     }
     else {
-      $path = explode("&", $url[0])[0];
-      echo $path;
+      $path = explode("?", $url[0])[0];
       if (file_exists(BASE_DIR.'/controller/' . $path . 'Controller.php')) {
         $this->controller = $path.'Controller';
         unset($url[0]);

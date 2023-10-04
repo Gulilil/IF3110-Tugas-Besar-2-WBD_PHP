@@ -1,6 +1,6 @@
 <footer>
     <div class="footer-nav">
-        <a href="#">Home</a>
+        <a href="/?home">Home</a>
         <a href="#">About</a>
         <a href="#">Contact Us</a>
     </div>

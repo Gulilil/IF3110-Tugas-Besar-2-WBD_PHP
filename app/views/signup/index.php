@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sign Up</title>
+  <script src="/public/handler/signup.js" ></script> 
 </head>
 <body>
 <div class="container">
@@ -11,62 +12,55 @@
         <h2 class="header-subtitle">Sign up for free.</h2>
         <form action="/api/auth/signup.php" method="post">
           <div class="form-group">
-            <label for="username">Create an username.</label>
-            <input
-              class="signup-input"
-              type="text"
-              name="username"
-              id="username"
-              onchange="checkUsername()"
-              placeholder="Enter your desired username."
-              required
-            />
-            <p id="username-error"></p>
-          </div>
-          <div class="form-group">
-            <label for="email">What's your email?</label>
+            <label for="email">E-mail</label>
             <input
               class="signup-input"
               type="email"
-              name="email"
               id="email"
+              name="email"
               placeholder="Enter your email."
-              onchange="checkEmail()"
+              onkeyup="checkEmail()"
               required
             />
-            <p id="email-error"></p>
+            <p id="email-errmsg"></p>
           </div>
+
           <div class="form-group">
-            <label for="password">Create a password.</label>
+            <label for="username">Username</label>
+            <input
+              class="signup-input"
+              type="text"
+              id="username"
+              name="username"
+              onkeyup="checkUsername()"
+              placeholder="Enter your username."
+              required
+            />
+            <p id="username-errmsg"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
             <input
               class="signup-input"
               type="password"
-              name="password"
               id="password"
-              onchange="checkPassword()"
+              name="password"
+              onkeyup="checkPassword()"
               placeholder="Create a password."
               required
             />
-            <p id="password-error"></p>
-          </div>
-          <div class="form-group">
-            <label for="confirm-password">Confirm your password.</label>
-            <input
-              class="signup-input"
-              type="password"
-              name="confirm-password"
-              id="confirm-password"
-              onchange="checkPassword()"
-              placeholder="Enter your password again."
-            />
-            <p id="confirm-password-error"></p>
+            <p id="password-errmsg"></p>
           </div>
 
-          <div class="button-container">
-            <button type="submit" class="signup-button" id="signup-button" disabled>Sign up</button>
-          </div>
-          
+          <button type="submit" class="signup-button" id="signup-button" disabled>Sign up</button>          
         </form>
+        <?php
+            if (isset($_SESSION['error'])) {
+              echo $_SESSION['error'];
+              unset($_SESSION['error']);
+            }
+          ?>
         <p class="login">Have an account?
           <span
             class="login-text"
