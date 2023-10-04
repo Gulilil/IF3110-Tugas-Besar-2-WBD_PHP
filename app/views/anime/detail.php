@@ -24,7 +24,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Page</title>;
+    <title>Anime Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/anime.css">
     <script src='/public/handler/navbar.js'></script>

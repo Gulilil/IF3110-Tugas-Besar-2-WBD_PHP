@@ -22,6 +22,11 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
+  public function getAverageAnimeScoresByStudioID($id){
+    $this->db->query('SELECT AVG(score) AS avg FROM '.$this->table.' WHERE studio_id = '.$id);
+    return $this->db->fetchData();
+  }
+
   public function getAnimeByID($id){
     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE anime_id = ' . $id);
     return $this->db->fetchData();
