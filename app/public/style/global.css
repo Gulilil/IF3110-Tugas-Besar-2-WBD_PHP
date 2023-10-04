@@ -87,6 +87,10 @@ a {
   /* letter-spacing: 1px; */
 }
 
+.logo:hover{
+  color:white;
+}
+
 
 .navbar {
   display: flex;
@@ -188,7 +192,8 @@ a {
 
 .right-content {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 30px;
 }
 
 h2 {
@@ -202,9 +207,21 @@ h2 {
   margin-bottom: 20px;
 }
 
-.anime-card img {
-  width: 170px;
+.anime-card {
+  width: 20%;
+  aspect-ratio: 4/5;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.anime-card img {
+  width: 100%;
+  max-width: 250px;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Style for the popular anime list */
@@ -217,7 +234,6 @@ h2 {
 .popular-item {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 /* Style for the link (image and title) */
@@ -228,6 +244,13 @@ h2 {
   flex-direction: row; /* Arrange items horizontally */
   align-items: center;
   width: 100%; /* Ensure the link spans the entire width */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.popular-link:hover {
+  background-color: #dedede;
 }
 
 /* Style for the anime image */
@@ -265,7 +288,7 @@ h2 {
 }
 
 .anime-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 .anime-title {

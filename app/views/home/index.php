@@ -11,42 +11,18 @@ require_once(dirname(__DIR__,2).'/define.php');
 
 <?php
     require_once(BASE_DIR.'/views/includes/header.php');
-    require_once(BASE_DIR.'/models/database.php');
+    require_once(BASE_DIR.'/models/Anime.php');
+    require_once(BASE_DIR.'/models/Studio.php');
 
-    // Create a new instance of the Database class
-    $db = new Database();
+    $a = new Anime();
+    $recommended = $a->get4RandomAnimeRecommendation();
+    $latest = $a->getTop4AnimeLatest();
+    $upcoming = $a->getTop4AnimeUpcoming();
+    $reviews = $a->get5AnimeReview();
+    $top_score = $a->getTop5AnimeScore();
 
-    // Recommendation and Popular
-    $db->query("SELECT anime.image, title, score, release_date, studio.name
-                FROM anime JOIN studio ON anime.studio_id = studio.studio_id 
-                ORDER BY score DESC LIMIT 4");
-    $recommended = $db->fetchAllData();
-
-    // // On Going
-    // $db->query("SELECT anime.image, title, score, release_date, studio.name
-    //             FROM anime JOIN studio ON anime.studio_id = studio.studio_id 
-    //             WHERE anime.status = 
-    //             ORDER BY score DESC LIMIT 4");
-    // $ongoing = $db->fetchAllData();
-
-    // Latest
-    $db->query("SELECT image, title FROM anime ORDER BY release_date DESC LIMIT 4");
-    $latest = $db->fetchAllData();
-
-    // Upcoming
-    $db->query("SELECT image, title FROM anime WHERE status = 'UPCOMING' LIMIT 4");
-    $upcoming = $db->fetchAllData();
-
-    // Reviews
-    $db->query("SELECT a.anime_id, a.title, c.client_id, c.username, l.user_score, l.review 
-                FROM anime_list l JOIN anime a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
-                ORDER BY user_score DESC 
-                LIMIT 5");
-    $reviews = $db->fetchAllData();
-
-    // Studio
-    $db->query("SELECT image, name, description, established_date FROM studio ORDER BY established_date DESC LIMIT 3");
-    $studios = $db->fetchAllData();
+    $s = new Studio();
+    $studios = $s->getAllStudio();
 ?>
 
 
@@ -61,8 +37,9 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <!-- This is a placeholder; repeat this for each anime -->
                     <?php
                     foreach ($recommended as $anime) {
+                        $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='#' class='anime-card'>";
-                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
                     }
@@ -77,8 +54,9 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <!-- This is a placeholder; repeat this for each anime -->
                     <?php
                     foreach ($latest as $anime) {
+                        $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='#' class='anime-card'>";
-                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
                     }
@@ -93,8 +71,9 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <!-- This is a placeholder; repeat this for each anime -->
                     <?php
                     foreach ($upcoming as $anime) {
+                        $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='#' class='anime-card'>";
-                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Anime Image'>";
+                        echo "<img src='" . htmlspecialchars($image) . "' alt='Anime Image'>";
                         echo "<span class='anime-title'>" . htmlspecialchars($anime['title']) . "</span>";
                         echo "</a>";
                     }
@@ -131,18 +110,16 @@ require_once(dirname(__DIR__,2).'/define.php');
                 <div class="popular-list">
                     <!-- This is a placeholder; repeat this for each top anime -->
                     <?php
-                    for ($i = 0; $i < 3; $i++) {
-                        // Access the $animeData array using $i as the index
-                        $anime = $recommended[$i];
-
+                    foreach($top_score as $anime){
+                        $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='#' class='popular-link'>";
                         echo "<div class='popular-item'>";
-                        echo "<img src='" . htmlspecialchars($anime['image']) . "' alt='Top Anime Image'>";
+                        echo "<img src='" . htmlspecialchars($image) . "' alt='Top Anime Image'>";
                         echo "<div class='popular-details'>";
                         echo "<h3>" . htmlspecialchars($anime['title']) . "</h3>";
                         echo "<p>Score: " . htmlspecialchars($anime['score']) . "/10★</p>";
                         echo "<p>" . htmlspecialchars($anime['release_date']) . "</p>";
-                        echo "<p>" . htmlspecialchars($anime['name']) . "</p>";
+                        echo "<p>" . htmlspecialchars($anime['type']) . "</p>";
                         echo "</div>";
                         echo "</div>";
                         echo "</a>";
@@ -157,9 +134,10 @@ require_once(dirname(__DIR__,2).'/define.php');
                 <div class="popular-list">
                     <?php
                     foreach ($studios as $studio) {
+                        $image = $studio['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='#' class='popular-link'>";
                         echo "<div class='popular-item'>";
-                        echo "<img src='" . htmlspecialchars($studio['image']) . "' alt='Studio Image'>";
+                        echo "<img src='" . htmlspecialchars($image) . "' alt='Studio Image'>";
                         echo "<div class='popular-details'>";
                         echo "<h3>" . htmlspecialchars($studio['name']) . "</h3>";
                         echo "<p>Established: " . htmlspecialchars($studio['established_date']) . "</p>";

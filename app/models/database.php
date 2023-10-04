@@ -2,10 +2,6 @@
 
 require_once(dirname(__DIR__,1).'/setup/setup.php');
 
-function makeDBString($string){
-  return "'".$string."'";
-}
-
 class Database {
   private $db;
   private $statement;
@@ -23,6 +19,10 @@ class Database {
     catch (PDOException $e){
       die ($e->getMessage());
     }
+  }
+
+  function makeDBString($string){
+    return "'".$string."'";
   }
 
   public function query($query){
@@ -57,7 +57,7 @@ class Database {
       else return 'false';
     }
     if (is_string($input)){
-      return makeDBString($input);
+      return $this->makeDBString($input);
     } 
     return $input;
   }

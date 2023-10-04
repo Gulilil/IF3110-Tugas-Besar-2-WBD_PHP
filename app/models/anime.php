@@ -17,11 +17,6 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
-  public function getAllAnimeWithTrailer(){
-    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NOT trailer IS NULL ORDER BY release_date DESC');
-    return $this->db->fetchAllData();
-  }
-
   public function getAllAnimeByStudioID($id){
     $this->db->query('SELECT * FROM '.$this->table.' WHERE studio_id = '.$id);
     return $this->db->fetchAllData();
@@ -30,11 +25,6 @@ class Anime {
   public function getAnimeByID($id){
     $this->db->query('SELECT * FROM ' . $this->table . 'WHERE anime_id = ' . $id);
     return $this->db->fetchData();
-  }
-
-  public function getTop5AnimeScore(){
-    $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY score DESC LIMIT 5');
-    return $this->db->fetchAllData();
   }
 
   public function getAllAnimeBySearch($string){
@@ -72,4 +62,46 @@ class Anime {
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
   }
+
+
+  // ======== SPECIFIC QUERY ========== 
+  public function getTop5AnimeScore(){
+    $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY score DESC LIMIT 5');
+    return $this->db->fetchAllData();
+  }
+
+  public function getTop4AnimeLatest(){
+    $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY release_date DESC LIMIT 4');
+    return $this->db->fetchAllData();
+  }
+
+  public function getTop4AnimeUpcoming(){
+    $this->db->query('SELECT * FROM '.$this->table." WHERE status = 'upcoming' ORDER BY anime_id DESC LIMIT 4");
+    return $this->db->fetchAllData();
+  }
+
+  public function getAllAnimeWithTrailer(){
+    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NOT trailer IS NULL ORDER BY release_date DESC');
+    return $this->db->fetchAllData();
+  }
+
+  public function get5AnimeReview(){
+    $this->db->query('SELECT a.anime_id, a.title, c.client_id, c.username, l.user_score, l.review 
+      FROM anime_list l JOIN '.$this->table.' a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
+      WHERE NOT review IS NULL
+      ORDER BY user_score DESC 
+      LIMIT 5');
+    return $this->db->fetchAllData();
+  }
+
+  public function get4RandomAnimeRecommendation(){
+    $data = $this->getAllAnime();
+    $result = array ();
+    for($i = 0; $i < 4; $i++ ){
+      array_push($result, $data[rand(0, count($data)-1)]);
+    }
+    return $result;
+  }
+
+
 }

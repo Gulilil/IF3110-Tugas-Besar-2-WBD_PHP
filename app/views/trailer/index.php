@@ -36,6 +36,7 @@ $a = new Anime();
             <div> ($year) </div>
           </div>
         </div>
+
         ";
       }
     ?>
@@ -48,6 +49,6 @@ $a = new Anime();
 require_once(BASE_DIR.'/views/includes/footer.php');
 ?>
 
-          <!-- <div>
-            <iframe width='320' height='180' src='$trailer' frameborder='0' allowfullscreen/>
-          </div> -->
+      <!-- <div>
+        <iframe width='640' height='360' src='$trailer' frameborder='0' allowfullscreen/>
+      </div> -->
