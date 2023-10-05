@@ -14,7 +14,10 @@ require_once(BASE_DIR.'/views/includes/header.php');
   <script src='/public/handler/navbar.js'></script>
 </head>
 <body>
-  <div class="menuLogin">
+  <div class='background-container'>
+    <img class='background' src='/public/img/login_bg.jpg' alt='Login Wallpaper'/>
+  </div>
+  <div class="menu-login">
     <h2 class='header-subtitle'> Login to your account</h2>
     <form action="/api/auth/login.php" method="post" class="form">
         <div class='form-group'>

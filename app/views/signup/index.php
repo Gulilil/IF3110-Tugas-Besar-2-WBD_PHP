@@ -16,7 +16,10 @@ require_once(BASE_DIR.'/views/includes/header.php');
   <script src='/public/handler/navbar.js'></script>
 </head>
 <body>
-    <div class="menuSignup">
+    <div class='background-container'>
+      <img class='background' src='/public/img/signup_bg.jpg' alt='Signup Wallpaper'/>
+    </div>
+    <div class="menu-signup">
         <h2 class="header-subtitle"> Sign up for free </h2>
         <form action="/api/auth/signup.php" method="post" class='form'>
           <div class="form-group">

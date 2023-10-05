@@ -13,17 +13,21 @@ class App {
   public function __construct()
   {
     $url = $this->parse_url();
-    if (!isset($_SESSION['username']) && $url[0] != 'signup'){
-      $this->controller = 'LoginController';
+    if (!isset($_SESSION['username']) ){
+      if ($url[0] == 'signup'){
+        $this->controller = 'SignupController';
+      } else {
+        $this->controller = 'LoginController';
+      }
     }
     else {
       $path = explode("?", $url[0])[0];
-      if (file_exists(BASE_DIR.'/controller/' . $path . 'Controller.php')) {
+      if ($url[0] == '' || $url[0] == 'login' || $url[0] == 'signup') {
+        $this->controller = 'HomeController';
+      }
+      else if (file_exists(BASE_DIR.'/controller/' . $path . 'Controller.php')) {
         $this->controller = $path.'Controller';
         unset($url[0]);
-      }
-      else if ($url[0] == '') {
-        $this->controller = 'HomeController';
       }
       else {
         $this->controller = 'ErrorController';

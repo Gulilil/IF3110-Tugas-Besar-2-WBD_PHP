@@ -19,7 +19,7 @@ class Client {
 
     public function getClientByID($id){
       $id = $this->db->processDataType($id);
-      $this->db->query('SELECT * FROM ' . $this->table . 'WHERE client_id = ' . $id);
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE client_id = ' . $id);
       return $this->db->fetchData();
     }
 

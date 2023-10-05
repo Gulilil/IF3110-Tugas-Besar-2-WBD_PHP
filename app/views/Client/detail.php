@@ -2,6 +2,11 @@
 
 require_once(dirname(__DIR__,2).'/define.php');
 require_once(BASE_DIR.'/views/includes/header.php');
+require_once(BASE_DIR.'/models/Client.php');
+
+$c = new Client();
+$id = $data['id'];
+$client = $c->getClientByID($id);
 ?>
 
 
@@ -12,11 +17,17 @@ require_once(BASE_DIR.'/views/includes/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
+    <link rel="stylesheet" href="../../public/style/client.css">
     <script src='/public/handler/navbar.js'></script>
 </head>
 
 <body>
-  <h1> Ini Error </h1>
+  <div class=''>
+    <div class=''>
+    </div>
+    <div class=''>
+    </div>
+  </div>
 </body>
 </html>
 
