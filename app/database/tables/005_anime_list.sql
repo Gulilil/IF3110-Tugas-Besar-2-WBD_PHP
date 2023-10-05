@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS anime_list
     progress INTEGER,
     watch_status VARCHAR(20) CHECK (watch_status IN ('WATCHING', 'COMPLETED', 'ON-HOLD', 'DROPPED', 'PLAN TO WATCH')),
     review TEXT,
-    FOREIGN KEY (client_id) REFERENCES client(client_id),
-    FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
+    FOREIGN KEY (client_id) REFERENCES client(client_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (anime_id) REFERENCES anime(anime_id) ON DELETE CASCADE ON UPDATE CASCADE
 );

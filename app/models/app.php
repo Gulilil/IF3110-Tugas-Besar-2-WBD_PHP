@@ -13,17 +13,39 @@ class App {
   public function __construct()
   {
     $url = $this->parse_url();
+    $path = explode("?", $url[0])[0];
     if (!isset($_SESSION['username']) ){
-      if ($url[0] == 'signup'){
-        $this->controller = 'SignupController';
-      } else {
+      // GUEST MODE
+      if ($url[0] == '' || $url[0] == 'home'){
+        // Guest mode can access home page
+        $this->controller = 'HomeController';
+      } 
+      else if ($url[0] == 'login'){
+        // Guest mode can access login page
         $this->controller = 'LoginController';
+      }
+      else if ($url[0] == 'signup'){
+        // Guest mode can access signup page
+        $this->controller = 'SignupController';
+      }
+      else if ($url[0] == 'error' || $url[0] == 'admin'){
+        $this->controller = 'ErrorController';
+      } 
+      else if (file_exists(BASE_DIR.'/controller/' . $path . 'Controller.php')) {
+        // Other than home, login, and signup, GUEST needs to login first
+        $this->controller = 'LoginController';
+      }
+      else {
+        $this->controller = 'ErrorController';
       }
     }
     else {
-      $path = explode("?", $url[0])[0];
+      // HAS LOGGED IN
       if ($url[0] == '' || $url[0] == 'login' || $url[0] == 'signup') {
         $this->controller = 'HomeController';
+      } 
+      else if ($url[0] == 'error'){
+        $this->controller = 'ErrorController';
       }
       else if (file_exists(BASE_DIR.'/controller/' . $path . 'Controller.php')) {
         $this->controller = $path.'Controller';

@@ -1,8 +1,5 @@
-body {
-  background-color: rgb(48, 48, 48);
-}
-
 .flex-wrap {
+  background-color: rgb(48, 48, 48);
   padding: 20px;
   display: flex;
   flex-wrap: wrap;

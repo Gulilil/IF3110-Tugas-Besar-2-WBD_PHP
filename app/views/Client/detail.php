@@ -22,8 +22,8 @@ $client = $c->getClientByID($id);
 </head>
 
 <body>
-  <div class=''>
-    <div class=''>
+  <div class='client-container'>
+    <div class='image-box'>
     </div>
     <div class=''>
     </div>

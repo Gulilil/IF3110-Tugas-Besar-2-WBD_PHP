@@ -3,6 +3,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f2f2f2;
+  min-height: 100vh;
+  position: relative;
 }
 
 a {
@@ -40,7 +42,7 @@ a {
 }
 
 .logo {
-  font-size: 32px;
+  font-size: 24px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
   color: #ff4500;
@@ -60,18 +62,14 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: #ff4500;
-  padding-left: 10vw;
-  padding-right: 10vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 5px 10vw ;
 }
 
 .nav-links {
   display: flex;
   gap: 8px;
   list-style: none;
-  padding-left: 0;
-}
+  }
 
 .nav-links a {
   text-decoration: none;
@@ -115,22 +113,31 @@ a {
 .navbar-icon-btn {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
-  justify-self: center;
-  align-self: center;
-  padding: 12px;
-  border-radius: 100%;
+  padding: 6px 12px;
+  border-radius: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   cursor: pointer;
   transition: ease-in-out;
   transition-duration: 0.2s;
+  gap: 10px;
 }
 
 .navbar-icon-btn:hover {
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 8px;
+  border-radius: 20px;
   transition: ease-in-out;
   transition-duration: 0.2s;
 }
+
+.navbar-icon-desc {
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
@@ -335,6 +342,7 @@ footer {
   color: #fff;
   padding: 20px 50px; /* Added horizontal padding for spacing */
   text-align: center; /* Centered text content */
+  height: 100px;
 }
 
 .footer-nav {
