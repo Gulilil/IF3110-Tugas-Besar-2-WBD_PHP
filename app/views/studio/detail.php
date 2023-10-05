@@ -12,7 +12,7 @@ $s = new Studio();
 
 $id = $data['id'];
 $studio = $s->getStudioByID($id);
-$animes = $a->getAllAnimeByStudioID($id);
+$animes = $a->getAllAnimeByStudioIDOrdered($id, 'score', true);
 $anime_count = count($a->getAllAnimeByStudioID($id));
 $avg_score = $a->getAverageAnimeScoresByStudioID($id);
 $rounded_avg_score = round($avg_score['avg'], 2);
@@ -73,21 +73,19 @@ $rounded_avg_score = round($avg_score['avg'], 2);
         <div class="flex-wrap">
           <?php
             foreach($animes as $anime){
-              $year = date('Y', strtotime($anime['release_date'])) ?? '';
               $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
               echo "
-              <div class='anime-container'>
-                <a href='/?anime/detail/$anime[anime_id]'>
+              <a href='/?anime/detail/$anime[anime_id]'>
+                <div class='anime-container'>
                   <div class='anime-box-preview'>
                     <img src='$image' class='anime-image-preview'/>
                   </div>
-                </a>
-                <div class='anime-description'>
-                  <div> $anime[title] </div>
-                  <div> ($year) </div>
+                  <div class='anime-description'>
+                    <div class='anime-description-title'> $anime[title] </div>
+                    <div> ★ $anime[score] </div>
+                  </div>
                 </div>
-              </div>
-
+              </a>
               ";
             }
           ?>

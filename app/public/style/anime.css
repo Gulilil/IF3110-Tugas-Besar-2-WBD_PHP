@@ -40,18 +40,20 @@
   transition: ease-in-out;
   transition-duration: 0.2s;
   cursor: pointer;
+  display: flex;
 }
 
 .box-preview:hover {
   scale: 110%;
   transition: ease-in-out;
   transition-duration: 0.2s;
+  box-shadow: 2px 5px 5px #aaaaaa;
 }
 
 .image-preview {
   width: 100%;
   max-width: 320px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 

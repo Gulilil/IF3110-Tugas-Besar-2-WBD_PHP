@@ -17,22 +17,25 @@ body {
   margin-top: 10px;
   overflow: hidden;
   border-radius: 3px;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
   cursor: pointer;
+  display: flex;
 }
 
 .box-preview:hover{
   scale: 110%;
+  background-color: #565656;
   transition: ease-in-out;
   transition-duration: 0.2s;
+  box-shadow: 2px 5px 5px #232323;
 }
 
-.image-preview{
+.image-preview{ 
   width: 100%;
   max-width: 320px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
 }
 
 .container{

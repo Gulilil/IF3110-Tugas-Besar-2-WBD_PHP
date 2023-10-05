@@ -118,15 +118,7 @@
   margin-top: 10px;
   overflow: hidden;
   border-radius: 3px;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
   cursor: pointer;
-}
-
-.anime-box-preview:hover {
-  scale: 110%;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
 }
 
 .anime-image-preview {
@@ -141,14 +133,33 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  border: black 1px solid;
+  padding: 10px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  width: 240px;
+}
+
+.anime-container:hover {
+  scale: 110%;
+  border-radius: 10px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
 }
 
 .anime-description {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 20px;
   margin-bottom: 10px;
-  color: white;
+  color: black;
   font-weight: bold;
   gap: 5px;
+}
+
+.anime-description-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 80%;
 }
