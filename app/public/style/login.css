@@ -1,19 +1,43 @@
 body {
   display: flex;
   flex-direction: column;
+  position:relative;
+}
+
+.header-subtitle {
+  margin-bottom: 15px;
 }
 
 .menuLogin{
 	width: 350px;
 	background: white;
 	margin: auto;
-	padding: 30px 20px;
+	padding: 20px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 100px;
   border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.menuSignup{
+	width: 500px;
+	background: white;
+	margin: auto;
+	padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .form {
@@ -24,49 +48,94 @@ body {
   width: 100%;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 90%;
+	margin-bottom: 10px;
+}
+
 .form-label{
   font-weight: bold;
+  font-size: 16px;
   margin-top: 10px;
   margin-bottom: 10px;
   justify-self: flex-start;
 }
 
-.form_input{
+.form-input{
 	box-sizing : border-box;
 	width: 100%;
 	padding: 10px;
 	font-size: 11pt;
-	margin-bottom: 20px;
 }
 
-.login-btn{
-	background: #ff4500;
-	color: white;
-	font-size: 11pt;
-  font-weight: bold;
-	width: 75%;
-	border: none;
-	border-radius: 3px;
-	padding: 10px 20px;
-  cursor: pointer;
-}
-
-.login-btn:hover{
-    background: #f5aa8e;
-}
-
-.signup-btn{
+.signup-button, .signup-button:enabled{
 	background: #f1b760;
 	color: white;
 	font-size: 11pt;
   font-weight: bold;
-	width: 75%;
+	width: 210px;
 	border: none;
 	border-radius: 3px;
 	padding: 10px 20px;
   cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
 }
 
-.signup-btn:hover{
-  background: #ebc893;
+.signup-button:disabled {
+  background: #b0b0b0;
+	color: rgb(65, 65, 65);
+	font-size: 11pt;
+  font-weight: bold;
+	width: 210px;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 20px;
+  cursor:not-allowed;
 }
+
+.signup-button:hover:enabled{
+    background: #ebc893;
+    width: 250px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+}
+
+.login-button{
+	background: #ff4500;
+	color: white;
+	font-size: 11pt;
+  font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	width: 210px;
+	padding: 10px 20px;
+  cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.login-button:hover{
+  background: #f5aa8e;
+	width: 250px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.err-message {
+  color:#ff4500;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.form-err-message {
+  color:#ff4500;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+

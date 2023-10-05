@@ -1,6 +1,5 @@
 function checkSubmitButton(){
   if (document.getElementById('email-errmsg').innerHTML == '' && document.getElementById('username-errmsg').innerHTML == '' && document.getElementById('password-errmsg').innerHTML == ''){
-    let submitBtn = document.getElementById('signup-button');
     document.getElementById('signup-button').disabled = false;
   } else {
     document.getElementById('signup-button').disabled = true;
