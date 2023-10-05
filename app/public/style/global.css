@@ -5,6 +5,9 @@ body {
   background-color: #f2f2f2;
   min-height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a {
@@ -173,13 +176,14 @@ h2 {
 .anime-card {
   width: 200px;
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 2/3;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: ease-in-out;
   transition-duration: 0.15s;
+  background-color: #dedede;
 }
 
 .anime-card:hover {
@@ -191,7 +195,6 @@ h2 {
 
 .anime-card img {
   width: 100%;
-  max-width: 200px;
   object-fit: cover;
   object-position: center;
 }
@@ -282,6 +285,7 @@ h2 {
   overflow: hidden;
   width: 80%;
 }
+
 .anime-review-list {
   list-style: none;
   padding: 0;
@@ -342,7 +346,6 @@ footer {
   color: #fff;
   padding: 20px 50px; /* Added horizontal padding for spacing */
   text-align: center; /* Centered text content */
-  height: 100px;
 }
 
 .footer-nav {

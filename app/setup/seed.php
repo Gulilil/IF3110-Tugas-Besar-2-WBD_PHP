@@ -7,7 +7,6 @@ require_once(BASE_DIR.'/models/Genre.php');
 require_once(BASE_DIR.'/models/Anime.php');
 require_once(BASE_DIR.'/models/Anime_List.php');
 require_once(BASE_DIR.'/models/Anime_Genre.php');
-require_once(BASE_DIR.'/models/Relationship.php');
 
 $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
 
@@ -218,28 +217,6 @@ function seedAnimeGenreData(){
   }
 }
 
-function seedRelationshipData(){
-  $relationship = new Relationship();
-  $typeArr = array('FRIEND', 'PENDING', 'BLOCKED');
-  for ($i = 0; $i < 10; $i++){
-    $id1 = rand(1,10);
-    $id2 = rand(1,10);
-    $type = $typeArr[rand(0,2)];
-    while ($relationship->getMutualRelationship($id1, $id2)){
-      $id1 = rand(1,10);
-      $id2 = rand(1,10);
-      $type = $typeArr[rand(0,2)];
-    }
-
-    $relationshipTuple = array (
-      'client_id_1' => $id1,
-      'client_id_2' => $id2,
-      'type' => $type
-    );
-    $relationship->insertRelationship($relationshipTuple);
-  }
-}
-
 function seedAllData(){
   seedClientData(); 
   seedStudioData();
@@ -247,7 +224,6 @@ function seedAllData(){
   seedAnimeData();
   seedAnimeListData();
   seedAnimeGenreData();
-  seedRelationshipData();
   echo 'Seeding success';
 }
 

@@ -21,7 +21,10 @@ $a = new Anime();
 
 <body>
   <div class="trailer-container" id='trailer-div' onclick='hideTrailer()'>
-  <iframe class='anime-trailer-iframe' id='anime-trailer-iframe' src='' autoplay='false' allowfullscreen></iframe>
+    <div class='trailer-box'> 
+      <div class='trailer-title' id='trailer-title'> HEHEHE </div> 
+      <iframe class='anime-trailer-iframe' id='anime-trailer-iframe' src='' autoplay='false' allowfullscreen></iframe>
+    </div>
   </div>
 
   <div class="flex-wrap">
@@ -34,7 +37,7 @@ $a = new Anime();
         $trailer = htmlspecialchars($anime['trailer']);
         echo "
         <div class='container'>
-          <div class='box-preview' onclick=\"displayTrailer('$trailer')\">
+          <div class='box-preview' onclick=\"displayTrailer('$trailer', '$anime[title]')\">
             <img src='$image' class='image-preview' id='image-preview'/>
           </div>
           <div class='description'>

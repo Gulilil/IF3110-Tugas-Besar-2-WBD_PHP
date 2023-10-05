@@ -6,16 +6,20 @@ require_once(BASE_DIR.'/models/Anime.php');
 require_once(BASE_DIR.'/models/Studio.php');
 require_once(BASE_DIR.'/models/Client.php');
 require_once(BASE_DIR.'/models/Anime_List.php');
+require_once(BASE_DIR.'/models/Genre.php');
 
 $a = new Anime();
 $s = new Studio();
 $c = new Client();
 $al = new Anime_List();
+$g = new Genre();
+
 
 $id = $data['id'];
 $anime = $a->getAnimeById($id);
 $studio = $s->getStudioByAnimeID($id);
-$reviews = $a-> getReviewsByAnimeID($id);
+$reviews = $a->getReviewsByAnimeID($id);
+$genres = $g->getAllGenreIDByAnimeID($id);
 
 $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
 
@@ -56,13 +60,31 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
               <?php
                 $date = $anime['release_date'] ?? "No information";
                 $episodes = $anime['episodes'] ?? "No information";
-                echo " <div>Score: <span> $anime[score] </span></div> ";
-                echo " <div>Type: <span> $anime[type] </span></div> ";
-                echo " <div>Status: <span> $anime[status] </span></div> ";
-                echo " <div>Genres: <span> Action, Drama, Thriller </span></div> ";
-                echo " <div>Studios: <span> $studio[name] </span></div> ";
-                echo " <div>Release Date: <span> $date </span></div> ";
-                echo " <div>Episodes: <span> $episodes </span></div> ";
+                if ($genres) {
+                  $genreData = $genres[0]['name'];
+                  for ($i = 1; $i < count($genres); $i++){
+                    $genreData = $genreData.', '.$genres[$i]['name'];
+                  }
+                } else {
+                  $genreData = "No information";
+                }
+                echo "
+                  <div class='grid-container'>
+                    <div class='anime-details-aspect'> Score </div>
+                    <div> $anime[score] ★ </div>
+                    <div class='anime-details-aspect'> Type </div>
+                    <div> $anime[type] </div>
+                    <div class='anime-details-aspect'> Genre </div>
+                    <div> $genreData </div>
+                    <div class='anime-details-aspect'> Studio </div>
+                    <div> $studio[name] </div>
+                    <div class='anime-details-aspect'> Release Date </div>
+                    <div> $date </div>
+                    <div class='anime-details-aspect'> Episodes </div>
+                    <div> $episodes </div>
+                  </div>
+                
+                ";
               ?>
 
               <center>

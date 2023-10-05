@@ -61,7 +61,12 @@ class Anime_List{
     JOIN client c ON c.client_id = l.client_id 
     WHERE a.anime_id = '.$aid.' AND c.client_id = '.$cid);
     return ($this->db->fetchData());
-    // return true if there is a mutual relationship, otherwise false
+    // return true if there is a row, otherwise false
+  }
+
+  public function getAverageUserScoreByClientID($id){
+    $this->db->query('SELECT AVG(user_score) AS avg FROM '.$this->table.' WHERE client_id = '.$id);
+    return $this->db->fetchData();
   }
 
 }

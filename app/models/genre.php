@@ -22,11 +22,6 @@ class Genre {
     return $this->db->fetchData();
   }
 
-  public function getAllGenreIDByAnimeID($id){
-    $this->db->query('SELECT '.$this->table.'.genre_id FROM ' . $this->table . ' JOIN anime_genre ON '.$this->table.'.genre_id = anime_genre.genre_id JOIN anime ON anime_genre.anime_id = anime.anime_id WHERE anime.anime_id = '.$id);
-    return $this->db->fetchAllData();
-  }
-
   public function insertGenre($name){
     $name = $this->db->processDataType($name);
     $this->db->query('INSERT INTO ' . $this->table . ' (name) VALUES ('.$name.')');
@@ -50,6 +45,12 @@ class Genre {
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
+  }
+
+  // =========== SPECIFIC QUERY ===========
+  public function getAllGenreIDByAnimeID($id){
+    $this->db->query('SELECT g.genre_id, g.name FROM ' . $this->table . ' g JOIN anime_genre ON g.genre_id = anime_genre.genre_id JOIN anime ON anime_genre.anime_id = anime.anime_id WHERE anime.anime_id = '.$id);
+    return $this->db->fetchAllData();
   }
 
 }

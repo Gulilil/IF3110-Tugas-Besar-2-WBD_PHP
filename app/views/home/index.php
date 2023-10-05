@@ -95,7 +95,7 @@ require_once(dirname(__DIR__,2).'/define.php');
                         echo "<a href='/?client/detail/$review[client_id]'>";
                         echo "<span class='username'>" . htmlspecialchars($review['username']) . "</span>";
                         echo "</a>";
-                        echo "<div class='rating'>Score: " . htmlspecialchars($review['user_score']) . "/10★</div>";
+                        echo "<div class='rating'>Score: " . htmlspecialchars($review['user_score']) . "/10 ★</div>";
                         echo "</div>";
                         echo "<p>" . htmlspecialchars($review['review']) . "</p>";
                         echo "</div>";
