@@ -44,6 +44,18 @@ function seedClientData(){
       'image' => $image);
     $client->insertClient($clientTuple);
   }
+
+  $client->insertClient(
+    array (
+    'username' => 'inijuan',
+    'email' => 'juan@gmail.com',
+    'password' => 'jujujuju',
+    'admin_status' => true,
+    'birthdate' => '2003-09-10',
+    'bio' => 'Ini akun punya Juan iseng doang masukin biar beda soalnya kesannya kayak punya akun sendiri xixixixixixixi',
+    'image' => '/public/img/admin_icon.png'
+    )
+  );
 }
 
 function seedStudioData() {
@@ -116,6 +128,8 @@ function seedAnimeData(){
   }
   $trailerArr = array (
     '/public/vid/trailer1.mp4',
+    '/public/vid/trailer2.mp4',
+    '/public/vid/trailer3.mp4',
     null
   );
 
@@ -128,7 +142,7 @@ function seedAnimeData(){
     $rating = $ratingArr[rand(0,3)];
     $score = rand(1,9) + rand(1,10)/10;
     $image = $imageArr[rand(0,30)];
-    $trailer = $trailerArr[rand(0,1)];
+    $trailer = $trailerArr[rand(0,3)];
     $studio_id = rand(1,10);
 
     $animeTuple = array(
