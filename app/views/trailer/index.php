@@ -16,9 +16,17 @@ $a = new Anime();
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/trailer.css">
     <script src='/public/handler/navbar.js'></script>
+    <script src='/public/handler/trailer.js'></script>
 </head>
 
 <body>
+  <div class="trailer-container" id='trailer-div' onclick='hideTrailer()'>
+    <div class='trailer-box'> 
+      <div class='trailer-title' id='trailer-title'> HEHEHE </div> 
+      <iframe class='anime-trailer-iframe' id='anime-trailer-iframe' src='' autoplay='false' allowfullscreen></iframe>
+    </div>
+  </div>
+
   <div class="flex-wrap">
     <?php
       $animes = $a->getAllAnimeWithTrailer();
@@ -26,18 +34,17 @@ $a = new Anime();
         $year = date('Y', strtotime($anime['release_date'])) ?? '';
         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
         $arr = explode('/', $anime['trailer']);
-        $trailer = $arr[0].'/'.$arr[1].'/www.youtube.com/embed/'.$arr[3];
+        $trailer = htmlspecialchars($anime['trailer']);
         echo "
         <div class='container'>
-          <div class='box-preview'>
-            <img src='$image' class='image-preview'/>
+          <div class='box-preview' onclick=\"displayTrailer('$trailer', '$anime[title]')\">
+            <img src='$image' class='image-preview' id='image-preview'/>
           </div>
           <div class='description'>
             <div> $anime[title] </div>
             <div> ($year) </div>
           </div>
         </div>
-
         ";
       }
     ?>

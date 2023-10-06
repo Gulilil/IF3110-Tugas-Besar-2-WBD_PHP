@@ -115,4 +115,14 @@ class Anime {
     return $this->db->fetchData();
   }
 
+  public function getAllAnimeByStudioIDOrdered($id, $column, $desc){
+    if ($desc){
+      $orderQuery = ' ORDER BY '.$column. ' DESC';
+    } else {
+      $orderQuery = ' ORDER BY '.$column. ' ASC';
+    }
+    $this->db->query('SELECT * FROM '.$this->table.' WHERE studio_id = '.$id.$orderQuery);
+    return $this->db->fetchAllData();
+  }
+
 }

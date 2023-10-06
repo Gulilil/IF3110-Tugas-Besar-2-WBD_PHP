@@ -3,6 +3,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f2f2f2;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a {
@@ -40,7 +45,7 @@ a {
 }
 
 .logo {
-  font-size: 32px;
+  font-size: 24px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
   color: #ff4500;
@@ -60,18 +65,14 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: #ff4500;
-  padding-left: 10vw;
-  padding-right: 10vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 5px 10vw ;
 }
 
 .nav-links {
   display: flex;
   gap: 8px;
   list-style: none;
-  padding-left: 0;
-}
+  }
 
 .nav-links a {
   text-decoration: none;
@@ -115,22 +116,31 @@ a {
 .navbar-icon-btn {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
-  justify-self: center;
-  align-self: center;
-  padding: 12px;
-  border-radius: 100%;
+  padding: 6px 12px;
+  border-radius: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   cursor: pointer;
   transition: ease-in-out;
   transition-duration: 0.2s;
+  gap: 10px;
 }
 
 .navbar-icon-btn:hover {
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 8px;
+  border-radius: 20px;
   transition: ease-in-out;
   transition-duration: 0.2s;
 }
+
+.navbar-icon-desc {
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
@@ -166,13 +176,14 @@ h2 {
 .anime-card {
   width: 200px;
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 2/3;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: ease-in-out;
   transition-duration: 0.15s;
+  background-color: #dedede;
 }
 
 .anime-card:hover {
@@ -184,7 +195,6 @@ h2 {
 
 .anime-card img {
   width: 100%;
-  max-width: 200px;
   object-fit: cover;
   object-position: center;
 }
@@ -275,6 +285,7 @@ h2 {
   overflow: hidden;
   width: 80%;
 }
+
 .anime-review-list {
   list-style: none;
   padding: 0;

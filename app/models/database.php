@@ -70,24 +70,32 @@ class Database {
         $this->query($file_content);
         $this->execute();
       }
-      // // Ga jadi dipake karena checknya langsung pas create table
-      // $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
-      // foreach($constraint_files as $file){
-      //   $file_content = file_get_contents($file);
-      //   $this->query($file_content);
-      //   $this->execute();
-      // }
-      // echo "Migration Success";
-      
+      echo "Migration Success \n";
     } catch (Exception $e){
-      echo "Migration Failed";
+      echo "Migration Failed \n";
     }
   }
+
+  public function constraints(){
+    try {
+      $constraint_files = glob(dirname(__DIR__,1).'/database/constraints/*.sql');
+      foreach($constraint_files as $constraint){
+        $constraint_content = file_get_contents($constraint);
+        $this->query($constraint_content);
+        $this->execute();
+      }
+      echo "Adding Constraints Success \n";
+    } catch (Exception $e) {
+      echo "Adding Constraints Failed \n";
+    }
+  }
+
 
   public function resetSchema(){
     $this->query('DROP SCHEMA public CASCADE');
     $this->execute();
     $this->query('CREATE SCHEMA public');
     $this->execute();
+    echo "Successfully reset schema \n";
   }
 }

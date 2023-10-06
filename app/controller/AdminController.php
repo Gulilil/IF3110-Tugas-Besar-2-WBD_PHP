@@ -5,10 +5,14 @@ require_once(BASE_DIR.'/models/Controller.php');
 
 class AdminController extends Controller {
   public function index(){
-    if (isset($_SESSION['admin_status']) && $_SESSION['admin_status']){
-      $this->view('Admin/index');
+    if (isset($_SESSION['admin_status'])){
+      if ($_SESSION['admin_status']){
+        $this->view('Admin/index');
+      } else {
+        $this->view('Error/index');
+      }
     } else {
-      $this->view('Home/index');
+      $this->view('Error/index');
     }
   }
 }

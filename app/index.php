@@ -15,6 +15,7 @@ $app = new App();
 // $db = new Database();
 // $db->resetSchema();
 // $db->migrate();
+// $db->constraints();
 // seedAllData();
 ?>
 

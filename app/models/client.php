@@ -35,12 +35,6 @@ class Client {
       return $this->db->fetchData();
     }
 
-    public function getAllClientRelationshipByClientID($id){
-      $id = $this->db->processDataType($id);
-      $this->db->query('SELECT * FROM ' . $this->table . ' JOIN relationship WHERE '.$id.' = relationship.client_id_1 OR '.$id.' = relationship.client_id_2');
-      return $this->db->fetchAllData();
-    }
-
     public function insertClient($data){
       foreach($data as $key => $value){
         $data[$key] = $this->db->processDataType($value);
@@ -68,4 +62,5 @@ class Client {
         return ($this->db->countRow() != 0);
         // if countRow == 0, query fails
     }
+
 }

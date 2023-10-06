@@ -40,18 +40,19 @@
   transition: ease-in-out;
   transition-duration: 0.2s;
   cursor: pointer;
+  display: flex;
 }
 
 .box-preview:hover {
   scale: 110%;
   transition: ease-in-out;
   transition-duration: 0.2s;
+  box-shadow: 2px 5px 5px #aaaaaa;
 }
 
 .image-preview {
   width: 100%;
-  max-width: 320px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -130,13 +131,25 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
   gap: 5px;
   max-width: 320px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.anime-details div {
-  margin-bottom: 10px;
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.anime-details-aspect {
+  font-weight: bold;
 }
 
 .anime-trailer {
@@ -145,7 +158,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #dedede;
-  padding: 20px;
+  padding: 10px;
 }
 
 .anime-trailer-iframe {
