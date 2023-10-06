@@ -1,0 +1,34 @@
+.back-button{
+  text-align: center;
+  background-color: white;
+  width: 100px;
+  color: #ff4500;
+  border: #ff4500 2px solid;
+  border-radius: 5px;
+  padding:5px 10px;
+  font-weight: bold;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  margin: 30px 0px;
+}
+
+.back-button:hover {
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  width: 150px;
+  background-color: #ff4500;
+  color: white;
+}
+
+.not-own {
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  gap:10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  width: 400px;
+  margin:auto;
+}

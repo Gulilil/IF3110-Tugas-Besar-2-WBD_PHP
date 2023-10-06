@@ -125,4 +125,5 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
+
 }

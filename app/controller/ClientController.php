@@ -7,4 +7,8 @@ class ClientController extends Controller {
   public function detail($id){
     $this->view('Client/detail', array('id' => $id));
   }
+
+  public function list($id){
+    $this->view('Client/list', array('id' => $id));
+  }
 }

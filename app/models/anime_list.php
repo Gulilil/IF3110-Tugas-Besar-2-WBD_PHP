@@ -23,7 +23,7 @@ class Anime_List{
   }
 
   public function getAllAnimeListByClientID($id){
-    $thid->db->query('SELECT * FROM ' . $this->table . ' WHERE client_id = '. $id);
+    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE client_id = '. $id);
     return $this->db->fetchAllData();
   }
 
@@ -56,10 +56,8 @@ class Anime_List{
 
   // ================ SPECIFIC QUERY ================
   public function getAnimeListByAnimeClientID($aid, $cid){
-    $this->db->query('SELECT * FROM '.$this->table.' l 
-    JOIN anime a ON l.anime_id = a.anime_id 
-    JOIN client c ON c.client_id = l.client_id 
-    WHERE a.anime_id = '.$aid.' AND c.client_id = '.$cid);
+    $this->db->query('SELECT * FROM '.$this->table.' 
+    WHERE anime_id = '.$aid.' AND client_id = '.$cid);
     return ($this->db->fetchData());
     // return true if there is a row, otherwise false
   }
@@ -68,5 +66,21 @@ class Anime_List{
     $this->db->query('SELECT AVG(user_score) AS avg FROM '.$this->table.' WHERE client_id = '.$id);
     return $this->db->fetchData();
   }
+
+  public function getCountAnimeByClientID($id){
+    $this->db->query('SELECT COUNT(anime_id) as count FROM '.$this->table.' WHERE client_id = '.$id);
+    return $this->db->fetchData();
+  }
+
+  public function getAnimeListAndAnimeByClientID( $cid){
+    $this->db->query('SELECT a.title, a.image, l.list_id, l.user_score, l.watch_status, l.review  FROM '.$this->table.' l 
+    JOIN anime a ON l.anime_id = a.anime_id 
+    WHERE l.client_id = '.$cid);
+    return ($this->db->fetchAllData());
+    // return true if there is a row, otherwise false
+  }
+
+
+  
 
 }
