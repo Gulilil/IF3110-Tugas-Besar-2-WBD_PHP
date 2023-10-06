@@ -13,7 +13,7 @@ class Studio {
   }
 
   public function getAllStudio(){
-    $this->db->query('SELECT * FROM '.$this->table);
+    $this->db->query('SELECT * FROM '.$this->table.' ORDER BY studio_id');
     return $this->db->fetchAllData();
   }
 
@@ -34,13 +34,25 @@ class Studio {
 
   public function updateStudio($data){
     foreach($data as $key => $value){
-      $data[$key] = $this->db->processDataType($value);
+        $data[$key] = $this->db->processDataType($value);
     }
-    $this->db->query('UPDATE ' . $this->table . 'SET name = '.$data['name'].', description = '.$data['description'].', established_date = '.$data['established_date'].', image = '.$data['image'].' WHERE studio_id = '. $data['studio_id']);
+
+    // Note: No single quotes around the values because processDataType is already adding them
+    $this->db->query(
+        'UPDATE ' . $this->table . ' SET name = ' . $data['name'] . ', 
+        description = ' . $data['description'] . ', 
+        established_date = ' . $data['established_date'] . ', 
+        image = ' . $data['image'] . ' 
+        WHERE studio_id = ' . $data['studio_id']
+    );
+
     $this->db->execute();
+
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
   }
+
+
 
   public function deleteStudio($id){
       $this->db->query('DELETE FROM ' . $this->table . ' WHERE studio_id = '. $id);

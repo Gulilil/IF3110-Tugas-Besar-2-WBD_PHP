@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS anime
     trailer VARCHAR(255),
     synopsis TEXT,
     studio_id INTEGER NOT NULL,
-    FOREIGN KEY (studio_id) REFERENCES studio(studio_id)
+    FOREIGN KEY (studio_id) REFERENCES studio(studio_id) ON DELETE CASCADE
 );
