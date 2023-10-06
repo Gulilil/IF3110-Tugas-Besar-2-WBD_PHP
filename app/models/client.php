@@ -13,7 +13,7 @@ class Client {
     }
 
     public function getAllClient(){
-      $this->db->query('SELECT * FROM ' . $this->table);
+      $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY client_id');
       return $this->db->fetchAllData();
     }
 
@@ -49,7 +49,7 @@ class Client {
       foreach($data as $key => $value){
         $data[$key] = $this->db->processDataType($value);
       }
-        $this->db->query('UPDATE ' . $this->table . 'SET username = '.$data['username'].', email = '.$data['email'].', password = '.$data['password'].', admin_status = '.$data['admin_status'].', birthdate = '.$data['birthdate'].', bio = '.$data['bio'].', image = '.$data['image'].' WHERE client_id = '. $data['client_id']);
+        $this->db->query('UPDATE ' . $this->table . ' SET username = '.$data['username'].', email = '.$data['email'].', password = '.$data['password'].', admin_status = '.$data['admin_status'].', birthdate = '.$data['birthdate'].', bio = '.$data['bio'].', image = '.$data['image'].' WHERE client_id = '. $data['client_id']);
         $this->db->execute();
         return ($this->db->countRow() != 0);
         // if countRow == 0, query fails

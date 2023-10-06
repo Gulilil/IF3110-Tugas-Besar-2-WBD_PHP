@@ -13,7 +13,7 @@ class Anime {
   }
 
   public function getAllAnime(){
-    $this->db->query('SELECT * FROM ' . $this->table);
+    $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY anime_id');
     return $this->db->fetchAllData();
   }
 
@@ -50,7 +50,7 @@ class Anime {
     foreach($data as $key => $value){
       $data[$key] = $this->db->processDataType($value);
     }
-    $this->db->query('UPDATE ' . $this->table . 'SET title = '.$data['title'].', type = '.$data['type'].', status = '.$data['status'].', release_date = '.$data['release_date'].', episodes = '.$data['episodes'].', rating = '.$data['rating'].', score = '.$data['score'].', image = '.$data['image'].', trailer = '.$data['trailer'].', synopsis = '.$data['synopsis'].', studio_id = '.$data['studio_id'].' WHERE anime_id = '. $data['anime_id']);
+    $this->db->query('UPDATE ' . $this->table . ' SET title = '.$data['title'].', type = '.$data['type'].', status = '.$data['status'].', release_date = '.$data['release_date'].', episodes = '.$data['episodes'].', rating = '.$data['rating'].', score = '.$data['score'].', image = '.$data['image'].', trailer = '.$data['trailer'].', synopsis = '.$data['synopsis'].', studio_id = '.$data['studio_id'].' WHERE anime_id = '. $data['anime_id']);
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails
