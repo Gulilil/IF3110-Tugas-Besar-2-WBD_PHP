@@ -41,6 +41,7 @@ $g = new Genre();
         $year = date('Y', strtotime($anime['release_date'])) ?? '';
         $month = date('M', strtotime($anime['release_date'])) ?? '';
         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
+        $score = ((float) $anime['score']) != 0.0 ? $anime['score'].' ★' : "Has not been scored";
         echo "
         <div class='container'>
           <a href='/?anime/detail/$anime[anime_id]'>
@@ -52,7 +53,7 @@ $g = new Genre();
             <a href='/?anime/detail/$anime[anime_id]'>
               <div class='preview-title'> $anime[title] </div>
             </a>
-            <div> ★ $anime[score] | $month $year </div>
+            <div> $score | $month $year </div>
             <div> $anime[type] | $anime[status] </div>
           </div>
         </div>

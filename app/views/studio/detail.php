@@ -74,6 +74,7 @@ $rounded_avg_score = round($avg_score['avg'], 2);
           <?php
             foreach($animes as $anime){
               $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
+              $score = ((float) $anime['score']) != 0.0 ? $anime['score'].' ★' : "Has not been scored";
               echo "
               <a href='/?anime/detail/$anime[anime_id]'>
                 <div class='anime-container'>
@@ -82,7 +83,7 @@ $rounded_avg_score = round($avg_score['avg'], 2);
                   </div>
                   <div class='anime-description'>
                     <div class='anime-description-title'> $anime[title] </div>
-                    <div> ★ $anime[score] </div>
+                    <div> $score </div>
                   </div>
                 </div>
               </a>

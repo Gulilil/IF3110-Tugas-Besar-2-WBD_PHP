@@ -9,6 +9,8 @@ require_once(BASE_DIR.'/models/Anime_List.php');
 require_once(BASE_DIR.'/models/Anime_Genre.php');
 
 $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
+$anime_amount = 60;
+$anime_list_amount = 30;
 
 function getRandomWord($len = 10)
 {
@@ -117,12 +119,13 @@ function seedGenreData(){
 
 function seedAnimeData(){
   global $lorem_ipsum;
+  global $anime_amount;
   $anime = new Anime();
   $typeArr = array ('TV','MOVIE', 'OVA');
   $statusArr = array ('ON-GOING', 'COMPLETED', 'HIATUS', 'UPCOMING');
   $ratingArr = array ('G', 'PG-13', 'R(17+)', 'Rx');
   $imageArr = array (null);
-  for($i = 1; $i <=30; $i++){
+  for($i = 1; $i <= 30; $i++){
     array_push($imageArr, '/public/img/anime/anime'.$i.'.jpg');
   }
   $trailerArr = array (
@@ -132,14 +135,14 @@ function seedAnimeData(){
     null
   );
 
-  for($i = 0; $i < 60; $i++){
+  for($i = 0; $i < $anime_amount; $i++){
     $title = getRandomWord(3).' '.getRandomWord(6).' '.getRandomWord(5).' '.getRandomWord(4);
     $type = $typeArr[rand(0,2)];
     $status = $statusArr[rand(0,3)];
     $release_date = rand(2000,2020).'-'.rand(1,12).'-'.rand(1,28);
     $episodes = 24;
     $rating = $ratingArr[rand(0,3)];
-    $score = rand(1,9) + rand(1,10)/10;
+    $score = 0;
     $image = $imageArr[rand(0,30)];
     $trailer = $trailerArr[rand(0,3)];
     $studio_id = rand(1,10);
@@ -163,14 +166,23 @@ function seedAnimeData(){
 
 function seedAnimeListData(){
   global $lorem_ipsum;
+  global $anime_list_amount;
+  global $anime_amount;
   $anime_list = new Anime_List();
   $watch_statusArr = array ('WATCHING', 'COMPLETED', 'ON-HOLD', 'DROPPED', 'PLAN TO WATCH');
 
-  for($i = 0; $i < 5; $i++){
+  for($i = 0; $i < $anime_list_amount; $i++){
     $client_id = rand(1,10);
-    $anime_id = rand(1,10);
+    $anime_id = rand(1,$anime_amount);
     $user_score = rand(1,10);
     $watch_status = $watch_statusArr[rand(0,4)];
+
+    $check = $anime_list->getAnimeListByAnimeClientID($anime_id, $client_id);
+    while ($check){
+      $client_id = rand(1,10);
+      $anime_id = rand(1,$anime_amount);
+      $check = $anime_list->getAnimeListByAnimeClientID($anime_id, $client_id);
+    }
 
     if ($watch_status == 'COMPLETED'){
       $progress = 24;
@@ -194,8 +206,9 @@ function seedAnimeListData(){
 }
 
 function seedAnimeGenreData(){
+  global $anime_amount;
   $anime_genre = new Anime_Genre();
-  for($i = 1; $i <= 10; $i++){
+  for($i = 1; $i <= $anime_amount; $i++){
     if ($i % 3 == 0){
       $genre_id1 = 1;
       $genre_id2 = 1;

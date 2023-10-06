@@ -114,13 +114,14 @@ require_once(dirname(__DIR__,2).'/define.php');
                     <!-- This is a placeholder; repeat this for each top anime -->
                     <?php
                     foreach($top_score as $anime){
+                        $score = ((float) $anime['score']) != 0.0 ? $anime['score'].' ★' : "Has not been scored";
                         $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
                         echo "<a href='/?anime/detail/$anime[anime_id]' class='popular-link'>";
                         echo "<div class='popular-item'>";
                         echo "<img class='popular-item-anime' src='" . htmlspecialchars($image) . "' alt='Top Anime Image'>";
                         echo "<div class='popular-details'>";
                         echo "<h3>" . htmlspecialchars($anime['title']) . "</h3>";
-                        echo "<p>Score: " . htmlspecialchars($anime['score']) . "/10★</p>";
+                        echo "<p>Score: " . htmlspecialchars($score) . "</p>";
                         echo "<p>" . htmlspecialchars($anime['release_date']) . "</p>";
                         echo "<p>" . htmlspecialchars($anime['type']) . "</p>";
                         echo "</div>";

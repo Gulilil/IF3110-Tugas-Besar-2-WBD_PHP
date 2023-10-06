@@ -60,6 +60,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
               <?php
                 $date = $anime['release_date'] ?? "No information";
                 $episodes = $anime['episodes'] ?? "No information";
+                $score = ((float) $anime['score']) != 0.0 ? $anime['score'].' ★' : "Has not been scored";
                 if ($genres) {
                   $genreData = $genres[0]['name'];
                   for ($i = 1; $i < count($genres); $i++){
@@ -71,7 +72,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
                 echo "
                   <div class='grid-container'>
                     <div class='anime-details-aspect'> Score </div>
-                    <div> $anime[score] ★ </div>
+                    <div> $score </div>
                     <div class='anime-details-aspect'> Type </div>
                     <div> $anime[type] </div>
                     <div class='anime-details-aspect'> Genre </div>
