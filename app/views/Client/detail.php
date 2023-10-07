@@ -53,10 +53,11 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
           <label for="editAdminStatus">Status:</label>
           <select id="editAdminStatus" name="admin_status">
               <?php 
+                $value = $client['admin_status'] ? "true" : "client";
                 $option = $client['admin_status'] ? 'Admin' : 'Client';
                 echo 
                 "
-                <option value='$client[admin_status]'>$option</option>
+                <option value='$value'>$option</option>
                 ";
               ?>
           </select>

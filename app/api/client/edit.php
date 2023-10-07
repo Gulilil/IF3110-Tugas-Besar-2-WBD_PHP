@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "No client ID provided. Cannot proceed with edit.";
         exit();
     }
+
     $data = [
         'client_id' => $_POST['client_id'],
         'username' => $_POST['username'],

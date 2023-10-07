@@ -95,6 +95,3 @@ $c = new Client();
   </div>
 </div>
 
-<!-- <div class='search-bar'>
-   <input type='text' placeholder='Search Anime/Genre/Studi/Trailer'>
-</div> -->
