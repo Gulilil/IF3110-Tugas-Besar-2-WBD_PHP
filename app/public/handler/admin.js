@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let clientId = e.target.getAttribute('client-id');
             
             if (confirm('Are you sure you want to delete this client?')) {
-                window.location.href = `/public/actions/deleteClient.php?id=${clientId}`;
+                window.location.href = `/api/client/delete.php?id=${clientId}`;
             }
         });
     });
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let animeId = e.target.getAttribute('anime-id');
             
             if (confirm('Are you sure you want to delete this anime?')) {
-                window.location.href = `/public/actions/deleteAnime.php?id=${animeId}`;
+                window.location.href = `/api/anime/delete.php?id=${animeId}`;
             }
         });
     });
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let studioId = e.target.getAttribute('studio-id');
             
             if (confirm('Are you sure you want to delete this studio?')) {
-                window.location.href = `/public/actions/deleteStudio.php?id=${studioId}`;
+                window.location.href = `/api/studio/delete.php?id=${studioId}`;
             }
         });
     });

@@ -43,7 +43,7 @@ $s = new Studio();
                 <span class="close-btn" onclick="closeAddModal()">&times;</span>
                 <h2>Add New Client</h2>
 
-                <form class="form-vertical" action="/public/actions/addClient.php" method="post" enctype="multipart/form-data">
+                <form class="form-vertical" action="/api/client/add.php" method="post" enctype="multipart/form-data">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" placeholder="Username" required>
 
@@ -79,7 +79,7 @@ $s = new Studio();
                 <span class="close-btn" onclick="closeAddModal()">&times;</span>
                 <h2>Add New Anime</h2>
 
-                <form class="form-vertical" action="/public/actions/addAnime.php" method="post" enctype="multipart/form-data">
+                <form class="form-vertical" action="/api/anime/add.php" method="post" enctype="multipart/form-data">
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title" placeholder="Title" required>
 
@@ -141,7 +141,7 @@ $s = new Studio();
                 <span class="close-btn" onclick="closeAddModal()">&times;</span>
                 <h2>Add New Studio</h2>
 
-                <form class="form-vertical" action="/public/actions/addStudio.php" method="post" enctype="multipart/form-data">
+                <form class="form-vertical" action="/api/studio/add.php" method="post" enctype="multipart/form-data">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Name" required>
 
@@ -230,7 +230,7 @@ $s = new Studio();
                         <span class="close-btn" onclick="closeEditClientModal()">&times;</span>
                         <h2>Edit Client</h2>
 
-                        <form class="form-vertical" action="/public/actions/editClient.php" method="post" enctype="multipart/form-data">
+                        <form class="form-vertical" action="/api/client/edit.php" method="post" enctype="multipart/form-data">
                             <!-- Hidden input for client_id -->
                             <input type="hidden" id="editClientId" name="client_id">
 
@@ -345,7 +345,7 @@ $s = new Studio();
                         <span class="close-btn" onclick="closeEditAnimeModal()">&times;</span>
                         <h2>Edit Anime</h2>
 
-                        <form class="form-vertical" action="/public/actions/editAnime.php" method="post" enctype="multipart/form-data">
+                        <form class="form-vertical" action="/api/anime/edit.php" method="post" enctype="multipart/form-data">
                             <!-- Hidden input for anime_id -->
                             <input type="hidden" id="editAnimeId" name="anime_id">
 
@@ -467,7 +467,7 @@ $s = new Studio();
                             <span class="close-btn" onclick="closeEditStudioModal()">&times;</span>
                             <h2>Edit Studio</h2>
 
-                            <form class="form-vertical" action="/public/actions/editStudio.php" method="post" enctype="multipart/form-data">
+                            <form class="form-vertical" action="/api/studio/edit.php" method="post" enctype="multipart/form-data">
                                 <input type="hidden" id="editStudioId" name="studio_id">
 
                                 <label for="editName">Name:</label>

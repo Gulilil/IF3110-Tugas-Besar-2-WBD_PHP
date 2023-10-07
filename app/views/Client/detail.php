@@ -24,9 +24,57 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/client.css">
     <script src='/public/handler/navbar.js'></script>
+    <script src='/public/handler/client.js'></script>
 </head>
 
 <body>
+  <div id ='edit-modal' class='modal' >
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Edit Profile</h2>
+
+      <form class="form-vertical" action="/api/client/edit.php" method="post" enctype="multipart/form-data">
+          <!-- Hidden input for client_id -->
+          <input type="hidden" id="editClientId" name="client_id">
+
+          <label for="editUsername">Username:</label>
+          <input type="text" id="editUsername" name="username" required>
+
+          <label for="editEmail">Email:</label>
+          <input type="email" id="editEmail" name="email" required>
+
+          <label for="editBirthdate">Established Date:</label>
+          <input type="date" id="editBirthdate" name="birthdate">
+
+          <!-- Note: Consider if you really want to show and edit passwords this way -->
+          <label for="editPassword">Password:</label>
+          <input type="text" id="editPassword" name="password" required>
+
+          <label for="editAdminStatus">Status:</label>
+          <select id="editAdminStatus" name="admin_status">
+              <?php 
+                $option = $client['admin_status'] ? 'Admin' : 'Client';
+                echo 
+                "
+                <option value='$client[admin_status]'>$option</option>
+                ";
+              ?>
+          </select>
+          
+          <label for="editBio">Bio:</label>
+          <textarea id="editBio" name="bio"></textarea>
+
+          <label for="currentImage">Current Image:</label>
+          <img src="" alt="No image available." id="currentImage" style="display: none;">
+
+          <label for="newImage">Update Image:</label>
+          <input type="file" id="newImage" name="newImage">
+
+          <input type="submit" value="Update Client">
+      </form>
+    </div>
+`</div>
+
   <div class='client-big-container'>
     <div class='client-left-container'>
       <div class='client-main-container'>
@@ -47,7 +95,15 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
             ";
             if ($isUser){
               echo "
-              <div class='client-edit-button'> Edit profile </div> 
+              <button class='client-edit-button' onclick='openModal(this)'
+                data-client-id=$client[client_id]
+                data-username='$client[username]'
+                data-email='$client[email]'
+                data-password='$client[password]'
+                data-birthdate='$client[birthdate]' ?? ''
+                data-bio='$client[bio]'
+                data-image='$client[image]'
+              > Edit profile </button> 
               ";
             }
           ?>
