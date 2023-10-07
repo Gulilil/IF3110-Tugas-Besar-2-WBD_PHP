@@ -85,6 +85,16 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
+  public function getAllAnimeWithTrailerLimit($limit, $offset){
+    if ($limit) {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NOT trailer IS NULL ORDER BY release_date DESC LIMIT '.$limit.' OFFSET '.$offset);
+      return $this->db->fetchAllData();
+    } else {
+      return $this->getAllAnimeWithTrailer();
+    }
+
+  }
+
   public function get5LatestAnimeReview(){
     $this->db->query('SELECT a.anime_id, a.title, c.client_id, c.username, l.user_score, l.review 
       FROM anime_list l JOIN '.$this->table.' a ON l.anime_id = a.anime_id JOIN client c ON l.client_id = c.client_id 
@@ -123,6 +133,62 @@ class Anime {
     }
     $this->db->query('SELECT * FROM '.$this->table.' WHERE studio_id = '.$id.$orderQuery);
     return $this->db->fetchAllData();
+  }
+
+  public function getAllAnimeWithFilter($genre, $type, $status, $rating, $studio, $sortColumn, $desc, $limit, $offset)
+  {
+    $first = true;
+    $genreQuery = $genre ? " genre.name = ".$this->db->processDataType($genre) : "";
+    $typeQuery = $type ? " anime.type = ".$this->db->processDataType($type) : "";
+    $statusQuery = $status ? " anime.status = ".$this->db->processDataType($status) : "";
+    $ratingQuery = $rating ? " anime.rating = ".$this->db->processDataType($rating) : "";
+    $studioQuery = $studio ? " studio.studio_id = ".$studio : "";
+    $limitQuery = $limit ? ' LIMIT '.$limit.' OFFSET '.$offset : "";
+
+
+    if ($sortColumn){
+      if ($desc){
+        $sortQuery = " ORDER BY anime.".$sortColumn." DESC ";
+      } else {
+        $sortQuery = " ORDER BY anime.".$sortColumn." ASC ";
+      }
+    } else {
+      $sortQuery = '';
+    }
+
+
+    $fullQuery = 
+    " SELECT anime.anime_id, anime.title, anime.release_date, anime.image, anime.score, anime.type, anime.status
+      FROM anime 
+      JOIN anime_genre ON anime_genre.anime_id = anime.anime_id
+      JOIN genre ON anime_genre.genre_id = genre.genre_id
+      JOIN studio ON studio.studio_id = anime.studio_id ";
+  
+
+    $additionalQuery = array (
+      $genreQuery, $typeQuery, $statusQuery, $ratingQuery, $studioQuery
+    );
+    
+    foreach($additionalQuery as $q){
+      if ($first){
+        if ($q != ""){
+          $fullQuery = $fullQuery." WHERE ".$q;
+          $first = false;
+        }
+      } else {
+        if ($q != ""){
+          $fullQuery = $fullQuery." AND ".$q;
+        }
+      }
+    }
+
+    $fullQuery = $fullQuery.' GROUP BY anime.anime_id '; 
+    $fullQuery = $fullQuery.$sortQuery;
+    $fullQuery = $fullQuery.$limitQuery;
+      
+    $this->db->query($fullQuery);
+    return $this->db->fetchAllData();
+    
   }
 
 

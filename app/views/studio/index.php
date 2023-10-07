@@ -7,6 +7,16 @@ require_once(BASE_DIR.'/models/Anime.php');
 
 $s = new Studio();
 $a = new Anime();
+
+$page = 1;
+$limitPerPage = 12;
+
+$path = $data['path'];
+$temp = explode('=', $path);
+$page = $temp[1];
+
+$count = count($s->getAllStudio());
+$maxPage = ceil($count/$limitPerPage);
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +33,7 @@ $a = new Anime();
 <body>
   <div class="flex-wrap">
     <?php
-      $studios = $s->getAllStudio();
+      $studios = $s->getAllStudioLimit($limitPerPage, ($page-1)*$limitPerPage);
       foreach($studios as $studio){
         $anime_count = count($a->getAllAnimeByStudioID($studio['studio_id']));
         $year = $studio['established_date'] ?? 'No information';
@@ -44,6 +54,26 @@ $a = new Anime();
 
         ";
       }
+    ?>
+  </div>
+
+  <div class='button-container'>
+  <?php
+    $prevPage = $page == 1? 'page=1' : 'page='.$page-1;
+    $nextPage = $page == $maxPage ? 'page='.$maxPage : 'page='.$page+1;
+    $new_url = '/?studio/';
+    $prev_url = $new_url.$prevPage;
+    $next_url = $new_url.$nextPage;
+    echo "
+      <a href='$prev_url'>
+        <img class='page-arrow' id='left-arrow' src='/public/img/left_arrow_icon.png' alt='Left Arrow' />
+      </a>
+      <div class='page-number'> ".$page." / ".$maxPage." </div>
+      <a href='$next_url'>
+        <img class='page-arrow' id='right-arrow' src='/public/img/right_arrow_icon.png' alt='Right Arrow' />
+      </a>
+    ";
+    
     ?>
   </div>
 </body>
