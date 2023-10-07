@@ -32,3 +32,10 @@
   width: 400px;
   margin:auto;
 }
+
+.form-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  /* Provides space between each item */
+  width: 45%px;  /* Adjust based on your preference */
+}

@@ -19,7 +19,7 @@ $isUserOwn = $al->getAnimeListByID($id)['client_id'] == $c->getClientByUsername(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error Page</title>
+    <title>Anime List Page</title>
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/list.css">
     <script src='/public/handler/navbar.js'></script>
@@ -30,6 +30,25 @@ $isUserOwn = $al->getAnimeListByID($id)['client_id'] == $c->getClientByUsername(
   if ($isUserOwn){
     echo "
       <h1> Anime List ID $id </h1>
+      <form class='form-vertical' action='/api/anime_list/edit.php' method='post' enctype='multipart/form-data'>
+          <!-- Hidden input for client_id -->
+          <input type='hidden' id='editClientId' name='client_id'>
+
+          <label for='editUserScore'>User Score</label>
+          <input type='text' id='editUserScore' name='user_score'>
+
+          <label for='editProgress'>Progress:</label>
+          <input type='text' id='editProgress' name='progress'>
+
+          <label for='editWatchStatus'>WatchStatus:</label>
+          <input type='text' id='editWatchStatus' name='watch_status' required>
+
+          <label for='editReview'>Review:</label>
+          <input type='text' id='editReview' name='review'>
+
+
+          <input type='submit' value='Update Client'>
+      </form>
     ";
   } else {
     echo "
