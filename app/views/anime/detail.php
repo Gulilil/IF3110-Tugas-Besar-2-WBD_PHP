@@ -92,16 +92,22 @@ $list = $al->getAnimeListByAnimeClientID($id, $client_id)
 
               <center>
                 <?php
-                  if (!$list){
+                  if (!$al->getAnimeListByAnimeClientID($id, $client_id)){
                     echo"
-                      <button class='add-list-btn'
-                        data-anime-id='$anime[anime_id]'
-                        data-client-id='$client_id'>
-                        Add to My List
-                      </button>
+                    <form action='/api/anime_list/add.php' method='post'>
+                      <input type='hidden' id='anime_id' name='anime_id' value='$id'>
+                      <input type='hidden' id='client_id' name='client_id' value='$client_id'>
+                      <button type='submit' class='add-list-btn' > Add to My List </button>
+                    </form'>
                     ";
                   } else {
-                    echo"<button class='remove-list-btn' data-list-id=$list[list_id]>Remove from My List</button>";
+                    echo"
+                    <form action='/api/anime_list/delete.php' method='post'>
+                      <input type='hidden' id='anime_id' name='anime_id' value='$id'>
+                      <input type='hidden' id='client_id' name='client_id' value='$client_id'>
+                      <button type='submit' class='remove-list-btn' > Remove from My List </button>
+                    </form'>
+                    ";
                   }
                 ?>
               </center>

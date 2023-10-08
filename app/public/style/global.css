@@ -402,3 +402,33 @@ footer {
   transition: ease-in-out;
   transition-duration:0.2s;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 15px 0px;
+  background-color: transparent;
+}
+
+.page-arrow{
+  width: 25px;
+  padding: 10px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.page-arrow:hover{
+  background-color: #dbdbdb;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.page-number{
+  font-weight: bold;
+  font-size: 18px;
+}

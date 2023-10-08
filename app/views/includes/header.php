@@ -17,9 +17,9 @@ $c = new Client();
   <div class='navbar'>
     <ul class='nav-links'>
       <li><a href='/'>Home</a></li>
-      <li><a href='/?anime'>Anime</a></li>
-      <li><a href='/?studio'>Studio</a></li>
-      <li><a href='/?trailer'>Trailer</a></li>
+      <li><a href='/?anime/page=1'>Anime</a></li>
+      <li><a href='/?studio/page=1'>Studio</a></li>
+      <li><a href='/?trailer/page=1'>Trailer</a></li>
     </ul>
 
     <?php
@@ -95,6 +95,3 @@ $c = new Client();
   </div>
 </div>
 
-<!-- <div class='search-bar'>
-   <input type='text' placeholder='Search Anime/Genre/Studi/Trailer'>
-</div> -->

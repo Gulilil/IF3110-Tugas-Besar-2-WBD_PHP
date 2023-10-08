@@ -1,6 +1,6 @@
 .filter-flex {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #dedede;
@@ -8,6 +8,90 @@
   padding-bottom: 20px;
   gap: 5px;
 }
+
+.filter-part {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  gap: 30px;
+  padding: 0px 20px;
+}
+
+.filter-block{
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-select select {
+  display: none;
+}
+
+.filter-select {
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: black 2px solid;
+  min-width: 150px;
+  cursor: pointer;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.filter-select:focus {
+  scale: 115%;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.filter-submit-btn{
+  background-color: white;
+  border: rgb(19, 146, 250) 2px solid;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: rgb(19, 146, 250);
+  cursor: pointer;
+  font-weight: bold;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.filter-submit-btn:hover{
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  background-color: rgb(19, 146, 250);
+  color: white;
+}
+
+.search-part {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.search-bar {
+  width: 350px;
+  color: black;
+  padding: 5px 10px;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.search-bar:focus {
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  scale: 110%;
+  border: black 2px solid;
+}
+
 
 .genre-button {
   min-width: 100px;

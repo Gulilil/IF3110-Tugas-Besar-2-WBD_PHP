@@ -72,4 +72,15 @@ class Studio {
     $this->db->query('SELECT s.studio_id, s.name, s.description, s.established_date, s.image , AVG(score) AS avg FROM '.$this->table.' s JOIN anime a ON a.studio_id = s.studio_id GROUP BY s.studio_id ORDER BY AVG(score) DESC LIMIT 5');
     return $this->db->fetchAllData();
   }
+
+  public function getAllStudioLimit($limit, $offset){
+    if ($limit){
+      $this->db->query('SELECT * FROM '.$this->table.' ORDER BY studio_id LIMIT '.$limit.' OFFSET '.$offset);
+      return $this->db->fetchAllData();
+    } else {
+      return $this->getAllStudio();
+    }
+
+  }
+
 }

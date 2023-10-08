@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "No client ID provided. Cannot proceed with edit.";
         exit();
     }
+
     $data = [
         'client_id' => $_POST['client_id'],
         'username' => $_POST['username'],
@@ -61,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $counter = 1;
         while (file_exists($target_file)) {
             $info = pathinfo($original_name);
+            chown($$info['dirname'], 0755);
             $target_file = $info['dirname'] . '/' . $info['filename'] . '_' . $counter . '.' . $info['extension'];
             $counter++;
         }
