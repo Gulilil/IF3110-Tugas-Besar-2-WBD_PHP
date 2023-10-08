@@ -41,7 +41,7 @@ class Anime_List{
     foreach($data as $key => $value){
       $data[$key] = $this->db->processDataType($value);
     }
-    $this->db->query('UPDATE ' . $this->table . 'SET client_id = '.$data['client_id'].', anime_id = '.$data['anime_id'].', user_score = '.$data['user_score'].', progress = '.$data['progress'].', watch_status = '.$data['watch_status'].', review = '.$data['review'].' WHERE list_id = '. $data['list_id']);
+    $this->db->query('UPDATE ' . $this->table . ' SET client_id = '.$data['client_id'].', anime_id = '.$data['anime_id'].', user_score = '.$data['user_score'].', progress = '.$data['progress'].', watch_status = '.$data['watch_status'].', review = '.$data['review'].' WHERE list_id = '. $data['list_id']);
     $this->db->execute();
     return ($this->db->countRow() != 0);
     // if countRow == 0, query fails

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'username' => $_POST['username'],
         'email' => $_POST['email'],
         'password' => $_POST['password'],
-        'admin_status' => $_POST['admin_status'] == "true" ? true : false
+        'admin_status' => $_POST['admin_status']
     ];
 
     // Check if birthdate is set and not empty
@@ -89,7 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $c->updateClient($data);
 
     if ($result) {
-        header("Location: /?admin");
+        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER']) {
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+        } else {
+            header("Location: /?admin");  // Fallback if there's no referrer
+        }
         exit();
     } else {
         echo "Failed to edit client. Please try again.";

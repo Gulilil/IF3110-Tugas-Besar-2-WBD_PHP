@@ -22,6 +22,7 @@ $reviews = $a->getReviewsByAnimeID($id);
 $genres = $g->getAllGenreIDByAnimeID($id);
 
 $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
+$list = $al->getAnimeListByAnimeClientID($id, $client_id)
 
 ?>
 
@@ -32,6 +33,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/anime.css">
     <script src='/public/handler/navbar.js'></script>
+    <script src='/public/handler/animeList.js'></script>
 </head>
 
 
@@ -90,10 +92,16 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
 
               <center>
                 <?php
-                  if (!$al->getAnimeListByAnimeClientID($id, $client_id)){
-                    echo'<button class="add-list-btn">Add to My List</button>';
+                  if (!$list){
+                    echo"
+                      <button class='add-list-btn'
+                        data-anime-id='$anime[anime_id]'
+                        data-client-id='$client_id'>
+                        Add to My List
+                      </button>
+                    ";
                   } else {
-                    echo'<button class="remove-list-btn">Remove from My List</button>';
+                    echo"<button class='remove-list-btn' data-list-id=$list[list_id]>Remove from My List</button>";
                   }
                 ?>
               </center>
