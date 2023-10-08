@@ -20,6 +20,8 @@ $sortColumn = null;
 $desc = null;
 $page = 1;
 $limitPerPage = 12;
+$searchFilter = null;
+
 
 $filter = explode('&', $path);
 foreach($filter as $f){
@@ -47,8 +49,10 @@ foreach($filter as $f){
     $sortColumn = $sortArr[0];
     $desc = $sortArr[1] == 'desc' ? true : false;
   }
+  else if ($temp[0] == 'search'){
+    $searchFilter = $temp[1];
+  }
 }
-
 
 $animes = $a->getAllAnimeWithFilter(
   $genreFilter, 
@@ -59,7 +63,8 @@ $animes = $a->getAllAnimeWithFilter(
   $sortColumn, 
   $desc,
   $limitPerPage,
-  ($page-1) * $limitPerPage
+  ($page-1) * $limitPerPage,
+  $searchFilter
 );
 
 $totalAnime = 
@@ -72,7 +77,8 @@ count($a->getAllAnimeWithFilter(
   $sortColumn, 
   $desc,
   null,
-  null
+  null,
+  $searchFilter
 ));
 $maxPage = ceil($totalAnime/$limitPerPage);
 
@@ -89,8 +95,8 @@ $maxPage = ceil($totalAnime/$limitPerPage);
 </head>
 
 <body>
-  <div class="filter-flex"> 
-    <form action='/api/anime/filter.php' method='post' class='filter-part'> 
+  <form action='/api/anime/filter.php' method='post' class="filter-flex"> 
+    <div class='filter-part'>
       <div class="filter-block">
         <label class='filter-label' for='filter-genre'>Genre </label>
         <select class='filter-select' id='filter-genre' name='filter-genre' placeholder='Genre'>
@@ -98,8 +104,9 @@ $maxPage = ceil($totalAnime/$limitPerPage);
             $genres = $g->getAllGenre();
             echo "<option value='Any'> Any </option>";
             foreach($genres as $genre){
+              $selected = $genreFilter == $genre['name'] ? 'selected' : "";
               echo "
-                <option value=$genre[name]> $genre[name] </option>
+                <option value=$genre[name] $selected> $genre[name] </option>
               ";
             }
           ?>
@@ -109,32 +116,48 @@ $maxPage = ceil($totalAnime/$limitPerPage);
       <div class="filter-block">
         <label class='filter-label' for='filter-type'>Type </label>
         <select class='filter-select' id='filter-type' name='filter-type' placeholder='Type'>
-          <option value='Any'> Any </option>
-          <option value="TV">TV</option>
-          <option value="MOVIE">Movie</option>
-          <option value="OVA">OVA</option>
+          <?php 
+            $typeArr = array('TV', 'MOVIE', 'OVA');
+            echo "<option value='Any'> Any </option>";
+            foreach ($typeArr as $type) {
+              $selected = $typeFilter == $type ? 'selected' : "";
+              echo "
+                <option value=$type $selected> $type </option>
+              ";
+            }
+          ?>
         </select>
       </div>
 
       <div class="filter-block">
         <label class='filter-label' for='filter-status'>Status </label>
         <select class='filter-select' id='filter-status' name='filter-status' placeholder='Status'>
-          <option value='Any'> Any </option>  
-          <option value="ON-GOING">On Going</option>
-          <option value="COMPLETED">Completed</option>
-          <option value="HIATUS">Hiatus</option>
-          <option value="UPCOMING">Upcoming</option>
+          <?php 
+            $statusArr = array('ON-GOING', 'COMPLETED', 'HIATUS', 'UPCOMING');
+            echo "<option value='Any'> Any </option>";
+            foreach ($statusArr as $status) {
+              $selected = $statusFilter == $status ? 'selected' : "";
+              echo "
+                <option value=$status $selected> $status </option>
+              ";
+            }
+          ?>  
         </select>
       </div>
 
       <div class="filter-block">
         <label class='filter-label' for='filter-rating'>Rating </label>
         <select class='filter-select' id='filter-rating' name='filter-rating' placeholder='Rating'>
-          <option value='Any'> Any </option>  
-          <option value="G">G</option>
-          <option value="PG-13">PG-13</option>
-          <option value="R(17+)">R(17+)</option>
-          <option value="Rx">Rx</option>
+          <?php 
+            $ratingArr = array('G', 'PG-13', 'R(17+)', 'Rx');
+            echo "<option value='Any'> Any </option>";
+            foreach ($ratingArr as $rating) {
+              $selected = $ratingFilter == $rating ? 'selected' : "";
+              echo "
+                <option value=$rating $selected> $rating </option>
+              ";
+            }
+          ?>    
         </select>
       </div>
 
@@ -142,14 +165,15 @@ $maxPage = ceil($totalAnime/$limitPerPage);
         <label class='filter-label' for='filter-studio'>Studio </label>
         <select class='filter-select' id='filter-studio' name='filter-studio' placeholder='Studio'>
           <?php 
-              $studios = $s->getAllStudio();
-              echo "<option value='Any'> Any </option>";
-              // Special for studio, use Studio ID
-              foreach($studios as $studio){
-                echo "
-                  <option value=$studio[studio_id]> $studio[name] </option>
-                ";
-              }
+            $studios = $s->getAllStudio();
+            echo "<option value='Any'> Any </option>";
+            // Special for studio, use Studio ID
+            foreach($studios as $studio){
+              $selected = $studioFilter == $studio['studio_id'] ? 'selected' : "";
+              echo "
+                <option value=$studio[studio_id] $selected> $studio[name] </option>
+              ";
+            }
           ?>
         </select>
       </div>
@@ -157,24 +181,37 @@ $maxPage = ceil($totalAnime/$limitPerPage);
       <div class="filter-block">
         <label class='filter-label' for='filter-sort'>Sort </label>
         <select class='filter-select' id='filter-sort' name='filter-sort' placeholder='Sort'>
-          <option value='Any'> None </option>  
-          <option value="title.asc">Title Ascending</option>
-          <option value="title.desc">Title Descending</option>
-          <option value="score.asc">Score Ascending</option>
-          <option value="score.desc">Score Descending</option>
-          <option value="release_date.asc">Release Date Ascending</option>
-          <option value="release_date.desc">Release Date Descending</option>
+          <?php 
+            $sortListArr = array (
+              "title.asc" => 'Title Ascending',
+              "title.desc" => 'Title Descending',
+              "score.asc" => 'Score Ascending',
+              "score.desc" => 'Score Descending',
+              "release_date.asc" => 'Release Date Ascending',
+              "release_date.desc" => 'Release Date Descending'
+            );
+            echo "<option value='Any'> Any </option>";
+            foreach ($sortListArr as $key => $value) {
+              $selected = $sortArr[0].'.'.$sortArr[1] == $key ? 'selected' : '';
+              echo "
+                <option value=$key $selected> $value </option>
+              ";
+            }
+
+          ?>
         </select>
       </div>
-      
-      <input class='filter-submit-btn' type='submit' value='Submit Filter'>
-    </form>
+    </div>
+
     <div class='search-part'> 
       <div class='search-bar'>
-        <input class='search-bar' id='search-bar' type='text' onkeyup='handleSearch()' placeholder='Search...'>
+        <input class='search-bar' id='filter-search' name='filter-search' type='text' placeholder='Search...'>
       </div>
+
+      <input class='filter-submit-btn' type='submit' value='Submit Filter'>
     </div>
-  </div>
+    
+  </form>
 
   <div class="flex-wrap">
     <?php

@@ -135,7 +135,7 @@ class Anime {
     return $this->db->fetchAllData();
   }
 
-  public function getAllAnimeWithFilter($genre, $type, $status, $rating, $studio, $sortColumn, $desc, $limit, $offset)
+  public function getAllAnimeWithFilter($genre, $type, $status, $rating, $studio, $sortColumn, $desc, $limit, $offset, $search)
   {
     $first = true;
     $genreQuery = $genre ? " genre.name = ".$this->db->processDataType($genre) : "";
@@ -144,7 +144,7 @@ class Anime {
     $ratingQuery = $rating ? " anime.rating = ".$this->db->processDataType($rating) : "";
     $studioQuery = $studio ? " studio.studio_id = ".$studio : "";
     $limitQuery = $limit ? ' LIMIT '.$limit.' OFFSET '.$offset : "";
-
+    $searchQuery =  $search ? " LOWER(anime.title) LIKE '%".$search."%' OR LOWER(studio.name) LIKE '%".$search."%' OR LOWER(genre.name) LIKE '%".$search."%' " : "";
 
     if ($sortColumn){
       if ($desc){
@@ -166,7 +166,7 @@ class Anime {
   
 
     $additionalQuery = array (
-      $genreQuery, $typeQuery, $statusQuery, $ratingQuery, $studioQuery
+      $genreQuery, $typeQuery, $statusQuery, $ratingQuery, $studioQuery, $searchQuery
     );
     
     foreach($additionalQuery as $q){
