@@ -135,9 +135,9 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
     <div class='client-right-container'>
       <div class='client-bio-container'>
         <?php
-        $bio = $client['bio'] ?? "No bio details";
+        $bio = (!$client['bio'] || $client['bio'] == "") ? "No bio details" : $client['bio'];
         echo "
-        <div style='margin:20px 20px'>  $client[bio] </div>
+        <div style='margin:20px 20px'> $bio</div>
         ";
         ?>
       </div>

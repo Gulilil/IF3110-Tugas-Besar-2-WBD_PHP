@@ -23,15 +23,17 @@ require_once(dirname(__DIR__,2).'/define.php');
           <form action="/api/auth/signup.php" method="post" class='form'>
             <div class="form-group">
               <label  class='form-label' for="email">E-mail</label>
-              <input
-                class="form-input"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email."
-                onkeyup="checkEmail()"
+                <input
+                class='form-input'
+                type='email'
+                id='email'
+                name='email'
+                placeholder='Enter your email.'
+                onkeyup='checkEmail()'
                 required
               />
+
+
               <div id="email-errmsg" class='form-err-message'></div>
             </div>
 
