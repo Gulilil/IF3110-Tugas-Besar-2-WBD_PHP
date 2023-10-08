@@ -22,6 +22,7 @@ $reviews = $a->getReviewsByAnimeID($id);
 $genres = $g->getAllGenreIDByAnimeID($id);
 
 $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
+$list = $al->getAnimeListByAnimeClientID($id, $client_id)
 
 ?>
 
@@ -32,6 +33,7 @@ $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
     <link rel="stylesheet" href="../../public/style/global.css">
     <link rel="stylesheet" href="../../public/style/anime.css">
     <script src='/public/handler/navbar.js'></script>
+    <script src='/public/handler/animeList.js'></script>
 </head>
 
 

@@ -19,4 +19,5 @@ $animeListArr = array (
 $al->insertAnimeList($animeListArr);
 header('Location: /?anime/detail/'.$aid);
 
+
 ?>
