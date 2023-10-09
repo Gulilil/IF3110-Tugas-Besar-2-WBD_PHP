@@ -34,7 +34,7 @@ git clone https://gitlab.informatika.org/if3110-2023-01-08/if-3110-tugas-besar-1
 ## **Execution Guide**
 1. Jalankan perintah `docker-compose up` pada terminal _directory_ aplikasi web.
 ```
-docker-compose up
+docker-compose up --build
 ```
 2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8080`.
 3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
