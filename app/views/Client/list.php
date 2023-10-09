@@ -50,10 +50,10 @@ $isUserOwn = $list['client_id'] == $c->getClientByUsername($_SESSION['username']
           <input type='hidden' id='editAnimeId' name='anime_id' value=$anime[anime_id]>
 
           <label for='editUserScore'>User Score</label>
-          <input type='number' id='editUserScore' name='user_score' min='1' max='10' value=$list[user_score]>
+          <input type='number' id='editUserScore' name='user_score' min='1' max='10' value='$list[user_score]' required>
 
           <label for='editProgress'>Progress:</label>
-          <input type='number' id='editProgress' name='progress' min='1' max=$anime[episodes] value=$list[progress]>
+          <input type='number' id='editProgress' name='progress' min='1' max=$anime[episodes] value='$list[progress]' required>
 
           <label for='editWatchStatus'>Watch Status:</label>
           <select id='editWatchStatus' name='watch_status'>

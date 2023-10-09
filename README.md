@@ -12,12 +12,35 @@
 * [Workload Distribution](#workload-distribution)
 
 ## **Program Description**
+**InfoAnimeMasse**, adalah aplikasi berbasis web yang memungkinkan pengguna untuk melacak dan merating serial anime yang mereka tonton. Pengguna dapat mencari serial anime, menambahkannya ke dalam daftar yang mereka miliki, memberi rating, serta memberikan ulasan.
 
-## **Required Program**
+## **Program Requirement**
+1. HTML
+2. CSS
+3. JavaScript
+4. PostgreSQL
+5. PHP
+6. Docker
 
 ## **Installation Guide**
+1. Clone _repository_ ini dengan menggunakan perintah: 
+```
+git clone https://gitlab.informatika.org/if3110-2023-01-08/if-3110-tugas-besar-1-wbd.git
+```
+2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
+3. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan (contoh file tersebut dapat dilihat pada `.env.example`).
+
 
 ## **Execution Guide**
+1. Jalankan perintah `docker-compose up` pada terminal _directory_ aplikasi web.
+```
+docker-compose up
+```
+2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8080`.
+3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
+```
+docker-compose down
+```
 
 ## **Implementation Screenshots**
 
