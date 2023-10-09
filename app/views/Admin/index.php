@@ -235,7 +235,7 @@ $s = new Studio();
                             <input type="hidden" id="editClientId" name="client_id">
 
                             <label for="editUsername">Username:</label>
-                            <input type="text" id="editUsername" name="username" required>
+                            <input type="text" id="editUsername" name="username" disabled>
 
                             <label for="editEmail">Email:</label>
                             <input type="email" id="editEmail" name="email" required>

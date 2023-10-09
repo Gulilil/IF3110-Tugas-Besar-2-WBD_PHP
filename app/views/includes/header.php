@@ -11,7 +11,7 @@ $c = new Client();
   <div class='upper-navbar'>
     <a href='/'>
       <div class='logo'> InfoAnimeMasse </div>
-    </a>    
+    </a>   
   </div>
 
   <div class='navbar'>
@@ -23,7 +23,7 @@ $c = new Client();
     </ul>
 
     <?php
-    if (!isset($_SESSION['admin_status'])){
+    if (!isset($_SESSION['username'])){
       echo 
       "
       <div class='navbar-buttons'>

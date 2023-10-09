@@ -7,10 +7,16 @@ $al = new Anime_List();
 
 $aid = $_POST['anime_id'];
 $cid = $_POST['client_id'];
+$page = $_POST['source_page'];
 
 $list_id = $al->getAnimeListByAnimeClientID($aid, $cid)['list_id'];
 
 $al->deleteAnimeList($list_id);
-header('Location: /?anime/detail/'.$aid);
+
+if ($page == 'anime'){
+  header('Location: /?anime/detail/'.$aid);
+} else {
+  header('Location: /?client/detail/'.$cid);
+}
 
 ?>

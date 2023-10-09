@@ -22,7 +22,7 @@ $reviews = $a->getReviewsByAnimeID($id);
 $genres = $g->getAllGenreIDByAnimeID($id);
 
 $client_id = $c->getClientByUsername($_SESSION['username'])['client_id'];
-$list = $al->getAnimeListByAnimeClientID($id, $client_id)
+$list = $al->getAnimeListByAnimeClientID($id, $client_id);
 
 ?>
 
@@ -98,19 +98,22 @@ $list = $al->getAnimeListByAnimeClientID($id, $client_id)
                       <input type='hidden' id='anime_id' name='anime_id' value='$id'>
                       <input type='hidden' id='client_id' name='client_id' value='$client_id'>
                       <button type='submit' class='add-list-btn' > Add to My List </button>
-                    </form'>
+                    </form>
                     ";
                   } else {
                     echo"
                     <form action='/api/anime_list/delete.php' method='post'>
                       <input type='hidden' id='anime_id' name='anime_id' value='$id'>
                       <input type='hidden' id='client_id' name='client_id' value='$client_id'>
-                      <button type='submit' class='remove-list-btn' > Remove from My List </button>
-                    </form'>
+                      <input type='hidden' id='source_page' name='source_page' value='anime'>
+                      <button type='submit' class='remove-list-btn'> Remove from My List </button>
+                    </form>
                     ";
                   }
                 ?>
               </center>
+
+              
 
             </div>
             
@@ -118,7 +121,10 @@ $list = $al->getAnimeListByAnimeClientID($id, $client_id)
                 <h2 style='margin-bottom:20px;'>Trailer</h2>
                 <?php
                   if ($anime['trailer']){
-                    echo "<iframe class='anime-trailer-iframe' src='$anime[trailer]' autoplay='false' allowfullscreen></iframe>";
+                    echo "
+                    <video class='anime-trailer-iframe' controls>
+                      <source src='$anime[trailer]' >
+                    </video>";
                   } else {
                     echo " <div class='anime-trailer-box'> No trailer yet </div> ";
                   }

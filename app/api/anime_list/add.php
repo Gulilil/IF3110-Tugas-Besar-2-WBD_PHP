@@ -7,6 +7,7 @@ $al = new Anime_List();
 $aid = $_POST['anime_id'];
 $cid = $_POST['client_id'];
 
+
 $animeListArr = array (
   'client_id' => $cid,
   'anime_id' => $aid,
@@ -18,6 +19,5 @@ $animeListArr = array (
 
 $al->insertAnimeList($animeListArr);
 header('Location: /?anime/detail/'.$aid);
-
 
 ?>

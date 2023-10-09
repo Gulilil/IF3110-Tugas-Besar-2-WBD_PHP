@@ -30,6 +30,9 @@ $maxPage = ceil($count/$limitPerPage);
   <div class="trailer-container" id='trailer-div' onclick='hideTrailer()'>
     <div class='trailer-box'> 
       <div class='trailer-title' id='trailer-title'> HEHEHE </div> 
+      <!-- <video class='anime-trailer-iframe' controls>
+        <source id='anime-trailer-iframe' src=''>
+      </video>; -->
       <iframe class='anime-trailer-iframe' id='anime-trailer-iframe' src='' autoplay='false' allowfullscreen></iframe>
     </div>
   </div>

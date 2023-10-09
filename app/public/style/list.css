@@ -1,41 +1,109 @@
-.back-button{
-  text-align: center;
-  background-color: white;
-  width: 100px;
-  color: #ff4500;
-  border: #ff4500 2px solid;
-  border-radius: 5px;
-  padding:5px 10px;
-  font-weight: bold;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
-  margin: 30px 0px;
-}
-
-.back-button:hover {
-  transition: ease-in-out;
-  transition-duration: 0.2s;
-  width: 150px;
-  background-color: #ff4500;
-  color: white;
-}
-
 .not-own {
-  display:flex; 
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  gap:10px;
+  align-items: center;
+  gap: 10px;
   padding: 20px;
   border-radius: 10px;
   background-color: white;
   width: 400px;
-  margin:auto;
+  margin: auto;
 }
 
 .form-vertical {
   display: flex;
   flex-direction: column;
-  gap: 10px;  /* Provides space between each item */
-  width: 45%px;  /* Adjust based on your preference */
+  gap: 10px; /* Provides space between each item */
+  width: 80%;
+}
+
+.container {
+  display: flex;
+  width: 600px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: white;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+}
+
+.back-button {
+  padding: 5px 15px;
+  background-color: white;
+  color: #343434;
+  border: #343434 2px solid;
+  border-radius: 5px;
+  cursor:pointer;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  font-weight: bold;
+}
+
+.back-button:hover{
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  scale: 110%;
+  background-color: #343434;
+  color: white;
+}
+
+.anime-button {
+  padding: 5px 15px;
+  background-color: white;
+  color: #4469e4;
+  border: #4469e4 2px solid;
+  border-radius: 5px;
+  cursor:pointer;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  font-weight: bold;
+}
+
+.anime-button:hover{
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  scale: 110%;
+  background-color: #4469e4;
+  color: white;
+}
+
+.delete-button {
+  padding: 5px 15px;
+  background-color: white;
+  color: #df1c1c;
+  border: #df1c1c 2px solid;
+  border-radius: 5px;
+  cursor:pointer;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  font-weight: bold;
+}
+
+.delete-button:hover{
+  transition: ease-in-out;
+  transition-duration: 0.2s;
+  scale: 110%;
+  background-color: #df1c1c;
+  color: white;
 }

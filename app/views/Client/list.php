@@ -14,6 +14,8 @@ $id = $data['id'];
 $list = $al->getAnimeListByID($data['id']);
 $client = $c->getClientByID($list['client_id']);
 $anime = $a->getAnimeByID($list['anime_id']);
+$cid = $client['client_id'];
+$aid = $anime['anime_id'];
 
 $isUserOwn = $list['client_id'] == $c->getClientByUsername($_SESSION['username'])['client_id'];
 
@@ -36,6 +38,7 @@ $isUserOwn = $list['client_id'] == $c->getClientByUsername($_SESSION['username']
   <?php
   if ($isUserOwn){
     echo "
+    <div class='container'> 
       <h1> Anime List ID $id </h1>
       <h2>
         Client: $client[username] <br>
@@ -66,6 +69,21 @@ $isUserOwn = $list['client_id'] == $c->getClientByUsername($_SESSION['username']
 
           <input type='submit' value='Update Client'>
       </form>
+      <div class='button-container'>
+        <a href='/?client/detail/$cid' >
+          <button class='back-button' > Go Back </button>
+        </a>
+        <a href='/?anime/detail/$aid' >
+          <button class='anime-button'> Anime Page </button>
+        </a>
+        <form action='/api/anime_list/delete.php' method='post' >
+          <input type='hidden' id='anime_id' name='anime_id' value='$aid'>
+          <input type='hidden' id='client_id' name='client_id' value='$cid'>
+          <input type='hidden' id='source_page' name='source_page' value='profile'>
+          <button type='submit' class='delete-button'> Delete List </button>
+        </form>
+      </div>
+    </div>
     ";
   } else {
     echo "
@@ -86,3 +104,4 @@ $isUserOwn = $list['client_id'] == $c->getClientByUsername($_SESSION['username']
 <?php
 require_once(BASE_DIR.'/views/includes/footer.php');
 ?>
+
