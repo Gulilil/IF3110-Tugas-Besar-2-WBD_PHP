@@ -15,12 +15,12 @@ $c = new Client();
   </div>
 
   <div class='navbar'>
-    <ul class='nav-links'>
-      <li><a href='/'>Home</a></li>
-      <li><a href='/?anime/page=1'>Anime</a></li>
-      <li><a href='/?studio/page=1'>Studio</a></li>
-      <li><a href='/?trailer/page=1'>Trailer</a></li>
-    </ul>
+    <div class='nav-links'>
+      <div><a href='/'>Home</a></div>
+      <div><a href='/?anime/page=1'>Anime</a></div>
+      <div><a href='/?studio/page=1'>Studio</a></div>
+      <div><a href='/?trailer/page=1'>Trailer</a></div>
+    </div>
 
     <?php
     if (!isset($_SESSION['username'])){

@@ -78,8 +78,130 @@
   gap: 20px;
 }
 
+@media screen and (min-width:500px){
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    max-width: 320px;
+  }
+  
+  .box-preview {
+    width: 320px;
+    aspect-ratio: 3/4;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 3px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .box-preview:hover {
+    scale: 110%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    box-shadow: 2px 5px 5px #aaaaaa;
+  }
+  
+  .image-preview {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+    gap: 5px;
+  }
+
+  .preview-title {
+    font-size: 24px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+}
+
+@media screen and (max-width:500px) {
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    max-width: 150px;
+  }
+  
+  .box-preview {
+    width: 150px;
+    aspect-ratio: 3/4;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 3px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .box-preview:hover {
+    scale: 110%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    box-shadow: 2px 5px 5px #aaaaaa;
+  }
+  
+  .image-preview {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+    gap: 5px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .preview-title {
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+}
+
 .search-bar {
   width: 350px;
+  height: 50px;
   color: black;
   padding: 5px 10px;
   transition: ease-in-out;
@@ -92,6 +214,7 @@
   scale: 110%;
   border: black 2px solid;
 }
+
 
 
 .genre-button {
@@ -116,61 +239,6 @@
   gap: 20px 20px;
 }
 
-.box-preview {
-  width: 320px;
-  aspect-ratio: 3/4;
-  margin-top: 10px;
-  overflow: hidden;
-  border-radius: 3px;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
-  cursor: pointer;
-  display: flex;
-}
-
-.box-preview:hover {
-  scale: 110%;
-  transition: ease-in-out;
-  transition-duration: 0.2s;
-  box-shadow: 2px 5px 5px #aaaaaa;
-}
-
-.image-preview {
-  width: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  max-width: 320px;
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: black;
-  font-weight: bold;
-  gap: 5px;
-}
-
-.preview-title {
-  font-size: 24px;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 90%;
-  margin-bottom: 5px;
-  color: black;
-}
 
 .preview-title:hover {
   color: #ff4500;

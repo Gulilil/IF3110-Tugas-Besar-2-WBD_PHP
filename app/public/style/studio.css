@@ -5,34 +5,67 @@
   justify-content: center;
   align-items: center;
   gap:20px 20px;
+}
+
+@media screen and (min-width:500px){
+  
+  .box-preview {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+  
+  .image-preview {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    gap: 20px 20px;
+    padding: 10px;
+    border-radius: 10px;
+  }
 
 }
 
-.box-preview {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
+
+@media screen and (max-width:500px){
+
+  .box-preview {
+    width: 75px;
+    height: 75px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+  }
+  
+  .image-preview {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    gap: 20px 20px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 90%;
+  }
 }
 
-.image-preview {
-  width: 100%;
-  max-width: 150px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-  gap: 20px 20px;
-  padding: 10px;
-  border-radius: 10px;
-}
 
 .container:hover {
   background: rgba(255, 255, 255, 0.8);
