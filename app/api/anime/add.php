@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'status' => $_POST['status'],
         'rating' => $_POST['rating'],
         'studio_id' => $_POST['studio_id'],
-        'score' => null
+        'score' => 0
     ];
 
     // Check if release_date is set and not empty
