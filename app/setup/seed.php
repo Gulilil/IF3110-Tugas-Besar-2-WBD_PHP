@@ -9,8 +9,10 @@ require_once(BASE_DIR.'/models/Anime_List.php');
 require_once(BASE_DIR.'/models/Anime_Genre.php');
 
 $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
-$anime_amount = 60;
-$anime_list_amount = 30;
+$anime_amount = 10000;
+$anime_list_amount = 5000;
+$studio_amount = 10;
+$user_amount = 20;
 
 function getRandomWord($len = 10)
 {
@@ -22,8 +24,9 @@ function getRandomWord($len = 10)
 
 function seedClientData(){
   global $lorem_ipsum;
+  global $user_amount;
   $client = new Client();
-  for ($i = 1; $i <= 10; $i++){
+  for ($i = 1; $i <= $user_amount; $i++){
     $username = 'client'.$i;
     $email = getRandomWord().'@gmail.com';
     $password = 'password';
@@ -61,6 +64,7 @@ function seedClientData(){
 
 function seedStudioData() {
   global $lorem_ipsum;
+  global $studio_amount;
   $studio = new Studio();
   $studio1 = array (
     'name' => 'B-1 Pictures',
@@ -98,7 +102,7 @@ function seedStudioData() {
   );
   $studio->insertStudio($studio5);
 
-  for($i = 6; $i <= 15; $i++){
+  for($i = 6; $i <= 15+$studio_amount; $i++){
     $other_studio = array (
       'name' => 'StudioAnime'.$i,
       'description' => $lorem_ipsum,
@@ -120,6 +124,7 @@ function seedGenreData(){
 function seedAnimeData(){
   global $lorem_ipsum;
   global $anime_amount;
+  global $studio_amount;
   $anime = new Anime();
   $typeArr = array ('TV','MOVIE', 'OVA');
   $statusArr = array ('ON-GOING', 'COMPLETED', 'HIATUS', 'UPCOMING');
@@ -145,7 +150,7 @@ function seedAnimeData(){
     $score = 0;
     $image = $imageArr[rand(0,30)];
     $trailer = $trailerArr[rand(0,3)];
-    $studio_id = rand(1,10);
+    $studio_id = rand(1,10+$studio_amount);
 
     $animeTuple = array(
       'title' => $title,
@@ -168,11 +173,12 @@ function seedAnimeListData(){
   global $lorem_ipsum;
   global $anime_list_amount;
   global $anime_amount;
+  global $user_amount;
   $anime_list = new Anime_List();
   $watch_statusArr = array ('WATCHING', 'COMPLETED', 'ON-HOLD', 'DROPPED', 'PLAN TO WATCH');
 
   for($i = 0; $i < $anime_list_amount; $i++){
-    $client_id = rand(1,10);
+    $client_id = rand(1,$user_amount);
     $anime_id = rand(1,$anime_amount);
     $user_score = rand(1,10);
     $watch_status = $watch_statusArr[rand(0,4)];
