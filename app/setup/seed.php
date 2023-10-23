@@ -9,9 +9,9 @@ require_once(BASE_DIR.'/models/Anime_List.php');
 require_once(BASE_DIR.'/models/Anime_Genre.php');
 
 $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
-$anime_amount = 10000;
+$anime_amount = 50000;
 $anime_list_amount = 5000;
-$studio_amount = 10;
+$studio_amount = 10000;
 $user_amount = 20;
 
 function getRandomWord($len = 10)
