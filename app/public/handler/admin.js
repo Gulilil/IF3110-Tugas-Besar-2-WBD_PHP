@@ -61,14 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-let activeMenuItem = 'client';
 
-// Function to set the active menu item
-function setActiveMenuItem(menuItem) {
-    activeMenuItem = menuItem;
-}
 
-function openAddModal() {
+function openAddModal(activeMenuItem) {
     if (activeMenuItem === 'client') {
         document.getElementById('addClientModal').style.display = 'block';
     } else if (activeMenuItem === 'anime') {
@@ -78,7 +73,7 @@ function openAddModal() {
     }
 }
 
-function closeAddModal() {
+function closeAddModal(activeMenuItem) {
     if (activeMenuItem === 'client') {
         document.getElementById('addClientModal').style.display = 'none';
     } else if (activeMenuItem === 'anime') {
@@ -88,7 +83,7 @@ function closeAddModal() {
     }
 }
 
-function openUpdateModal() {
+function openUpdateModal(activeMenuItem) {
     if (activeMenuItem === 'client') {
         document.getElementById('updateClientModal').style.display = 'block';
     } else if (activeMenuItem === 'anime') {
@@ -98,7 +93,7 @@ function openUpdateModal() {
     }
 }
 
-function closeUpdateModal() {
+function closeUpdateModal(activeMenuItem) {
     if (activeMenuItem === 'client') {
         document.getElementById('updateClientModal').style.display = 'none';
     } else if (activeMenuItem === 'anime') {
@@ -200,6 +195,7 @@ function openEditAnimeModal(button) {
     const release_date = button.getAttribute('data-release_date');
     const episodes = button.getAttribute('data-episodes');
     const rating = button.getAttribute('data-rating');
+    const score = button.getAttribute('data-score');
     const imagePath = button.getAttribute('data-image');
     const trailerPath = button.getAttribute('data-trailer');
     const synopsis = button.getAttribute('data-synopsis');
@@ -210,6 +206,7 @@ function openEditAnimeModal(button) {
     document.getElementById('editTitle').value = title;
     document.getElementById('editType').value = type;
     document.getElementById('editStatus').value = status;
+    document.getElementById('editScore').value = score;
     document.getElementById('editRelease_date').value = release_date;
     document.getElementById('editEpisodes').value = episodes;
     document.getElementById('editRating').value = rating;

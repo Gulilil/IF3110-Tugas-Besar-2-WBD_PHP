@@ -5,12 +5,14 @@ require_once(BASE_DIR.'/models/Studio.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
+    $page = floor($id/20)+1;
+
     $s = new Studio(); 
 
     if ($s->deleteStudio($id)) {
-        header('Location: /?admin?message=Deleted successfully');
+        header('Location: /?admin/studio/page='.$page.'?message=Deleted successfully');
     } else {
-        header('Location: /?admin?error=Failed to delete');
+        header('Location: /?admin/studio/page='.$page.'?error=Failed to delete');
     }
 }
 ?>

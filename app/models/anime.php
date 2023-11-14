@@ -188,8 +188,10 @@ class Anime {
       
     $this->db->query($fullQuery);
     return $this->db->fetchAllData();
-    
   }
 
-
+  public function getAllAnimeLimitOffset($limit, $offset){
+    $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY anime_id LIMIT '.$limit." OFFSET ".$offset);
+    return $this->db->fetchAllData();
+  }
 }

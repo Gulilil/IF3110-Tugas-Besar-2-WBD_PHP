@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'status' => $_POST['status'],
         'rating' => $_POST['rating'],
         'studio_id' => $_POST['studio_id'],
-        'score' => null
-    ];
+        'score' => $_POST['score'],
+     ];
 
     // Check if release_date is set and not empty
     if (isset($_POST['release_date']) && !empty($_POST['release_date'])) {
@@ -137,9 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Call the updateclient method
     $result = $a->updateAnime($data);
+    $page = floor($animeId/20)+1;
 
     if ($result) {
-        header("Location: /?admin");
+        header("Location: /?admin/anime/page=".$page);
         exit();
     } else {
         echo "Failed to edit anime. Please try again.";

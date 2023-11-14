@@ -75,21 +75,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($c->getClientByUsername($data['username'])) {
         $_SESSION['error_message'] = "Username already exists!";
-        header("Location: /?admin");
+        header("Location: /?admin/client/page=1");
         exit();
     } elseif ($c->getClientByEmail($data['email'])) {
         $_SESSION['error_message'] = "Email already exists!";
-        header("Location: /?admin");
+        header("Location: /?admin/client/page=1");
         exit();
     } else {
         $result = $c->insertClient($data);
 
         if ($result) {
-            header("Location: /?admin");
+            header("Location: /?admin/client/page=1");
             exit();
         } else {
             $_SESSION['error_message'] = "Failed to add client";
-            header("Location: /?admin");
+            header("Location: /?admin/client/page=1");
             exit();
         }
     }

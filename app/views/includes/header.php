@@ -50,7 +50,7 @@ $c = new Client();
         echo 
         "
         <div class='navbar-buttons'>
-          <a href='/?admin' >
+          <a href='/?admin/client/page=1' >
             <button class='navbar-icon-btn'>
               <img  src='../../public/img/admin_icon.png' alt='Admin Button' width='30' height='30'/>
               <div class='navbar-icon-desc'> Admin </div>

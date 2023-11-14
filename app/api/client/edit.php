@@ -89,12 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Call the updateclient method
     $result = $c->updateClient($data);
+    $page = floor($clientId/20)+1;
 
     if ($result) {
         if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER']) {
             header("Location: " . $_SERVER['HTTP_REFERER']);
         } else {
-            header("Location: /?admin");  // Fallback if there's no referrer
+            header("Location: /?admin/client/page=".$page);  // Fallback if there's no referrer
         }
         exit();
     } else {

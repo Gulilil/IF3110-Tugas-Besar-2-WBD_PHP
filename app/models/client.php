@@ -63,4 +63,9 @@ class Client {
         // if countRow == 0, query fails
     }
 
+    public function getAllClientLimitOffset($limit, $offset){
+      $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY client_id LIMIT '.$limit." OFFSET ".$offset);
+      return $this->db->fetchAllData();
+    }
+
 }

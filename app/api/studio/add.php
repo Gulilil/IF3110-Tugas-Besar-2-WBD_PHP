@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $s->insertStudio($data);
 
     if ($result) {
-        header("Location: /?admin");
+        header("Location: /?admin/studio/page=1");
         exit();
     } else {
         echo "Failed to add studio. Please try again.";

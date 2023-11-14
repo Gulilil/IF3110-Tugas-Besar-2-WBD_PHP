@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $a->insertAnime($data);
 
     if ($result) {
-        header("Location: /?admin");
+        header("Location: /?admin/anime/page=1");
         exit();
     } else {
         echo "Failed to add anime. Please try again.";

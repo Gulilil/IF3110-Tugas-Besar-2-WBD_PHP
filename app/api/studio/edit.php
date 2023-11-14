@@ -84,9 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Call the updateStudio method
     $result = $s->updateStudio($data);
+    $page = floor($studioId/20)+1;
 
     if ($result) {
-        header("Location: /?admin");
+        header("Location: /?admin/studio/page=".$page);
         exit();
     } else {
         echo "Failed to edit studio. Please try again.";

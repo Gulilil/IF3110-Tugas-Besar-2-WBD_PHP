@@ -37,8 +37,8 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
           <!-- Hidden input for client_id -->
           <input type="hidden" id="editClientId" name="client_id">
 
-          <label for="editUsername">Username:</label>
-          <input type="text" id="editUsername" name="username" disabled>
+          <label for="editUsername" hidden>Username:</label>
+          <input type="text" id="editUsername" name="username" hidden>
 
           <label for="editEmail">Email:</label>
           <input type="email" id="editEmail" name="email" required>
@@ -148,11 +148,12 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
         if ($alc){
           foreach($alc as $anime){
             $user_score = $anime['user_score'] ? $anime['user_score'].' ★' : 'None';
+            $image = $anime['image'] ?? '../../public/img/placeholder.jpg';
             echo "
             <a href='/?client/list/$anime[list_id]'>
               <div class='client-anime-list-card'> 
                 <div class='client-anime-image-box'> 
-                  <img class='client-anime-image' src='$anime[image]' alt='Anime image'/>
+                  <img class='client-anime-image' src='$image' alt='Anime image'/>
                 </div> 
                 <div style='text-align:center'> $anime[title] </div>
                 <div style='text-align:center'> User Score: $user_score </div>
