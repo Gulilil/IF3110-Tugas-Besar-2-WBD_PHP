@@ -29,6 +29,7 @@ git clone https://gitlab.informatika.org/if3110-2023-01-08/if-3110-tugas-besar-1
 ```
 2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
 3. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan (contoh file tersebut dapat dilihat pada `.env.example`).
+4. Lalu copy file `.env` ke folder \app\setup
 
 
 ## **Execution Guide**
@@ -36,7 +37,7 @@ git clone https://gitlab.informatika.org/if3110-2023-01-08/if-3110-tugas-besar-1
 ```
 docker-compose up --build
 ```
-2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8080`.
+2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8000`.
 3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
 ```
 docker-compose down
