@@ -240,35 +240,7 @@ $maxPage = ceil($totalAnime/$limitPerPage);
       }
     ?>
   </div>
-  <div class='button-container'>
-  <?php
-    array_pop($filter);
-    $prevPage = $page == 1? 'page=1' : 'page='.$page-1;
-    $nextPage = $page == $maxPage ? 'page='.$maxPage : 'page='.$page+1;
-    $new_url = '/?anime/';
-    $first = true;
-    foreach($filter as $f){
-      if ($first){
-        $first = false;
-        $new_url = $new_url.$f;
-      } else {
-        $new_url = $new_url.'&'.$f;
-      }
-    }
-    $prev_url = $first ? $new_url.$prevPage : $new_url.'&'.$prevPage;
-    $next_url = $first ? $new_url.$nextPage : $new_url.'&'.$nextPage;
-    echo "
-      <a href='$prev_url'>
-        <img class='page-arrow' id='left-arrow' src='/public/img/left_arrow_icon.png' alt='Left Arrow' />
-      </a>
-      <div class='page-number'> ".$page." / ".$maxPage." </div>
-      <a href='$next_url'>
-        <img class='page-arrow' id='right-arrow' src='/public/img/right_arrow_icon.png' alt='Right Arrow' />
-      </a>
-    ";
-    
-    ?>
-  </div>
+
   
 </body>
 

@@ -9,6 +9,12 @@ require_once(BASE_DIR.'/models/Studio.php');
 $c = new Client();
 $a = new Anime();
 $s = new Studio();
+$path = $data['path'];
+$arr = explode('/', $path)[0];
+$page= explode('=', $arr)[1];
+$limitPerPage = 20;
+$totalAnime= count ($a->getAllAnime());
+$maxPage = ceil($totalAnime/$limitPerPage);
 
 ?>
 
@@ -133,7 +139,7 @@ $s = new Studio();
                         </thead>
                         <tbody>
                             <?php
-                            $animes = $a->getAllAnime();
+                            $animes = $a->getAllAnimeLimitOffset(20, ($page-1)*20);
                             foreach($animes as $anime){
                                 $date = $anime['release_date'] ?? '-';
                                 $episodes = $anime['episodes'] ?? '';
@@ -263,6 +269,27 @@ $s = new Studio();
             </div>
         </div>
     </div>
+
+    <div class='button-container'>
+  <?php
+    $prevPage = $page == 1? 'page=1' : 'page='.$page-1;
+    $nextPage = $page == $maxPage ? 'page='.$maxPage : 'page='.$page+1;
+    $new_url = '/?admin/anime/';
+
+    $prev_url = $new_url.$prevPage;
+    $next_url = $new_url.$nextPage;
+    echo "
+      <a href='$prev_url'>
+        <img class='page-arrow' id='left-arrow' src='/public/img/left_arrow_icon.png' alt='Left Arrow' />
+      </a>
+      <div class='page-number'> ".$page." / ".$maxPage." </div>
+      <a href='$next_url'>
+        <img class='page-arrow' id='right-arrow' src='/public/img/right_arrow_icon.png' alt='Right Arrow' />
+      </a>
+    ";
+    
+    ?>
+  </div>
 
 </body>
 </html>

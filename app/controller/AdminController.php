@@ -7,7 +7,10 @@ class AdminController extends Controller {
   public function client($path = "page=1"){
     if (isset($_SESSION['admin_status'])){
       if ($_SESSION['admin_status']){
-        $this->view('Admin/client');
+        $this->view('Admin/client', 
+        array(
+          'path' => $path
+        ));
       } else {
         $this->view('Error/index');
       }
@@ -18,7 +21,10 @@ class AdminController extends Controller {
   public function anime($path = "page=1"){
     if (isset($_SESSION['admin_status'])){
       if ($_SESSION['admin_status']){
-        $this->view('Admin/anime');
+        $this->view('Admin/anime',
+        array(
+          'path' => $path
+        ));
       } else {
         $this->view('Error/index');
       }
@@ -30,7 +36,10 @@ class AdminController extends Controller {
   public function studio($path = "page=1"){
     if (isset($_SESSION['admin_status'])){
       if ($_SESSION['admin_status']){
-        $this->view('Admin/studio');
+        $this->view('Admin/studio',
+        array(
+          'path' => $path
+        ));
       } else {
         $this->view('Error/index');
       }
