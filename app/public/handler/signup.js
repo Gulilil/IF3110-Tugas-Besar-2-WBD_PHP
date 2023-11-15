@@ -18,7 +18,7 @@ function checkEmail() {
     xhr.onload = function(){
       if (this.status == 200){
         let response = JSON.parse(this.responseText);
-        console.log(response);
+        console.log(this.responseText);
         if (response.status == "success"){
           document.getElementById("email").style.borderColor = 'blue';
           document.getElementById("email-errmsg").innerHTML = "";

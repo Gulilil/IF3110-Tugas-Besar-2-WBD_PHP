@@ -18,6 +18,7 @@ class AdminController extends Controller {
       $this->view('Error/index');
     }
   }
+
   public function anime($path = "page=1"){
     if (isset($_SESSION['admin_status'])){
       if ($_SESSION['admin_status']){
@@ -37,6 +38,21 @@ class AdminController extends Controller {
     if (isset($_SESSION['admin_status'])){
       if ($_SESSION['admin_status']){
         $this->view('Admin/studio',
+        array(
+          'path' => $path
+        ));
+      } else {
+        $this->view('Error/index');
+      }
+    } else {
+      $this->view('Error/index');
+    }
+  }
+
+  public function reference($path = "page=1"){
+    if (isset($_SESSION['admin_status'])){
+      if ($_SESSION['admin_status']){
+        $this->view('Admin/reference', 
         array(
           'path' => $path
         ));

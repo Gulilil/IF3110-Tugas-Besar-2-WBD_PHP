@@ -33,18 +33,18 @@ $maxPage = ceil($totalClient/$limitPerPage);
 <body>      
 
     <div class="manage-header">
-        <div class="menu">
+    <div class="menu">
           <a href="/?admin/client/page=1">
-            <button class="menu-item active" 
-                onclick="showTable('client'); setActiveMenuItem('client')">Client</button>
+            <button class="menu-item active">Client</button>
           </a>
           <a href="/?admin/anime/page=1">
-            <button class="menu-item" 
-                onclick="showTable('anime'); setActiveMenuItem('anime')">Anime</button>
+            <button class="menu-item">Anime</button>
           </a>
           <a href="/?admin/studio/page=1">
-            <button class="menu-item" 
-            onclick="showTable('studio'); setActiveMenuItem('studio')">Studio</button>
+            <button class="menu-item">Studio</button>
+          </a>
+          <a href="/?admin/reference/page=1">
+            <button class="menu-item">Reference</button>
           </a>
         </div>
 

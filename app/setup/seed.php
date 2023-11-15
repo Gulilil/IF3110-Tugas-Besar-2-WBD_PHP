@@ -9,10 +9,11 @@ require_once(BASE_DIR.'/models/Anime_List.php');
 require_once(BASE_DIR.'/models/Anime_Genre.php');
 
 $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet tincidunt risus, nec dictum lectus. Cras vitae tempus elit. Maecenas nec lobortis lectus. Ut mollis neque sit amet nunc aliquet, a fermentum libero sodales. Praesent non magna suscipit dolor sagittis posuere. Proin tortor lorem, viverra tempor dignissim vel, euismod vel magna. Maecenas fermentum ultricies imperdiet. Donec sodales lacus id magna ultricies rhoncus.';
-$anime_amount = 500;
-$anime_list_amount = 100;
-$studio_amount = 50;
+$anime_amount = 250;
+$anime_list_amount = 20;
+$studio_amount = 20;
 $user_amount = 20;
+$many_id = "";
 
 function getRandomWord($len = 10)
 {
@@ -25,8 +26,10 @@ function getRandomWord($len = 10)
 function seedClientData(){
   global $lorem_ipsum;
   global $user_amount;
+  global $many_id;
   $client = new Client();
   for ($i = 1; $i <= $user_amount; $i++){
+    $many_id = $many_id.$i.';';
     $username = 'client'.$i;
     $email = getRandomWord().'@gmail.com';
     $password = 'password';
@@ -49,6 +52,7 @@ function seedClientData(){
     $client->insertClient($clientTuple);
   }
 
+  $many_id = $many_id.($user_amount+1).';';
   $client->insertClient(
     array (
     'username' => 'inijuan',
@@ -237,12 +241,17 @@ function seedAnimeGenreData(){
 }
 
 function seedAllData(){
+  global $many_id;
+  echo "
+    <script type='text/javascript' src='/public/handler/reference.js'> alert('test'); </script>
+  ";
   seedClientData(); 
   seedStudioData();
   seedGenreData();
   seedAnimeData();
   seedAnimeListData();
   seedAnimeGenreData();
+  echo '<script type="text/javascript"> sendInsertMany("'.$many_id.'"); </script>';
   echo 'Seeding success';
 }
 
