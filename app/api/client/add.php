@@ -5,6 +5,9 @@ require_once(dirname(__DIR__,2).'/define.php');
 require_once(BASE_DIR.'/models/Client.php');
 
 $c = new Client();
+$clients = $c->getAllClient();
+$lastData = end($clients);
+$lastId = $lastData['client_id'];
 
 // Check if form data is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -83,14 +86,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         $result = $c->insertClient($data);
-
-        if ($result) {
-            header("Location: /?admin/client/page=1");
-            exit();
+        
+        if (!$result){
+          $_SESSION['error_message'] = "Failed to add client";
+          header("Location: /?admin/client/page=1");
+          exit();
         } else {
-            $_SESSION['error_message'] = "Failed to add client";
-            header("Location: /?admin/client/page=1");
-            exit();
+          echo "<script src='/public/handler/reference.js'></script>
+          <script type='text/javascript'> sendInsert(".($lastId+1).", 'admin')
+          </script>";
         }
+
     }
 }
+

@@ -244,27 +244,3 @@ function closeEditAnimeModal() {
   modal.style.display = "none";
 }
 
-function openEditReferenceModal(button) {
-  // Get attributes from the button
-  const referenceId = button.getAttribute("data-reference-id");
-  const anime_account_id = button.getAttribute("data-anime-account-id");
-  const forum_account_id = button.getAttribute("data-forum-account-id");
-  const referral_code = button.getAttribute("data-referral-code");
-  const point = button.getAttribute("data-point");
-
-  // Populate the modal's fields with the extracted data
-  document.getElementById("editReferenceId").value = referenceId;
-  document.getElementById("editAnimeAccountId").value = anime_account_id;
-  document.getElementById("editForumAccountId").value = forum_account_id;
-  document.getElementById("editReferralCode").value = referral_code;
-  document.getElementById("editPoint").value = point;
-
-  // Display the modal
-  const modal = document.getElementById("editReferenceModal");
-  modal.style.display = "block";
-}
-
-function closeEditReferenceModal() {
-  const modal = document.getElementById("editReferenceModal");
-  modal.style.display = "none";
-}

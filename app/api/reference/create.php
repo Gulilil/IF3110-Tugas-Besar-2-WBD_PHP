@@ -8,14 +8,13 @@ $data = json_decode($xml, true);
 
 if (isset($data['id'])){
   $id = $data['id'];
-  $request_param = '<?xml version="1.0" encoding="utf-8"?>
-  <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-      <getAllSubscriptionRequestBySubscriber xmlns="http://service.binotify.com/">
-          <subscriber>'. $id . '</subscriber>
-      </getAllSubscriptionRequestBySubscriber>
-    </soap:Body>
-  </soap:Envelope>
+  $request_param = '<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+      <insertReference xmlns="http://service.wbd_soap.com/">
+          <arg0 xmlns="">'. $id . '</arg0>
+          </insertReference>
+      </Body>
+  </Envelope>
     ';
 
     $headers = array(

@@ -9,10 +9,9 @@ if (isset($_GET['id'])) {
 
     $c = new Client(); 
 
-    if ($c->deleteClient($id)) {
-        header('Location: /?admin/client/page='.$page);
-    } else {
-        header('Location: /?admin/client/page='.$page);
-    }
+    $c->deleteClient($id);
+    echo "<script src='/public/handler/reference.js'></script>
+    <script type='text/javascript'> sendDelete($id, $page)
+    </script>";
 }
 ?>

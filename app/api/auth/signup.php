@@ -4,6 +4,9 @@ require_once(dirname(__DIR__,2).'/define.php');
 require_once(BASE_DIR.'/models/Client.php');
 
 $c = new Client();
+$clients = $c->getAllClient();
+$lastData = end($clients);
+$lastId = $lastData['client_id'];
 $xml = file_get_contents('php://input');
 $data = json_decode($xml, true);
 
@@ -55,7 +58,11 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     'image' => null
   );
   if ($c->insertClient($clientArr)){
-    header('Location: /?login');
+
+    echo "<script src='/public/handler/reference.js'></script>
+    <script type='text/javascript'> sendInsert(".($lastId+1).", 'signup')
+    </script>";
+    // header('Location: /?login');
     session_unset();
   } else {
     $_SESSION['error'] = 'Signup Failed';

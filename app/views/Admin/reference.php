@@ -13,11 +13,8 @@ $path = $data['path'];
 $arr = explode('/', $path)[0];
 $page= explode('=', $arr)[1];
 $limitPerPage = 20;
-$totalAnime= count ($a->getAllAnime());
-$maxPage = ceil($totalAnime/$limitPerPage);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,65 +66,24 @@ $maxPage = ceil($totalAnime/$limitPerPage);
                                 <th>forum_account_id</th>
                                 <th>referral_code</th>
                                 <th>point</th>
-                                <th>actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $animes = $a->getAllAnimeLimitOffset($limitPerPage, ($page-1)*$limitPerPage);
-                            foreach($animes as $anime){
+                            for($i = 0; $i < $limitPerPage ; $i++){
                                 echo "
-                                <tr>
-                                    <td>$id</td>
-                                    <td>$anime_account_id</td>
-                                    <td>$forum_account_id</td>
-                                    <td>$referral_code</td>
-                                    <td>$point</td>
-                                    <td>
-                                        <div class='btn-container'>
-                                        <button class='edit-btn'
-                                            data-reference_id=$id
-                                            data-anime-account-id=$anime_account_id
-                                            data-forum-account-id=$forum_account_id
-                                            data-referral-code='$referral_code'
-                                            data-point'$point' ?? ''
-                                            onclick='openEditReferenceModal(this)'>
-                                            Edit
-                                        </button>
-                                        </div>
-                                    </td>
+                                <tr id='row_$i' >
+                                    <td id='id_$i' ></td>
+                                    <td id='aa_id_$i' ></td>
+                                    <td id='fa_id_$i' ></td>
+                                    <td id='ref_code_$i' ></td>
+                                    <td id='point_$i' ></td>
                                 </tr>
                                 ";
                             }
                             ?>
                         </tbody>
                     </table>
-                </div>
-
-                <div id="editReferenceModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-btn" onclick="closeEditReferenceModal('reference')">&times;</span>
-                        <h2>Edit Reference</h2>
-
-                        <form class="form-vertical" action="/api/reference/edit.php" method="post" enctype="multipart/form-data">
-                            <!-- Hidden input for reference id -->
-                            <input type="hidden" id="editReferenceId" name="referenceId">
-
-                            <label for="editAnimeAccountID">Anime Account ID:</label>
-                            <input type="number" id="editAnimeAccountId" name="animeAccountId" placeholder="AnimeAccountID" required>
-
-                            <label for="editForumAccountID">Forum Account ID:</label>
-                            <input type="number" id="editForumAccountId" name="forumAccountId" placeholder="DorumAccountID" required>
-
-                            <input type="hidden" id="editReferralCode" name="referralCode">
-
-                            <label for="editPoint">Point:</label>
-                            <input type="number" id="editPoint" name="point" placeholder="Point">
-
-                            <input type="submit" value="Update Reference">
-                        </form>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -136,7 +92,7 @@ $maxPage = ceil($totalAnime/$limitPerPage);
     <div class='button-container'>
   <?php
     $prevPage = $page == 1? 'page=1' : 'page='.$page-1;
-    $nextPage = $page == $maxPage ? 'page='.$maxPage : 'page='.$page+1;
+    $nextPage = 'page='.$page+1;
     $new_url = '/?admin/reference/';
 
     $prev_url = $new_url.$prevPage;
@@ -145,7 +101,7 @@ $maxPage = ceil($totalAnime/$limitPerPage);
       <a href='$prev_url'>
         <img class='page-arrow' id='left-arrow' src='/public/img/left_arrow_icon.png' alt='Left Arrow' />
       </a>
-      <div class='page-number'> ".$page." / ".$maxPage." </div>
+      <div class='page-number'> ".$page." </div>
       <a href='$next_url'>
         <img class='page-arrow' id='right-arrow' src='/public/img/right_arrow_icon.png' alt='Right Arrow' />
       </a>
