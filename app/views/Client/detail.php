@@ -10,10 +10,9 @@ $c = new Client();
 $al = new Anime_List();
 $id = $data['id'];
 $client = $c->getClientByID($id);
-
 $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +24,14 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
     <link rel="stylesheet" href="../../public/style/client.css">
     <script src='/public/handler/navbar.js'></script>
     <script src='/public/handler/client.js'></script>
+    <script src='/public/handler/reference.js'></script>
 </head>
 
 <body>
+  <?php  
+    echo "<script type='text/javascript'> sendSelect(".$id.") </script>";
+  ?>
+
   <div id ='edit-modal' class='modal' >
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -128,6 +132,10 @@ $isUser = $c->getClientByUsername($_SESSION['username'])['client_id'] == $id;
           <div> $countAnime </div>
           <div class='client-info-aspect'> Average Anime Scoring </div>
           <div> $avgScore</div>
+          <div class='client-info-aspect'> Referal Code </div>
+          <div id='ref_code'></div>
+          <div class='client-info-aspect'> Point </div>
+          <div id='point'></div>
         ";
         ?>
       </div>

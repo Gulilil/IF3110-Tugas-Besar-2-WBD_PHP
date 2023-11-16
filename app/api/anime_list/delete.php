@@ -13,10 +13,10 @@ $list_id = $al->getAnimeListByAnimeClientID($aid, $cid)['list_id'];
 
 $al->deleteAnimeList($list_id);
 
-if ($page == 'anime'){
-  header('Location: /?anime/detail/'.$aid);
-} else {
-  header('Location: /?client/detail/'.$cid);
-}
+$point = -20;
+echo "<script src='/public/handler/reference.js'></script>
+<script type='text/javascript'> sendUpdatePoint($cid, $aid, $point) 
+</script>";
+
 
 ?>

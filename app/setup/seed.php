@@ -242,9 +242,7 @@ function seedAnimeGenreData(){
 
 function seedAllData(){
   global $many_id;
-  echo "
-    <script type='text/javascript' src='/public/handler/reference.js'> alert('test'); </script>
-  ";
+  echo "<script type='text/javascript' src='/public/handler/reference.js'></script>";
   seedClientData(); 
   seedStudioData();
   seedGenreData();

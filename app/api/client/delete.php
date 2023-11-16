@@ -10,9 +10,9 @@ if (isset($_GET['id'])) {
     $c = new Client(); 
 
     if ($c->deleteClient($id)) {
-        header('Location: /?admin/client/page='.$page.'?message=Deleted successfully');
+        header('Location: /?admin/client/page='.$page);
     } else {
-        header('Location: /?admin/client/page='.$page.'?error=Failed to delete');
+        header('Location: /?admin/client/page='.$page);
     }
 }
 ?>

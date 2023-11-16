@@ -27,7 +27,7 @@ if (isset($data['id'])){
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $request_param);
-    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_URL, SOAP_URL);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $response = curl_exec($ch);
@@ -41,15 +41,8 @@ if (isset($data['id'])){
       ));
     } 
     else {
-      $response1 = str_replace('<?xml version=\'1.0\' encoding=\'UTF-8\'?>
-      <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-          <S:Body>
-              <ns2:deleteReferenceResponse xmlns:ns2="http://service.wbd_soap.com/">
-                  <return>',"",$response);
-      $msg = str_replace('</return>
-              </ns2:deleteReferenceResponse>
-          </S:Body>
-      </S:Envelope>',"",$response1);
+      $response1 = str_replace('<?xml version=\'1.0\' encoding=\'UTF-8\'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:deleteReferenceResponse xmlns:ns2="http://service.wbd_soap.com/"><return>',"",$response);
+      $msg = str_replace('</return></ns2:deleteReferenceResponse></S:Body></S:Envelope>',"",$response1);
   
       http_response_code(200);
       echo json_encode(array(

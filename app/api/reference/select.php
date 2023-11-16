@@ -6,14 +6,14 @@ require_once(BASE_DIR.'/setup/setup.php');
 $xml = file_get_contents('php://input');
 $data = json_decode($xml, true);
 
-if (isset($data['many_id'])){
-  $many_id = $data['many_id'];  
+if (isset($data['id'])){
+  $id = $data['id'];  
   $request_param = '<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
     <Body>
-        <insertReferenceMany xmlns="http://service.wbd_soap.com/">
-            <arg0 xmlns="">'.$many_id.'</arg0>
-        </insertReferenceMany>
-    </Body>
+      <giveReferenceDataWithAnimeAccountID xmlns="http://service.wbd_soap.com/">
+          <arg0 xmlns="">'.$id.'</arg0>
+          </giveReferenceDataWithAnimeAccountID>
+      </Body>
   </Envelope>
   ';
 
@@ -41,13 +41,15 @@ if (isset($data['many_id'])){
     ));
   }
   else {
-    $response1 = str_replace('<?xml version=\'1.0\' encoding=\'UTF-8\'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:insertReferenceManyResponse xmlns:ns2="http://service.wbd_soap.com/"><return>',"",$response);
-    $msg = str_replace('</return></ns2:insertReferenceManyResponse></S:Body></S:Envelope>',"",$response1);
+    $response1 = str_replace('<?xml version=\'1.0\' encoding=\'UTF-8\'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:giveReferenceDataWithAnimeAccountIDResponse xmlns:ns2="http://service.wbd_soap.com/"><return>',"",$response);
+    $msg = str_replace('</return></ns2:giveReferenceDataWithAnimeAccountIDResponse></S:Body></S:Envelope>',"",$response1);
   
+    $obj = json_decode($msg);
+    $data = $obj->data;
     http_response_code(200);
     echo json_encode(array(
       'status' => 'success',
-      'message' => $msg,
+      'message' => $data,
     ));
   }
   }

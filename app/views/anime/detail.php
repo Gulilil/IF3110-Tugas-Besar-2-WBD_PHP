@@ -97,7 +97,7 @@ $list = $al->getAnimeListByAnimeClientID($id, $client_id);
                     <form action='/api/anime_list/add.php' method='post'>
                       <input type='hidden' id='anime_id' name='anime_id' value='$id'>
                       <input type='hidden' id='client_id' name='client_id' value='$client_id'>
-                      <button type='submit' class='add-list-btn' > Add to My List </button>
+                      <button type='submit' class='add-list-btn'> Add to My List </button>
                     </form>
                     ";
                   } else {

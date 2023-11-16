@@ -18,6 +18,7 @@ $maxPage = ceil($totalAnime/$limitPerPage);
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +29,13 @@ $maxPage = ceil($totalAnime/$limitPerPage);
     <link rel="stylesheet" href="../../public/style/admin.css">
     <script src='/public/handler/navbar.js'></script>
     <script src='/public/handler/admin.js'></script>
+    <script src='/public/handler/reference.js'></script>
 </head>
 
-<body>      
+<body> 
+  <?php  
+    echo "<script type='text/javascript'> sendSelectAllLimit(".$limitPerPage.", ".($page-1)*$limitPerPage.") </script>";
+  ?>     
 
     <div class="manage-header">
       
@@ -69,7 +74,7 @@ $maxPage = ceil($totalAnime/$limitPerPage);
                         </thead>
                         <tbody>
                             <?php
-                            $animes = $a->getAllAnimeLimitOffset(20, ($page-1)*20);
+                            $animes = $a->getAllAnimeLimitOffset($limitPerPage, ($page-1)*$limitPerPage);
                             foreach($animes as $anime){
                                 echo "
                                 <tr>
@@ -89,7 +94,6 @@ $maxPage = ceil($totalAnime/$limitPerPage);
                                             onclick='openEditReferenceModal(this)'>
                                             Edit
                                         </button>
-                                            <button class='delete-btn-anime' anime-id=$anime[anime_id]>Delete</button>
                                         </div>
                                     </td>
                                 </tr>

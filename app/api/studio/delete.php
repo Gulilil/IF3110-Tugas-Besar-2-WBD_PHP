@@ -10,9 +10,9 @@ if (isset($_GET['id'])) {
     $s = new Studio(); 
 
     if ($s->deleteStudio($id)) {
-        header('Location: /?admin/studio/page='.$page.'?message=Deleted successfully');
+        header('Location: /?admin/studio/page='.$page);
     } else {
-        header('Location: /?admin/studio/page='.$page.'?error=Failed to delete');
+        header('Location: /?admin/studio/page='.$page);
     }
 }
 ?>

@@ -18,6 +18,9 @@ $animeListArr = array (
 );
 
 $al->insertAnimeList($animeListArr);
-header('Location: /?anime/detail/'.$aid);
 
+$point = 20;
+echo "<script src='/public/handler/reference.js'></script>
+<script type='text/javascript'> sendUpdatePoint($cid, $aid, $point) 
+</script>";
 ?>

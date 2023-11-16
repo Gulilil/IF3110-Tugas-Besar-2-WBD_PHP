@@ -10,9 +10,9 @@ if (isset($_GET['id'])) {
     $a = new Anime(); 
 
     if ($a->deleteAnime($id)) {
-        header('Location: /?admin/anime/page='.$page.'?message=Deleted successfully');
+        header('Location: /?admin/anime/page='.$page);
     } else {
-        header('Location: /?admin/anime/page='.$page.'?error=Failed to delete');
+        header('Location: /?admin/anime/page='.$page);
     }
 }
 ?>
