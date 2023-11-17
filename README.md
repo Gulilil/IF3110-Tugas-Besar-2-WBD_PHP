@@ -10,6 +10,7 @@
 * [Implementation Screenshots](#implementation-screenshots)
 * [Progress Report](#progress-report)
 * [Workload Distribution](#workload-distribution)
+* [Additional](additional)
 
 ## **Program Description**
 **InfoAnimeMasse**, adalah aplikasi berbasis web yang memungkinkan pengguna untuk melacak dan merating serial anime yang mereka tonton. Pengguna dapat mencari serial anime, menambahkannya ke dalam daftar yang mereka miliki, memberi rating, serta memberikan ulasan.
@@ -99,3 +100,11 @@ docker-compose down
 | Irfan                    | 10023176   | <ul> <li> Figma design <li> Login Page </ul>  | - |
 | Bagas Aryo Seto          | 13521081   |  <ul> <li> Navbar and Footer <li> Home Page <li> Admin Page <li> Anime Detail Page <li> Studio Detail Page </ul> | <ul> <li> Schema design <li> Database Tables Implementation <li> Admin Page: Client CRUD <li> Admin Page: Anime CRUD <li> Admin Page: Studio CRUD </ul>|
 | Juan Christopher Santoso | 13521116   | <ul> <li> Anime List Page <li> Studio List Page <li> Trailer Page <li> Profile Page <li> Login Page <li> Signup Page <li> Error Page <li> Client Anime List Page <li> Search, Filter, and Pagination Display <li> Responsive Design </ul> | <ul> <li> All API <li> All Controllers <li> Database Constraints Implementation <li> Data Searching and Seeding Implementation <li> All Models and DB Connection <li> All Routing Mechanism <li> ENV Loader <li> Repository Setup <li> Search Implementation <li> Filter Implementation <li> Pagination Implementation <li> Docker Setup and Implementation  <li> Login and signup authorization <li> AJAX on Signup </ul> |
+
+
+## **Additional**
+| Name                     | Student ID | Functionality |
+|--------------------------|------------|-------------|
+| Irfan                    | 10023176   |             |
+| Bagas Aryo Seto          | 13521081   |             |
+| Juan Christopher Santoso | 13521116   | Reference API, Admin for Reference |
