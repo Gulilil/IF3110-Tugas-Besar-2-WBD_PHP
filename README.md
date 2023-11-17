@@ -13,36 +13,31 @@
 * [Additional](additional)
 
 ## **Program Description**
-**InfoAnimeMasse**, adalah aplikasi berbasis web yang memungkinkan pengguna untuk melacak dan merating serial anime yang mereka tonton. Pengguna dapat mencari serial anime, menambahkannya ke dalam daftar yang mereka miliki, memberi rating, serta memberikan ulasan.
+**InfoAnimeMasse** is a web based application that allows user to track and rate anime series that they watch. User could search, add to list, give rating, give reviews to the anime in the system.
 
 ## **Program Requirement**
-1. HTML
-2. CSS
-3. JavaScript
-4. PostgreSQL
-5. PHP
-6. Docker
+| Client-Side | Server-Side | Database | Other|
+|-------------|-------------|----------|-------|
+| HTML, CSS, Java Script | PHP | PostgreSQL | Docker |
+
 
 ## **Installation Guide**
-1. Clone _repository_ ini dengan menggunakan perintah: 
+1. Clone this repository with the following command: 
 ```
 git clone https://gitlab.informatika.org/if3110-2023-01-08/if-3110-tugas-besar-1-wbd.git
 ```
-2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
-3. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan (contoh file tersebut dapat dilihat pada `.env.example`).
-4. Lalu copy file `.env` ke folder \app\setup
+2. Make sure that you have installed docker in your device.
+3. Create an `.env` file by duplicating the `.env.example`. Fill in the blank spot with the needed data of your device
+4. Copy the `.env` file and insert it into the `/app/setup` folder
 
 
 ## **Execution Guide**
-1. Jalankan perintah `docker-compose up` pada terminal _directory_ aplikasi web.
+1. Run the following command in the terminal of the directory
 ```
 docker-compose up --build
 ```
-2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8000`.
-3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
-```
-docker-compose down
-```
+2. The application will be launched in the URL:  `http://localhost:8000`.
+
 
 ## **Implementation Screenshots**
 
@@ -103,8 +98,11 @@ docker-compose down
 
 
 ## **Additional**
-| Name                     | Student ID | Functionality |
+| Name                     | Student ID | Functionalities |
 |--------------------------|------------|-------------|
 | Irfan                    | 10023176   |             |
 | Bagas Aryo Seto          | 13521081   |             |
-| Juan Christopher Santoso | 13521116   | Reference API, Admin for Reference |
+| Juan Christopher Santoso | 13521116   | <ul> <li> API for Reference CRUD <li> Admin for Reference <li> Pagination for Admin Page <li> Connection to SOAP <li> Increasing point mechanism <li> Decreasing point mechanism </ul>|
+
+### Admin Page for Reference
+<img src='assets/reference.jpg'>
