@@ -194,4 +194,9 @@ class Anime {
     $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY anime_id LIMIT '.$limit." OFFSET ".$offset);
     return $this->db->fetchAllData();
   }
+
+  public function getTop7Anime(){
+    $this->db->query('SELECT * FROM ' . $this->table. ' ORDER BY score LIMIT 7');
+    return $this->db->fetchAllData();
+  }
 }
